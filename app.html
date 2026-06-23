@@ -18,7 +18,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#06101F;color:var(--txt);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:24px 0}
-  .phone{width:402px;max-width:100vw;min-height:840px;background:var(--navy1);border:1px solid var(--br2);border-radius:34px;overflow:hidden;position:relative;display:flex;flex-direction:column}
+  .phone{width:402px;max-width:100vw;min-height:860px;background:var(--navy1);border:1px solid var(--br2);border-radius:34px;overflow:hidden;position:relative;display:flex;flex-direction:column}
   @media(max-width:430px){body{padding:0}.phone{border-radius:0;border:none;min-height:100vh;width:100vw}}
   .statusbar{display:flex;justify-content:space-between;align-items:center;padding:12px 22px 4px;font-size:12px;color:var(--txt2);font-weight:600}
   .appbar{display:flex;align-items:center;justify-content:space-between;padding:10px 20px 14px}
@@ -40,12 +40,19 @@
   .saldo .sub{font-size:12px;color:var(--txt2)}
   .cta{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--gold);color:var(--navy0);border:none;border-radius:14px;padding:16px;font-size:16px;font-weight:700;cursor:pointer;margin-bottom:8px}
   .cta:active{transform:scale(.985)}
+  .cta.outline{background:transparent;color:var(--gold-l);border:1px solid var(--gold-br)}
   .quick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
   .qbtn{background:var(--navy3);border:1px solid var(--br);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;cursor:pointer;color:var(--txt)}
   .qbtn:active{background:var(--navy4)}
   .qbtn i{color:var(--gold)}
   .qbtn .qt{font-size:13.5px;font-weight:600}.qbtn .qs{font-size:11.5px;color:var(--txt2)}
   .sec{font-size:15px;font-weight:600;margin:22px 0 12px}
+  .menu{background:var(--navy3);border:1px solid var(--br);border-radius:16px;overflow:hidden}
+  .mi{display:flex;align-items:center;gap:13px;padding:15px 16px;border-bottom:1px solid var(--br);cursor:pointer}
+  .mi:last-child{border-bottom:none}.mi:active{background:var(--navy4)}
+  .mi i{color:var(--gold);display:inline-flex}
+  .mi .mt{flex:1;font-size:14.5px}
+  .mi .chev{color:var(--txt3)}
   .appt{display:flex;align-items:center;gap:13px;background:var(--navy3);border:1px solid var(--br);border-radius:14px;padding:13px 14px;margin-bottom:10px}
   .appt .dt{width:50px;text-align:center;flex-shrink:0}
   .appt .dt .d{font-size:20px;font-weight:700;line-height:1;color:var(--gold-l)}
@@ -57,6 +64,31 @@
   .p-green{background:var(--green-bg);color:var(--green)}
   .p-gold{background:var(--gold-bg);color:var(--gold-l)}
   .p-mut{background:rgba(255,255,255,0.07);color:var(--txt2)}
+  .toggle{display:flex;background:var(--navy3);border:1px solid var(--br);border-radius:12px;padding:4px;margin:6px 0 14px}
+  .toggle div{flex:1;text-align:center;padding:9px;border-radius:9px;font-size:13.5px;color:var(--txt2);cursor:pointer;font-weight:600}
+  .toggle div.on{background:var(--gold);color:var(--navy0)}
+  .filters{display:flex;gap:9px;margin-bottom:14px}
+  .filt{flex:1;display:flex;align-items:center;gap:7px;background:var(--navy3);border:1px solid var(--br);border-radius:11px;padding:11px 12px;font-size:12.5px;color:var(--txt3)}
+  .room{background:var(--navy3);border:1px solid var(--br);border-radius:16px;overflow:hidden;margin-bottom:14px}
+  .room .photo{height:150px;background:linear-gradient(135deg,#1B3358,#0E2240);display:flex;align-items:center;justify-content:center;position:relative}
+  .room .photo i{color:rgba(198,161,91,0.5);font-size:42px}
+  .room .photo .ptag{position:absolute;top:10px;left:10px;background:rgba(10,24,40,0.7);color:var(--gold-l);font-size:11px;font-weight:600;padding:4px 10px;border-radius:8px}
+  .room .rb{padding:14px 15px}
+  .room .rn{font-size:15px;font-weight:600;line-height:1.3}
+  .room .ram{font-size:12.5px;color:var(--txt2);margin:6px 0 10px;display:flex;gap:12px;flex-wrap:wrap}
+  .room .ram span{display:flex;align-items:center;gap:5px}
+  .room .rf{display:flex;align-items:center;justify-content:space-between}
+  .room .rp{font-size:13px;color:var(--txt2)}.room .rp b{color:var(--txt);font-size:16px}
+  .room .rbtn{background:var(--gold-bg);color:var(--gold-l);border:1px solid var(--gold-br);border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;cursor:pointer}
+  .room .rbtn:active{background:var(--gold);color:var(--navy0)}
+  .post{background:var(--navy3);border:1px solid var(--br);border-radius:16px;padding:15px;margin-bottom:13px}
+  .post .ph{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+  .post .pav{width:34px;height:34px;border-radius:9px;background:var(--gold);color:var(--navy0);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:13px;font-weight:600}
+  .post .pn{font-size:13px;font-weight:600}.post .pd{font-size:11.5px;color:var(--txt3)}
+  .post .pt{font-size:15px;font-weight:600;margin-bottom:5px}
+  .post .pc{font-size:13.5px;color:var(--txt2);line-height:1.5}
+  .post .pl{display:flex;gap:18px;margin-top:12px;color:var(--txt3);font-size:13px}
+  .post .pl span{display:flex;align-items:center;gap:6px}
   .days{display:flex;gap:9px;overflow-x:auto;padding:4px 0 8px;margin-bottom:6px}
   .day{flex-shrink:0;width:52px;text-align:center;padding:10px 0;border-radius:13px;background:var(--navy3);border:1px solid var(--br);cursor:pointer}
   .day.on{background:var(--gold);border-color:var(--gold)}
@@ -73,66 +105,146 @@
   .plan .pn{font-size:15px;font-weight:600;color:var(--gold-l)}
   .plan .ps{font-size:12px;color:var(--txt2);margin-top:2px}
   .plan .pp{font-size:18px;font-weight:700}
-  .tabbar{position:absolute;bottom:0;left:0;right:0;background:var(--navy2);border-top:1px solid var(--br);display:flex;justify-content:space-around;padding:10px 0 16px}
+  /* welcome */
+  .welcome{display:none;flex-direction:column;min-height:860px;padding:0}
+  .welcome.on{display:flex}
+  @media(max-width:430px){.welcome{min-height:100vh}}
+  .wtop{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 30px;background:linear-gradient(160deg,#0E2240,#0A1828)}
+  .wtop .wl{font-family:'Playfair Display',serif;color:var(--gold);font-size:40px;letter-spacing:2px}
+  .wtop .wsub{font-size:11px;color:#CDD5E2;letter-spacing:5px;margin-top:4px}
+  .wtop h2{font-size:23px;font-weight:600;margin:34px 0 10px;line-height:1.35}
+  .wtop p{font-size:14px;color:var(--txt2);line-height:1.6}
+  .wbtns{padding:24px 24px 36px;display:flex;flex-direction:column;gap:11px}
+  .field{margin-bottom:13px}
+  .field label{font-size:12.5px;color:var(--txt2);display:block;margin-bottom:6px}
+  .field input,.field select{width:100%;background:var(--navy3);border:1px solid var(--br2);border-radius:11px;padding:13px 13px;color:var(--txt);font-size:14.5px;outline:none}
+  .field input:focus,.field select:focus{border-color:var(--gold-br)}
+  .tabbar{position:absolute;bottom:0;left:0;right:0;background:var(--navy2);border-top:1px solid var(--br);display:none;justify-content:space-around;padding:10px 0 16px}
+  body.tabs .tabbar{display:flex}
   .tab{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--txt3);font-size:10.5px;cursor:pointer;flex:1}
   .tab.on{color:var(--gold)}
   .tab i{font-size:22px}
   .back{display:flex;align-items:center;gap:7px;color:var(--txt2);font-size:14px;cursor:pointer;margin:4px 0 10px}
   .overlay{position:absolute;inset:0;background:rgba(5,12,24,0.7);display:none;align-items:flex-end;z-index:30}
   .overlay.on{display:flex}
-  .sheet{background:var(--navy2);border-top-left-radius:22px;border-top-right-radius:22px;width:100%;padding:22px 20px 28px;border-top:1px solid var(--br2);animation:up .3s ease}
+  .sheet{background:var(--navy2);border-top-left-radius:22px;border-top-right-radius:22px;width:100%;padding:22px 20px 28px;border-top:1px solid var(--br2);animation:up .3s ease;max-height:88%;overflow-y:auto}
   @keyframes up{from{transform:translateY(100%)}to{transform:none}}
   .sheet h3{font-size:18px;margin-bottom:14px}
   .row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--br);font-size:14px}
   .row span:first-child{color:var(--txt2)}
   .row span:last-child{font-weight:600}
-  .success{text-align:center;padding:30px 10px}
+  .success{text-align:center;padding:24px 10px}
   .check{width:74px;height:74px;border-radius:50%;background:var(--green-bg);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:40px}
   .icon{display:inline-flex}
   svg.ic{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2}
+  svg.ic.sm{width:16px;height:16px}
 </style>
 </head>
 <body>
 <div class="phone">
   <div class="statusbar"><span>9:41</span><span>OPERS</span><span>5G ▮▮▮</span></div>
-  <div class="appbar">
-    <div class="logo">OPERS</div>
-    <div class="r">
-      <span class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
-      <div class="av">MA</div>
+
+  <!-- WELCOME (não-cliente) -->
+  <div class="welcome on" id="welcome">
+    <div class="wtop">
+      <div class="wl">OPERS</div>
+      <div class="wsub">CENTRO DE SAÚDE</div>
+      <h2>Salas de alto padrão,<br>na hora que você precisa.</h2>
+      <p>Reserve consultórios e centros cirúrgicos equipados em Balneário Camboriú. Pague só pelas horas que usar.</p>
+    </div>
+    <div class="wbtns">
+      <button class="cta" onclick="go('cadastro')">Criar minha conta</button>
+      <button class="cta outline" onclick="login('Dra. Marina Alves','Marina',true)">Já sou cliente · Entrar</button>
+      <div style="text-align:center;margin-top:6px;color:var(--txt3);font-size:13.5px;cursor:pointer" onclick="login('',' ',false);go('salas')">Só explorar as salas primeiro →</div>
     </div>
   </div>
 
-  <div class="body">
+  <!-- CADASTRO -->
+  <div class="scr" id="cadastro" style="padding:0">
+    <div class="body" style="padding-top:8px">
+      <div class="back" onclick="go('welcome')"><span class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> Voltar</div>
+      <div class="hi">Criar conta<small>Leva menos de 1 minuto e você já pode reservar.</small></div>
+      <div style="margin-top:18px">
+        <div class="field"><label>Nome completo</label><input id="fNome" placeholder="Dra. Bianca Melo" /></div>
+        <div class="field"><label>Especialidade</label><select id="fEsp"><option>Dermatologia</option><option>Estética / Harmonização</option><option>Odontologia</option><option>Nutrição</option><option>Ortopedia</option><option>Psicologia</option><option>Outra</option></select></div>
+        <div class="field"><label>WhatsApp</label><input id="fTel" placeholder="(47) 9 9999-9999" /></div>
+        <div class="field"><label>E-mail</label><input id="fMail" placeholder="voce@email.com" /></div>
+      </div>
+      <button class="cta" style="margin-top:10px" onclick="doCadastro()">Criar conta e continuar</button>
+      <div style="text-align:center;margin-top:14px;color:var(--txt3);font-size:12.5px;line-height:1.5">Ao criar a conta você entra como profissional<br>e pode reservar salas na hora.</div>
+    </div>
+  </div>
+
+  <div class="appbar" id="topbar" style="display:none">
+    <div class="logo">OPERS</div>
+    <div class="r">
+      <span class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
+      <div class="av" id="topAv">MA</div>
+    </div>
+  </div>
+
+  <div class="body" id="mainbody" style="display:none">
 
     <!-- INÍCIO -->
     <section class="scr on" id="home">
-      <div class="hi">Olá, Dra. Marina<small>Dermatologia · plano ativo</small></div>
+      <div class="hi" id="homeHi">Olá, Dra. Marina<small>Dermatologia · plano ativo</small></div>
+      <div id="saldoBlock"></div>
 
-      <div class="saldo">
-        <div class="t">Seu pacote de horas</div>
-        <div class="big">14h <small>de 20h restantes</small></div>
-        <div class="bar"><div style="width:70%"></div></div>
-        <div class="sub">Validade até 12/dez · hora a R$ 60</div>
-      </div>
-
-      <button class="cta" onclick="goAg()"><span class="icon"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span> Agendar uma sala</button>
-
+      <div class="sec" style="margin-top:6px">Do que você precisa hoje?</div>
       <div class="quick">
-        <div class="qbtn" onclick="go('pacote')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></i><span class="qt">Comprar horas</span><span class="qs">Renove seu pacote</span></div>
-        <div class="qbtn" onclick="openInsumo()"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 8v13H3V8"/><rect x="1" y="3" width="22" height="5" rx="1"/><path d="M10 12h4"/></svg></i><span class="qt">Pedir insumo</span><span class="qs">Toxina, preenchedor</span></div>
+        <div class="qbtn" onclick="go('salas')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></i><span class="qt">Reservar sala</span><span class="qs">Veja a disponibilidade</span></div>
+        <div class="qbtn" onclick="openInsumo()"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 8v13H3V8"/><rect x="1" y="3" width="22" height="5" rx="1"/><path d="M10 12h4"/></svg></i><span class="qt">Novo pedido</span><span class="qs">Toxina, preenchedor</span></div>
       </div>
 
-      <div class="sec">Próximos agendamentos</div>
-      <div id="apptList">
-        <div class="appt"><div class="dt"><div class="d">23</div><div class="m">jun</div></div><div class="info"><div class="s1">Consultório 01 · 15h</div><div class="s2">Dermatologia · 1h</div></div><span class="pill p-green">Confirmado</span></div>
-        <div class="appt"><div class="dt"><div class="d">25</div><div class="m">jun</div></div><div class="info"><div class="s1">Consultório 03 · 10h</div><div class="s2">Procedimento · 2h</div></div><span class="pill p-green">Confirmado</span></div>
+      <div class="menu" style="margin-top:4px">
+        <div class="mi" onclick="alert2('Minhas faturas')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></i><span class="mt">Faturas</span><span class="chev icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></div>
+        <div class="mi" onclick="go('salas')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></i><span class="mt">Minhas reservas</span><span class="chev icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></div>
+        <div class="mi" onclick="alert2('Recados da recepção')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M22 16.92V21a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h4.09a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></i><span class="mt">Recados</span><span class="chev icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></div>
+      </div>
+
+      <button class="cta outline" style="margin-top:16px" onclick="alert2('Abrindo WhatsApp da recepção...')"><span class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg></span> Falar com a recepção</button>
+    </section>
+
+    <!-- SALAS -->
+    <section class="scr" id="salas">
+      <div class="hi" style="font-size:20px">Reservar sala<small>Consultórios e centros cirúrgicos</small></div>
+      <div class="toggle"><div class="on">Lista</div><div onclick="alert2('Visão calendário')">Calendário</div></div>
+      <div class="filters">
+        <div class="filt"><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span> Qualquer dia</div>
+        <div class="filt"><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span> Qualquer hora</div>
+      </div>
+
+      <div class="room">
+        <div class="photo"><span class="ptag">Consultório</span><i class="icon"><svg class="ic" style="width:42px;height:42px" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></i></div>
+        <div class="rb">
+          <div class="rn">Consultório Premium 01</div>
+          <div class="ram"><span><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><path d="M5 12h14M5 12a2 2 0 0 1 0-4h14a2 2 0 0 1 0 4"/></svg></span> Ar-condicionado</span><span><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><path d="M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 8.8a15 15 0 0 1 20 0M12 20h.01"/></svg></span> Wi-Fi</span></div>
+          <div class="rf"><div class="rp">A partir de <b>R$ 60</b>/hora</div><button class="rbtn" onclick="go('agendar')">Ver horários</button></div>
+        </div>
+      </div>
+
+      <div class="room">
+        <div class="photo"><span class="ptag">Estética</span><i class="icon"><svg class="ic" style="width:42px;height:42px" viewBox="0 0 24 24"><path d="M3 18h18M5 18v-6a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v6M8 8V6"/></svg></i></div>
+        <div class="rb">
+          <div class="rn">Sala de Estética 02</div>
+          <div class="ram"><span><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><path d="M5 12h14M5 12a2 2 0 0 1 0-4h14a2 2 0 0 1 0 4"/></svg></span> Maca + apoio</span><span><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><path d="M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 8.8a15 15 0 0 1 20 0M12 20h.01"/></svg></span> Wi-Fi</span></div>
+          <div class="rf"><div class="rp">A partir de <b>R$ 60</b>/hora</div><button class="rbtn" onclick="go('agendar')">Ver horários</button></div>
+        </div>
+      </div>
+
+      <div class="room">
+        <div class="photo"><span class="ptag">Centro cirúrgico</span><i class="icon"><svg class="ic" style="width:42px;height:42px" viewBox="0 0 24 24"><path d="M12 2v6M9 5h6M4 22V12h16v10M8 22v-4h8v4"/></svg></i></div>
+        <div class="rb">
+          <div class="rn">Centro Cirúrgico 01</div>
+          <div class="ram"><span><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span> Equipado</span><span><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><path d="M5 12h14M5 12a2 2 0 0 1 0-4h14a2 2 0 0 1 0 4"/></svg></span> Climatizado</span></div>
+          <div class="rf"><div class="rp">A partir de <b>R$ 90</b>/hora</div><button class="rbtn" onclick="go('agendar')">Ver horários</button></div>
+        </div>
       </div>
     </section>
 
     <!-- AGENDAR -->
     <section class="scr" id="agendar">
-      <div class="back" onclick="go('home')"><span class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> Voltar</div>
+      <div class="back" onclick="go('salas')"><span class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> Voltar</div>
       <div class="hi" style="font-size:19px">Disponibilidade<small>Escolha o dia e o horário livre</small></div>
       <div class="days" id="days">
         <div class="day on"><div class="dn">seg</div><div class="dd">23</div></div>
@@ -142,84 +254,184 @@
         <div class="day"><div class="dn">sex</div><div class="dd">27</div></div>
         <div class="day"><div class="dn">sáb</div><div class="dd">28</div></div>
       </div>
-      <div class="sec" style="margin-top:8px" id="slotLabel">Salas livres · seg, 23</div>
+      <div class="sec" style="margin-top:8px" id="slotLabel">Horários livres · seg, 23</div>
       <div id="slots">
-        <div class="slot" onclick="pick('Consultório 02','11h')"><div><div class="st">11h — 12h</div><div class="ss">Consultório 02 · Odontologia</div></div><span class="go">Reservar <span class="icon"><svg class="ic" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></span></div>
-        <div class="slot" onclick="pick('Consultório 04','14h')"><div><div class="st">14h — 15h</div><div class="ss">Consultório 04 · Livre</div></div><span class="go">Reservar <span class="icon"><svg class="ic" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></span></div>
-        <div class="slot" onclick="pick('Consultório 06','16h')"><div><div class="st">16h — 17h</div><div class="ss">Consultório 06 · Livre</div></div><span class="go">Reservar <span class="icon"><svg class="ic" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></span></div>
-        <div class="slot" onclick="pick('Centro cirúrgico 01','18h')"><div><div class="st">18h — 20h</div><div class="ss">Centro cirúrgico 01 · Procedimento</div></div><span class="go">Reservar <span class="icon"><svg class="ic" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></span></div>
+        <div class="slot" onclick="pick('Consultório 02','11h')"><div><div class="st">11h — 12h</div><div class="ss">Consultório 02 · Odontologia</div></div><span class="go">Reservar <span class="icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></span></div>
+        <div class="slot" onclick="pick('Consultório 04','14h')"><div><div class="st">14h — 15h</div><div class="ss">Consultório 04 · Livre</div></div><span class="go">Reservar <span class="icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></span></div>
+        <div class="slot" onclick="pick('Consultório 06','16h')"><div><div class="st">16h — 17h</div><div class="ss">Consultório 06 · Livre</div></div><span class="go">Reservar <span class="icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></span></div>
+        <div class="slot" onclick="pick('Centro cirúrgico 01','18h')"><div><div class="st">18h — 20h</div><div class="ss">Centro cirúrgico 01 · Procedimento</div></div><span class="go">Reservar <span class="icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></span></div>
       </div>
+    </section>
+
+    <!-- FEED -->
+    <section class="scr" id="feed">
+      <div class="hi" style="font-size:20px">Feed da Opers<small>Avisos e novidades da clínica</small></div>
+      <div class="post">
+        <div class="ph"><div class="pav">O</div><div><div class="pn">Opers Centro de Saúde</div><div class="pd">23 jun · 09:10</div></div></div>
+        <div class="pt">Novo bioestimulador disponível</div>
+        <div class="pc">Chegou o Restylane Skinboosters Vital Light no nosso estoque. Já pode incluir no seu próximo procedimento direto pelo app, em "Novo pedido".</div>
+        <div class="pl"><span><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span> 8</span><span><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> 2</span></div>
+      </div>
+      <div class="post">
+        <div class="ph"><div class="pav">O</div><div><div class="pn">Opers Centro de Saúde</div><div class="pd">21 jun · 14:13</div></div></div>
+        <div class="pt">Ação: horas em dobro</div>
+        <div class="pc">Só esta semana: comprou o pacote, usa o dobro das horas, com prazo indeterminado. Garanta sua agenda do semestre. Fale com a recepção.</div>
+        <div class="pl"><span><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span> 14</span><span><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> 5</span></div>
+      </div>
+      <div class="post">
+        <div class="ph"><div class="pav">O</div><div><div class="pn">Opers Centro de Saúde</div><div class="pd">15 jun · 08:42</div></div></div>
+        <div class="pt">Recadinho sobre o mercadinho</div>
+        <div class="pc">Nosso mercado de insumos funciona na base da confiança: todo item consumido deve ser registrado no app no momento do uso. Assim mantemos o estoque sempre certo pra você.</div>
+        <div class="pl"><span><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span> 3</span><span><span class="icon"><svg class="ic sm" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> 1</span></div>
+      </div>
+    </section>
+
+    <!-- CONTA -->
+    <section class="scr" id="conta">
+      <div style="display:flex;align-items:center;gap:14px;margin:10px 0 20px">
+        <div class="av" style="width:56px;height:56px;font-size:18px" id="contaAv">MA</div>
+        <div><div style="font-size:17px;font-weight:600" id="contaNome">Dra. Marina Alves</div><div style="font-size:13px;color:var(--txt2)" id="contaEsp">Dermatologia</div></div>
+      </div>
+      <div class="menu">
+        <div class="mi" onclick="alert2('Minhas faturas')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></i><span class="mt">Minhas faturas</span><span class="chev icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></div>
+        <div class="mi" onclick="alert2('Cotas de produtos')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></i><span class="mt">Cotas de produtos</span><span class="chev icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></div>
+        <div class="mi" onclick="alert2('Gerenciar pessoas / equipe')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></i><span class="mt">Gerenciar pessoas</span><span class="chev icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></div>
+        <div class="mi" onclick="go('pacote')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></i><span class="mt">Meu pacote de horas</span><span class="chev icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></div>
+        <div class="mi" onclick="alert2('Meus dados')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/></svg></i><span class="mt">Meus dados</span><span class="chev icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></div>
+        <div class="mi" onclick="alert2('Configurações')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a7 7 0 0 0-1.7-1l-.4-2.5H9.6l-.4 2.5a7 7 0 0 0-1.7 1l-2.4-1-2 3.4 2 1.6a7 7 0 0 0 0 2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 1.7 1l.4 2.5h4.8l.4-2.5a7 7 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6a7 7 0 0 0 .1-1z"/></svg></i><span class="mt">Configurações</span><span class="chev icon"><svg class="ic sm" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></div>
+      </div>
+      <button class="cta outline" style="margin-top:18px;color:var(--red);border-color:rgba(224,138,130,0.4)" onclick="logout()">Desconectar</button>
     </section>
 
     <!-- PACOTE -->
     <section class="scr" id="pacote">
       <div class="back" onclick="go('home')"><span class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> Voltar</div>
-      <div class="hi" style="font-size:19px">Meu pacote<small>14h de 20h restantes</small></div>
-      <div class="saldo"><div class="t">Saldo atual</div><div class="big">14h <small>restantes</small></div><div class="bar"><div style="width:70%"></div></div><div class="sub">6h usadas este mês</div></div>
-      <div class="sec">Renovar ou ampliar</div>
-      <div class="plan"><div><div class="pn">Plano 20h</div><div class="ps">vira 40h na ação · hora R$ 60</div></div><div style="text-align:right"><div class="pp">R$ 2.600</div></div></div>
-      <div class="plan feat"><div><div class="pn">Plano 30h ★</div><div class="ps">vira 60h na ação · mais vendido</div></div><div style="text-align:right"><div class="pp">R$ 3.900</div></div></div>
-      <div class="plan"><div><div class="pn">Plano 40h</div><div class="ps">vira 80h na ação · melhor preço/h</div></div><div style="text-align:right"><div class="pp">R$ 5.200</div></div></div>
+      <div class="hi" style="font-size:19px">Pacotes de horas<small>Pague pelas horas, use o dobro na ação</small></div>
+      <div class="plan"><div><div class="pn">Plano 10h</div><div class="ps">vira 20h · hora R$ 60</div></div><div style="text-align:right"><div class="pp">R$ 1.300</div></div></div>
+      <div class="plan"><div><div class="pn">Plano 20h</div><div class="ps">vira 40h · hora R$ 60</div></div><div style="text-align:right"><div class="pp">R$ 2.600</div></div></div>
+      <div class="plan feat"><div><div class="pn">Plano 30h ★</div><div class="ps">vira 60h · mais vendido</div></div><div style="text-align:right"><div class="pp">R$ 3.900</div></div></div>
+      <div class="plan"><div><div class="pn">Plano 40h</div><div class="ps">vira 80h · melhor preço/h</div></div><div style="text-align:right"><div class="pp">R$ 5.200</div></div></div>
     </section>
 
   </div>
 
   <div class="tabbar">
     <div class="tab on" data-s="home" onclick="go('home')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></i>Início</div>
-    <div class="tab" data-s="agendar" onclick="goAg()"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></i>Agendar</div>
-    <div class="tab" data-s="pacote" onclick="go('pacote')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></i>Pacote</div>
-    <div class="tab" data-s="perfil" onclick="go('home')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/></svg></i>Perfil</div>
+    <div class="tab" data-s="salas" onclick="go('salas')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></i>Salas</div>
+    <div class="tab" data-s="feed" onclick="go('feed')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M4 4h16v12H7l-3 3z"/></svg></i>Feed</div>
+    <div class="tab" data-s="conta" onclick="go('conta')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/></svg></i>Conta</div>
   </div>
 
-  <!-- Sheet confirmar -->
-  <div class="overlay" id="ov">
-    <div class="sheet" id="sheet"></div>
-  </div>
+  <div class="overlay" id="ov"><div class="sheet" id="sheet"></div></div>
 </div>
 
 <script>
-  function go(id){
-    document.querySelectorAll('.scr').forEach(s=>s.classList.toggle('on',s.id===id));
-    document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.s===id));
-    document.querySelector('.body').scrollTop=0;
+  var state={logged:false, name:'Dra. Marina Alves', first:'Marina', esp:'Dermatologia', hasPackage:true, pending:null};
+
+  function initials(n){n=(n||'').trim();if(!n)return 'OP';var p=n.replace(/^(Dra?\.?\s+)/i,'').split(/\s+/);return ((p[0]||'O')[0]+((p[1]||'')[0]||'')).toUpperCase();}
+
+  function login(name,first,hasPkg){
+    state.logged=true;
+    if(name){state.name=name;state.first=first;}
+    state.hasPackage=hasPkg;
+    enterApp();
   }
-  function goAg(){go('agendar');}
-  // dias
-  document.getElementById('days').addEventListener('click',function(e){var d=e.target.closest('.day');if(!d)return;document.querySelectorAll('.day').forEach(x=>x.classList.remove('on'));d.classList.add('on');var dn=d.querySelector('.dn').textContent;var dd=d.querySelector('.dd').textContent;document.getElementById('slotLabel').textContent='Salas livres · '+dn+', '+dd;});
+  function doCadastro(){
+    var nome=document.getElementById('fNome').value.trim()||'Dra. Bianca Melo';
+    var esp=document.getElementById('fEsp').value;
+    state.logged=true;state.name=nome;state.esp=esp;state.first=nome.replace(/^(Dra?\.?\s+)/i,'').split(/\s+/)[0];
+    state.hasPackage=false;
+    enterApp();
+    setTimeout(function(){alert2('Conta criada! Bem-vindo(a) à Opers 🎉');},250);
+  }
+  function enterApp(){
+    document.getElementById('welcome').classList.remove('on');
+    document.getElementById('cadastro').classList.remove('on');
+    document.getElementById('topbar').style.display='flex';
+    document.getElementById('mainbody').style.display='block';
+    document.body.classList.add('tabs');
+    document.getElementById('topAv').textContent=initials(state.name);
+    document.getElementById('contaAv').textContent=initials(state.name);
+    document.getElementById('contaNome').textContent=state.name;
+    document.getElementById('contaEsp').textContent=state.esp;
+    renderHome();
+    go('home');
+  }
+  function logout(){
+    state.logged=false;
+    document.body.classList.remove('tabs');
+    document.getElementById('topbar').style.display='none';
+    document.getElementById('mainbody').style.display='none';
+    document.getElementById('cadastro').classList.remove('on');
+    document.getElementById('welcome').classList.add('on');
+  }
+  function renderHome(){
+    document.getElementById('homeHi').innerHTML='Olá, '+(state.first==='Marina'?'Dra. Marina':state.name)+'<small>'+state.esp+(state.hasPackage?' · plano ativo':' · novo na Opers')+'</small>';
+    var sb=document.getElementById('saldoBlock');
+    if(state.hasPackage){
+      sb.innerHTML='<div class="saldo"><div class="t">Seu pacote de horas</div><div class="big">14h <small>de 20h restantes</small></div><div class="bar"><div style="width:70%"></div></div><div class="sub">Validade até 12/dez · hora a R$ 60</div></div>';
+    } else {
+      sb.innerHTML='<div class="saldo"><div class="t">Você ainda não tem um pacote</div><div class="big" style="font-size:18px;margin-top:6px">Comece com horas em dobro</div><div class="sub" style="margin:8px 0 12px">Pague pelas horas e use o dobro — prazo indeterminado.</div><button class="cta" style="margin:0" onclick="go(\'pacote\')">Escolher meu pacote</button></div>';
+    }
+  }
+
+  function go(id){
+    document.querySelectorAll('#mainbody .scr').forEach(s=>s.classList.toggle('on',s.id===id));
+    document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.s===id));
+    var b=document.getElementById('mainbody');if(b)b.scrollTop=0;
+    // welcome/cadastro são fora do mainbody
+    if(id==='welcome'){document.getElementById('welcome').classList.add('on');}
+    if(id==='cadastro'){
+      document.getElementById('welcome').classList.remove('on');
+      document.getElementById('cadastro').classList.add('on');
+      document.getElementById('mainbody').style.display='none';
+      document.body.classList.remove('tabs');
+      document.getElementById('topbar').style.display='none';
+    }
+  }
+
+  document.getElementById('days').addEventListener('click',function(e){var d=e.target.closest('.day');if(!d)return;document.querySelectorAll('.day').forEach(x=>x.classList.remove('on'));d.classList.add('on');var dn=d.querySelector('.dn').textContent;var dd=d.querySelector('.dd').textContent;document.getElementById('slotLabel').textContent='Horários livres · '+dn+', '+dd;});
 
   var sel={sala:'',hora:''};
   function pick(sala,hora){
     sel={sala,hora};
     var s=document.getElementById('sheet');
-    s.innerHTML='<h3>Confirmar agendamento</h3>'+
+    if(!state.logged){
+      s.innerHTML='<h3>Quase lá!</h3><p style="color:var(--txt2);font-size:14px;margin-bottom:6px">Crie sua conta pra confirmar a reserva de <b style="color:var(--txt)">'+sala+' · '+hora+'</b>. Leva menos de 1 minuto.</p>'+
+        '<button class="cta" style="margin-top:16px" onclick="closeOv();go(\'cadastro\')">Criar conta e reservar</button>'+
+        '<div style="text-align:center;margin-top:12px;color:var(--txt3);font-size:13px;cursor:pointer" onclick="closeOv()">Agora não</div>';
+      document.getElementById('ov').classList.add('on');return;
+    }
+    s.innerHTML='<h3>Confirmar reserva</h3>'+
       '<div class="row"><span>Sala</span><span>'+sala+'</span></div>'+
       '<div class="row"><span>Data</span><span>Seg, 23 de junho</span></div>'+
       '<div class="row"><span>Horário</span><span>'+hora+' — '+(parseInt(hora)+1)+'h</span></div>'+
-      '<div class="row"><span>Consome do pacote</span><span style="color:var(--gold-l)">1h (resta 13h)</span></div>'+
-      '<button class="cta" style="margin-top:18px" onclick="confirmAg()">Confirmar agendamento</button>'+
+      '<div class="row"><span>Consome do pacote</span><span style="color:var(--gold-l)">1h'+(state.hasPackage?' (resta 13h)':'')+'</span></div>'+
+      '<button class="cta" style="margin-top:18px" onclick="confirmAg()">Confirmar reserva</button>'+
       '<div style="text-align:center;margin-top:12px;color:var(--txt3);font-size:13px;cursor:pointer" onclick="closeOv()">Cancelar</div>';
     document.getElementById('ov').classList.add('on');
   }
   function closeOv(){document.getElementById('ov').classList.remove('on');}
   function confirmAg(){
     var s=document.getElementById('sheet');
-    s.innerHTML='<div class="success"><div class="check">✓</div><div style="font-size:20px;font-weight:600;margin-bottom:6px">Agendado!</div>'+
+    s.innerHTML='<div class="success"><div class="check">✓</div><div style="font-size:20px;font-weight:600;margin-bottom:6px">Reserva confirmada!</div>'+
       '<div style="color:var(--txt2);font-size:14px">'+sel.sala+' · '+sel.hora+'<br>Seg, 23 de junho</div>'+
       '<button class="cta" style="margin-top:22px" onclick="finishAg()">Voltar ao início</button></div>';
-    // adiciona na lista
-    var item=document.createElement('div');item.className='appt';
-    item.innerHTML='<div class="dt"><div class="d">23</div><div class="m">jun</div></div><div class="info"><div class="s1">'+sel.sala+' · '+sel.hora+'</div><div class="s2">Novo agendamento · 1h</div></div><span class="pill p-gold">Novo</span>';
-    document.getElementById('apptList').prepend(item);
   }
   function finishAg(){closeOv();go('home');}
   function openInsumo(){
     var s=document.getElementById('sheet');
-    s.innerHTML='<h3>Pedir insumo</h3>'+
-      '<div class="row"><span>Dysport 300 UI</span><span>R$ 880,75</span></div>'+
+    s.innerHTML='<h3>Novo pedido de insumo</h3>'+
+      '<div class="row"><span>Dysport 300 UI · Galderma</span><span>R$ 880,75</span></div>'+
       '<div class="row"><span>Restylane Lyft 1ml</span><span>R$ 315,00</span></div>'+
       '<div class="row"><span>Restylane Skinboosters</span><span>R$ 384,00</span></div>'+
       '<button class="cta" style="margin-top:18px" onclick="closeOv()">Adicionar ao próximo procedimento</button>'+
       '<div style="text-align:center;margin-top:12px;color:var(--txt3);font-size:13px;cursor:pointer" onclick="closeOv()">Fechar</div>';
+    document.getElementById('ov').classList.add('on');
+  }
+  function alert2(msg){
+    var s=document.getElementById('sheet');
+    s.innerHTML='<div style="text-align:center;padding:14px 4px 6px"><div style="font-size:15px;font-weight:600;margin-bottom:14px">'+msg+'</div><button class="cta" onclick="closeOv()">Ok</button></div>';
     document.getElementById('ov').classList.add('on');
   }
   document.getElementById('ov').addEventListener('click',function(e){if(e.target===this)closeOv();});
