@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OPERS — Sistema de Gestão</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy0:#0A1828; --navy1:#0C1C33; --navy2:#0E2240; --navy3:#14294A; --navy4:#1B3358;
+    --gold:#C6A15B; --gold-l:#D8BE86; --gold-bg:rgba(198,161,91,0.16); --gold-br:rgba(198,161,91,0.32);
+    --txt:#ECF1F8; --txt2:#9FB1C9; --txt3:#6F84A1;
+    --green:#7FD3AA; --green-bg:rgba(84,185,138,0.16);
+    --red:#E08A82; --red-bg:rgba(224,138,130,0.15);
+    --br:rgba(255,255,255,0.08); --br2:rgba(255,255,255,0.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--navy1);color:var(--txt);height:100vh;overflow:hidden;font-size:14px}
+  .app{display:flex;height:100vh}
+  /* Sidebar */
+  .side{width:222px;background:var(--navy2);border-right:1px solid var(--br);display:flex;flex-direction:column;flex-shrink:0}
+  .brand{display:flex;align-items:center;justify-content:center;padding:22px 20px 18px;border-bottom:1px solid var(--br)}
+  .brand .logowrap{position:relative;display:inline-block;text-align:center;padding-top:4px}
+  .brand .flourish{position:absolute;top:-9px;left:-13px;width:74px;height:40px;overflow:visible;pointer-events:none}
+  .brand .logo{font-family:'Playfair Display',Georgia,serif;color:var(--gold);font-size:31px;letter-spacing:1px;line-height:1;font-weight:500}
+  .brand .sub{font-size:8.5px;color:#CDD5E2;letter-spacing:4.5px;margin-top:5px;font-weight:600}
+  .nav{flex:1;padding:12px 10px;overflow-y:auto}
+  .nav-i{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:9px;color:var(--txt2);cursor:pointer;font-size:13.5px;margin-bottom:2px;transition:background .12s}
+  .nav-i:hover{background:var(--navy3);color:var(--txt)}
+  .nav-i.on{background:var(--gold);color:var(--navy0);font-weight:600}
+  .nav-i svg{width:18px;height:18px;flex-shrink:0}
+  .nav-sec{font-size:10px;color:var(--txt3);letter-spacing:1.2px;text-transform:uppercase;padding:14px 12px 6px}
+  .side-foot{padding:14px 16px;border-top:1px solid var(--br);display:flex;align-items:center;gap:10px}
+  .avatar{width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--navy0);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;flex-shrink:0}
+  /* Main */
+  .main{flex:1;display:flex;flex-direction:column;min-width:0}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:14px 26px;border-bottom:1px solid var(--br);background:var(--navy2);flex-shrink:0}
+  .top h1{font-size:18px;font-weight:600}
+  .top .crumb{font-size:12px;color:var(--txt3);margin-top:1px}
+  .top-r{display:flex;align-items:center;gap:14px}
+  .search{display:flex;align-items:center;gap:8px;background:var(--navy3);border:1px solid var(--br);border-radius:9px;padding:8px 12px;color:var(--txt3);width:230px}
+  .search input{background:none;border:none;color:var(--txt);outline:none;font-size:13px;width:100%}
+  .btn{background:var(--gold);color:var(--navy0);border:none;border-radius:9px;padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+  .btn:hover{background:var(--gold-l)}
+  .btn.ghost{background:transparent;color:var(--txt2);border:1px solid var(--br2)}
+  .btn.ghost:hover{background:var(--navy3);color:var(--txt)}
+  .icon-btn{color:var(--txt2);cursor:pointer;display:flex}
+  .icon-btn:hover{color:var(--txt)}
+  .content{flex:1;overflow-y:auto;padding:24px 26px}
+  .screen{display:none}
+  .screen.on{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  /* Cards & grids */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+  .kpi{background:var(--navy3);border:1px solid var(--br);border-radius:12px;padding:15px 17px}
+  .kpi .l{font-size:12.5px;color:var(--txt2)}
+  .kpi .v{font-size:27px;font-weight:600;margin:3px 0}
+  .kpi .d{font-size:11.5px}
+  .up{color:var(--green)} .gd{color:var(--gold-l)} .dn{color:var(--red)} .mut{color:var(--txt3)}
+  .sec-h{display:flex;align-items:center;justify-content:space-between;margin:6px 0 12px}
+  .sec-h h2{font-size:15px;font-weight:600}
+  .sec-h .meta{font-size:12.5px;color:var(--txt2)}
+  .card{background:var(--navy3);border:1px solid var(--br);border-radius:12px;padding:16px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .rooms{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin-bottom:22px}
+  .room{background:var(--navy3);border:1px solid var(--br);border-radius:11px;padding:11px 13px}
+  .room.r-res{border-color:var(--gold-br)} .room.r-bus{}
+  .room .rt{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:5px}
+  .room .rn{font-size:13px;font-weight:600;white-space:nowrap}
+  .room .rs{font-size:12.5px;color:var(--txt2)}
+  .room .rd{font-size:12.5px;color:var(--txt)}
+  .pill{font-size:11px;padding:2.5px 9px;border-radius:8px;font-weight:600;white-space:nowrap}
+  .p-green{background:var(--green-bg);color:var(--green)}
+  .p-gold{background:var(--gold-bg);color:var(--gold-l)}
+  .p-mut{background:rgba(255,255,255,0.06);color:var(--txt2)}
+  .p-red{background:var(--red-bg);color:var(--red)}
+  /* bars */
+  .bars{display:flex;align-items:flex-end;gap:9px;height:120px}
+  .bar-c{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px}
+  .bar{width:100%;background:var(--gold);border-radius:5px}
+  .bar.lite{background:rgba(198,161,91,0.3)}
+  .bar-l{font-size:11px;color:var(--txt3)}
+  /* table */
+  table{width:100%;border-collapse:collapse}
+  th{text-align:left;font-size:11.5px;color:var(--txt3);text-transform:uppercase;letter-spacing:.5px;font-weight:600;padding:10px 12px;border-bottom:1px solid var(--br)}
+  td{padding:12px;border-bottom:1px solid var(--br);font-size:13.5px;color:var(--txt)}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:rgba(255,255,255,0.02)}
+  .who{display:flex;align-items:center;gap:10px}
+  .who .av{width:30px;height:30px;border-radius:50%;background:var(--gold-bg);color:var(--gold-l);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0}
+  .who .nm{font-weight:600;font-size:13px} .who .sp{font-size:12px;color:var(--txt2)}
+  .progress{height:6px;background:var(--navy4);border-radius:4px;overflow:hidden;width:90px;margin-top:4px}
+  .progress > div{height:100%;background:var(--gold)}
+  /* kanban */
+  .kanban{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;align-items:start}
+  .kcol{background:var(--navy2);border:1px solid var(--br);border-radius:12px;display:flex;flex-direction:column;min-height:200px}
+  .kcol-h{padding:12px 13px;border-bottom:1px solid var(--br)}
+  .kcol-h .t{font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:7px}
+  .kcol-h .dot{width:8px;height:8px;border-radius:50%}
+  .kcol-h .m{font-size:11.5px;color:var(--txt3);margin-top:3px}
+  .kbody{padding:10px;display:flex;flex-direction:column;gap:9px;flex:1;min-height:60px}
+  .kbody.drag{background:rgba(198,161,91,0.06);border-radius:8px}
+  .lead{background:var(--navy3);border:1px solid var(--br);border-radius:10px;padding:11px;cursor:grab}
+  .lead:active{cursor:grabbing}
+  .lead.dragging{opacity:.4}
+  .lead .ln{font-size:13px;font-weight:600}
+  .lead .lsp{font-size:12px;color:var(--txt2);margin:1px 0 8px}
+  .lead .lf{display:flex;align-items:center;justify-content:space-between}
+  .lead .val{font-size:13px;font-weight:600;color:var(--gold-l)}
+  .tag{font-size:10.5px;padding:2px 7px;border-radius:6px;font-weight:600}
+  .t-ia{background:var(--gold-bg);color:var(--gold-l)} .t-traf{background:rgba(127,160,211,0.16);color:#9FB1C9} .t-ind{background:var(--green-bg);color:var(--green)}
+  .lead .age{font-size:11px;color:var(--txt3);margin-top:6px}
+  /* agenda */
+  .agtable{width:100%;border-collapse:collapse;background:var(--navy3);border-radius:12px;overflow:hidden;border:1px solid var(--br)}
+  .agtable th{padding:11px 8px;text-align:center;font-size:11.5px}
+  .agtable td{padding:0;border:1px solid var(--br);text-align:center}
+  .agtable td.room-lbl{text-align:left;padding:11px 13px;font-weight:600;font-size:12.5px;background:var(--navy2);white-space:nowrap}
+  .slot{height:46px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;cursor:default;margin:3px;border-radius:7px}
+  .slot.busy{background:var(--green-bg);color:var(--green)}
+  .slot.res{background:var(--gold-bg);color:var(--gold-l)}
+  .slot.free{background:rgba(255,255,255,0.03);color:var(--txt3);cursor:pointer;border:1px dashed var(--br2)}
+  .slot.free:hover{background:var(--gold-bg);color:var(--gold-l);border-color:var(--gold-br)}
+  .legend{display:flex;gap:18px;margin:14px 2px 0;font-size:12px;color:var(--txt2)}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  /* plans */
+  .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+  .plan{background:var(--navy3);border:1px solid var(--br);border-radius:13px;padding:18px}
+  .plan.feat{border-color:var(--gold-br);background:linear-gradient(180deg,rgba(198,161,91,0.08),var(--navy3))}
+  .plan .pn{color:var(--gold-l);font-size:15px;font-weight:600}
+  .plan .pp{font-size:30px;font-weight:600;margin:8px 0 2px}
+  .plan .pp small{font-size:13px;color:var(--txt3);font-weight:400}
+  .plan ul{list-style:none;margin:14px 0;font-size:12.5px;color:var(--txt2)}
+  .plan li{padding:5px 0;display:flex;align-items:center;gap:8px}
+  .plan li svg{width:15px;height:15px;color:var(--gold)}
+  /* chat */
+  .chat{background:var(--navy2);border:1px solid var(--br);border-radius:12px;padding:16px;height:430px;display:flex;flex-direction:column}
+  .chat-h{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--br);margin-bottom:12px}
+  .chat-msgs{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:9px;padding-right:4px}
+  .msg{max-width:78%;padding:9px 12px;border-radius:12px;font-size:13px;line-height:1.45}
+  .msg.them{background:var(--navy3);align-self:flex-start;border-bottom-left-radius:3px}
+  .msg.ia{background:var(--gold);color:var(--navy0);align-self:flex-end;border-bottom-right-radius:3px;font-weight:500}
+  .msg .tm{font-size:10px;opacity:.6;margin-top:3px;display:block}
+  /* modal */
+  .overlay{position:fixed;inset:0;background:rgba(5,12,24,0.66);display:none;align-items:center;justify-content:center;z-index:50}
+  .overlay.on{display:flex}
+  .modal{background:var(--navy2);border:1px solid var(--br2);border-radius:14px;padding:22px;width:380px;max-width:92vw}
+  .modal h3{font-size:16px;margin-bottom:4px}
+  .modal p.s{font-size:13px;color:var(--txt2);margin-bottom:16px}
+  .field{margin-bottom:13px}
+  .field label{font-size:12px;color:var(--txt2);display:block;margin-bottom:5px}
+  .field select,.field input{width:100%;background:var(--navy3);border:1px solid var(--br2);border-radius:9px;padding:9px 11px;color:var(--txt);font-size:13px;outline:none}
+  .modal-foot{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
+  /* toast */
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--green);color:var(--navy0);padding:12px 20px;border-radius:10px;font-weight:600;font-size:13px;z-index:60;opacity:0;transition:all .3s;display:flex;align-items:center;gap:8px}
+  .toast.on{transform:translateX(-50%) translateY(0);opacity:1}
+  .content::-webkit-scrollbar,.chat-msgs::-webkit-scrollbar,.nav::-webkit-scrollbar{width:8px}
+  .content::-webkit-scrollbar-thumb,.chat-msgs::-webkit-scrollbar-thumb{background:var(--navy4);border-radius:4px}
+  .typing{display:flex;gap:4px;padding:10px 14px;background:var(--navy3);border-radius:12px;align-self:flex-start;width:fit-content}
+  .typing span{width:7px;height:7px;border-radius:50%;background:var(--txt3);animation:tp 1s infinite}
+  .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+  @keyframes tp{0%,60%,100%{opacity:.3}30%{opacity:1}}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="side">
+    <div class="brand">
+      <div class="logowrap">
+        <svg class="flourish" viewBox="0 0 74 40" fill="none"><path d="M70 13 C 46 2, 17 -1, 7 12 C 1 20, 6 27, 17 22" stroke="#C6A15B" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <div class="logo">OPERS</div>
+        <div class="sub">CENTRO DE SAÚDE</div>
+      </div>
+    </div>
+    <nav class="nav" id="nav">
+      <div class="nav-i on" data-s="dash" data-t="Visão geral" data-c="Resumo da operação">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        Visão geral
+      </div>
+      <div class="nav-sec">Comercial</div>
+      <div class="nav-i" data-s="funil" data-t="Funil de vendas" data-c="CRM · arraste os leads entre as etapas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg>
+        Funil de vendas
+      </div>
+      <div class="nav-i" data-s="ia" data-t="Captação IA" data-c="A IA vende pacote e agenda sozinha · 24h">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Captação IA
+      </div>
+      <div class="nav-sec">Operação</div>
+      <div class="nav-i" data-s="agenda" data-t="Agenda das salas" data-c="Ocupação por hora · hoje">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Agenda das salas
+      </div>
+      <div class="nav-i" data-s="prof" data-t="Profissionais" data-c="Doutores com pacote ativo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Profissionais
+      </div>
+      <div class="nav-i" data-s="pacotes" data-t="Pacotes de horas" data-c="Planos e pacotes vendidos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12l8.73-5.04M12 22V12"/></svg>
+        Pacotes de horas
+      </div>
+      <div class="nav-i" data-s="estoque" data-t="Estoque de insumos" data-c="Toxinas, preenchedores e bioestimuladores">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8v13H3V8"/><rect x="1" y="3" width="22" height="5" rx="1"/><path d="M10 12h4"/></svg>
+        Estoque de insumos
+      </div>
+      <div class="nav-i" data-s="fin" data-t="Financeiro" data-c="Receita e renovações">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+        Financeiro
+      </div>
+    </nav>
+    <div class="side-foot">
+      <div class="avatar">FM</div>
+      <div>
+        <div style="font-size:13px;font-weight:600">Fernando</div>
+        <div style="font-size:11px;color:var(--txt3)">Administrador</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <header class="top">
+      <div>
+        <h1 id="pageTitle">Visão geral</h1>
+        <div class="crumb" id="pageCrumb">Resumo da operação</div>
+      </div>
+      <div class="top-r">
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input placeholder="Buscar doutor, sala, pacote..." />
+        </div>
+        <div class="icon-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <button class="btn" id="topAction" onclick="openModal()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          Nova reserva
+        </button>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- DASHBOARD -->
+      <section class="screen on" id="dash">
+        <div class="kpis">
+          <div class="kpi"><div class="l">Ocupação hoje</div><div class="v">82%</div><div class="d up">▲ +14% no mês</div></div>
+          <div class="kpi"><div class="l">Horas vendidas / mês</div><div class="v">420<small style="font-size:15px;color:var(--txt3)">h</small></div><div class="d gd">18 pacotes ativos</div></div>
+          <div class="kpi"><div class="l">Receita do mês</div><div class="v">R$ 78,5k</div><div class="d up">▲ +R$ 12,3k</div></div>
+          <div class="kpi"><div class="l">Leads na IA</div><div class="v">23</div><div class="d gd">8 novos esta semana</div></div>
+        </div>
+
+        <div class="sec-h"><h2>Salas em tempo real</h2><span class="meta">12 consultórios · 4 centros cirúrgicos</span></div>
+        <div class="rooms">
+          <div class="room"><div class="rt"><span class="rn">Consultório 01</span><span class="pill p-green">Em uso · 15h</span></div><div class="rs">Dermatologia</div><div class="rd">Dra. Marina Alves</div></div>
+          <div class="room"><div class="rt"><span class="rn">Consultório 02</span><span class="pill p-green">Em uso · 16h</span></div><div class="rs">Odontologia</div><div class="rd">Dr. Rafael Souza</div></div>
+          <div class="room r-res"><div class="rt"><span class="rn">Consultório 03</span><span class="pill p-gold">Reserva 16–18h</span></div><div class="rs">Em negociação</div><div class="rd">Dr. Henrique Dias</div></div>
+          <div class="room"><div class="rt"><span class="rn">Consultório 04</span><span class="pill p-mut">Livre</span></div><div class="rs">Disponível agora</div><div class="rd mut">Aberto pra reserva</div></div>
+          <div class="room"><div class="rt"><span class="rn">Consultório 05</span><span class="pill p-green">Em uso · 14h</span></div><div class="rs">Nutrição</div><div class="rd">Dra. Carla Lima</div></div>
+          <div class="room"><div class="rt"><span class="rn">Consultório 06</span><span class="pill p-mut">Livre</span></div><div class="rs">Disponível agora</div><div class="rd mut">Aberto pra reserva</div></div>
+          <div class="room"><div class="rt"><span class="rn">Centro cirúrgico 01</span><span class="pill p-green">Em uso · 17h</span></div><div class="rs">Procedimento</div><div class="rd">Dr. Pedro Gomes</div></div>
+          <div class="room r-res"><div class="rt"><span class="rn">Centro cirúrgico 02</span><span class="pill p-gold">Reserva 18h</span></div><div class="rs">Harmonização</div><div class="rd">Dra. Sofia Nunes</div></div>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="sec-h"><h2>Ocupação por horário · hoje</h2></div>
+            <div class="bars">
+              <div class="bar-c"><div class="bar" style="height:50px"></div><span class="bar-l">8h</span></div>
+              <div class="bar-c"><div class="bar" style="height:78px"></div><span class="bar-l">10h</span></div>
+              <div class="bar-c"><div class="bar" style="height:64px"></div><span class="bar-l">12h</span></div>
+              <div class="bar-c"><div class="bar" style="height:96px"></div><span class="bar-l">14h</span></div>
+              <div class="bar-c"><div class="bar" style="height:86px"></div><span class="bar-l">16h</span></div>
+              <div class="bar-c"><div class="bar lite" style="height:44px"></div><span class="bar-l">18h</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="sec-h"><h2>Funil de vendas</h2><span class="meta" style="cursor:pointer;color:var(--gold-l)" onclick="go('funil')">Abrir CRM →</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="color:var(--txt2);font-size:13px">Novo lead</span><div style="flex:1;margin:0 12px;height:7px;background:var(--navy4);border-radius:4px;overflow:hidden"><div style="width:90%;height:100%;background:var(--gold)"></div></div><span style="font-weight:600">9</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="color:var(--txt2);font-size:13px">Qualificando</span><div style="flex:1;margin:0 12px;height:7px;background:var(--navy4);border-radius:4px;overflow:hidden"><div style="width:62%;height:100%;background:var(--gold)"></div></div><span style="font-weight:600">6</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="color:var(--txt2);font-size:13px">Visita agendada</span><div style="flex:1;margin:0 12px;height:7px;background:var(--navy4);border-radius:4px;overflow:hidden"><div style="width:40%;height:100%;background:var(--gold)"></div></div><span style="font-weight:600">4</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="color:var(--txt2);font-size:13px">Proposta enviada</span><div style="flex:1;margin:0 12px;height:7px;background:var(--navy4);border-radius:4px;overflow:hidden"><div style="width:28%;height:100%;background:var(--gold)"></div></div><span style="font-weight:600">3</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="color:var(--green);font-size:13px">Pacote fechado</span><div style="flex:1;margin:0 12px;height:7px;background:var(--navy4);border-radius:4px;overflow:hidden"><div style="width:20%;height:100%;background:var(--green)"></div></div><span style="font-weight:600;color:var(--green)">12</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FUNIL / CRM -->
+      <section class="screen" id="funil">
+        <div class="kpis" style="grid-template-columns:repeat(4,1fr)">
+          <div class="kpi"><div class="l">Leads no funil</div><div class="v">22</div><div class="d gd">R$ 47,2k em negociação</div></div>
+          <div class="kpi"><div class="l">Taxa de conversão</div><div class="v">38%</div><div class="d up">▲ +9% no mês</div></div>
+          <div class="kpi"><div class="l">Fechados no mês</div><div class="v">12</div><div class="d gd">R$ 26,1k</div></div>
+          <div class="kpi"><div class="l">Vindos da IA</div><div class="v">68%</div><div class="d gd">captação automática</div></div>
+        </div>
+        <div class="sec-h"><h2>Pipeline comercial</h2><span class="meta">Arraste o card pra mover de etapa</span></div>
+        <div class="kanban" id="kanban">
+          <div class="kcol" data-col="Novo lead">
+            <div class="kcol-h"><div class="t"><span class="dot" style="background:#9FB1C9"></span>Novo lead</div><div class="m" data-count>2 leads · R$ 3,3k</div></div>
+            <div class="kbody">
+              <div class="lead" draggable="true" data-v="1200"><div class="ln">Dra. Sofia Nunes</div><div class="lsp">Psicologia · quer 10h/mês</div><div class="lf"><span class="val">R$ 1.200</span><span class="tag t-ia">IA</span></div><div class="age">há 2 horas</div></div>
+              <div class="lead" draggable="true" data-v="2100"><div class="ln">Dr. Marcos Vieira</div><div class="lsp">Cardiologia · 1 turno/sem</div><div class="lf"><span class="val">R$ 2.100</span><span class="tag t-traf">Tráfego</span></div><div class="age">há 5 horas</div></div>
+            </div>
+          </div>
+          <div class="kcol" data-col="Qualificando">
+            <div class="kcol-h"><div class="t"><span class="dot" style="background:var(--gold)"></span>Qualificando</div><div class="m" data-count>2 leads · R$ 5,0k</div></div>
+            <div class="kbody">
+              <div class="lead" draggable="true" data-v="2000"><div class="ln">Dra. Bianca Melo</div><div class="lsp">Estética · período integral</div><div class="lf"><span class="val">R$ 2.000</span><span class="tag t-ia">IA</span></div><div class="age">há 1 dia</div></div>
+              <div class="lead" draggable="true" data-v="3000"><div class="ln">Dr. Lucas Pires</div><div class="lsp">Ortopedia · 30h</div><div class="lf"><span class="val">R$ 3.000</span><span class="tag t-ind">Indicação</span></div><div class="age">há 2 dias</div></div>
+            </div>
+          </div>
+          <div class="kcol" data-col="Visita agendada">
+            <div class="kcol-h"><div class="t"><span class="dot" style="background:var(--gold)"></span>Visita agendada</div><div class="m" data-count>1 lead · R$ 2,0k</div></div>
+            <div class="kbody">
+              <div class="lead" draggable="true" data-v="2000"><div class="ln">Dr. Henrique Dias</div><div class="lsp">Dermato · visita qui 14h</div><div class="lf"><span class="val">R$ 2.000</span><span class="tag t-ia">IA</span></div><div class="age">há 6 horas</div></div>
+            </div>
+          </div>
+          <div class="kcol" data-col="Proposta enviada">
+            <div class="kcol-h"><div class="t"><span class="dot" style="background:var(--gold)"></span>Proposta enviada</div><div class="m" data-count>2 leads · R$ 4,8k</div></div>
+            <div class="kbody">
+              <div class="lead" draggable="true" data-v="3600"><div class="ln">Dr. Tiago Ramos</div><div class="lsp">Ortopedia · Plano 40h</div><div class="lf"><span class="val">R$ 3.600</span><span class="tag t-ia">IA</span></div><div class="age">há 3 dias</div></div>
+              <div class="lead" draggable="true" data-v="1150"><div class="ln">Dra. Paula Reis</div><div class="lsp">Nutrição · Plano 10h</div><div class="lf"><span class="val">R$ 1.150</span><span class="tag t-traf">Tráfego</span></div><div class="age">há 1 dia</div></div>
+            </div>
+          </div>
+          <div class="kcol" data-col="Pacote fechado">
+            <div class="kcol-h"><div class="t"><span class="dot" style="background:var(--green)"></span>Pacote fechado</div><div class="m" data-count>2 leads · R$ 4,7k</div></div>
+            <div class="kbody">
+              <div class="lead" draggable="true" data-v="2000"><div class="ln">Dra. Marina Alves</div><div class="lsp">Dermato · Plano 20h</div><div class="lf"><span class="val">R$ 2.000</span><span class="tag t-ia">IA</span></div><div class="age">hoje</div></div>
+              <div class="lead" draggable="true" data-v="2700"><div class="ln">Dr. Rafael Souza</div><div class="lsp">Odonto · Plano 30h</div><div class="lf"><span class="val">R$ 2.700</span><span class="tag t-ind">Indicação</span></div><div class="age">ontem</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CAPTAÇÃO IA -->
+      <section class="screen" id="ia">
+        <div class="grid2" style="grid-template-columns:1.1fr 1fr">
+          <div class="chat">
+            <div class="chat-h">
+              <div class="avatar" style="background:var(--green);color:var(--navy0)">IA</div>
+              <div style="flex:1">
+                <div style="font-weight:600;font-size:14px">Recepção IA · Opers</div>
+                <div style="font-size:11.5px;color:var(--green)">● online 24h · WhatsApp</div>
+              </div>
+              <button class="btn ghost" onclick="playChat()">▶ Reproduzir conversa</button>
+            </div>
+            <div class="chat-msgs" id="chatMsgs">
+              <div class="msg them">Oi, vi o anúncio de vocês. Sou dermatologista, queria saber como funciona pra usar uma sala.<span class="tm">21:47</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="sec-h"><h2>Leads que a IA está atendendo</h2></div>
+            <table>
+              <tr><td><div class="who"><div class="av">BM</div><div><div class="nm">Dra. Bianca Melo</div><div class="sp">Estética</div></div></div></td><td style="text-align:right"><span class="pill p-green">Plano 20h vendido</span></td></tr>
+              <tr><td><div class="who"><div class="av">HD</div><div><div class="nm">Dr. Henrique Dias</div><div class="sp">Dermato · reservou 16–18h</div></div></div></td><td style="text-align:right"><span class="pill p-gold">Visita agendada</span></td></tr>
+              <tr><td><div class="who"><div class="av">TR</div><div><div class="nm">Dr. Tiago Ramos</div><div class="sp">Ortopedia · centro cirúrgico</div></div></div></td><td style="text-align:right"><span class="pill p-mut">Qualificando</span></td></tr>
+              <tr><td><div class="who"><div class="av">SN</div><div><div class="nm">Dra. Sofia Nunes</div><div class="sp">Psicologia</div></div></div></td><td style="text-align:right"><span class="pill p-mut">Novo lead</span></td></tr>
+              <tr><td><div class="who"><div class="av">CL</div><div><div class="nm">Dra. Carla Lima</div><div class="sp">Renovação de pacote</div></div></div></td><td style="text-align:right"><span class="pill p-gold">Renovando 10h</span></td></tr>
+            </table>
+            <div style="margin-top:16px;padding:13px;background:var(--gold-bg);border-radius:10px;font-size:12.5px;color:var(--gold-l)">
+              <strong>+ R$ 9.300</strong> em pacotes fechados pela IA esta semana — fora do horário comercial.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AGENDA -->
+      <section class="screen" id="agenda">
+        <div class="sec-h"><h2>Agenda · segunda, 23 de junho</h2><span class="meta">Clique num horário livre pra reservar</span></div>
+        <table class="agtable" id="agtable">
+          <tr>
+            <th class="room-lbl" style="background:var(--navy2)">Sala</th>
+            <th>08h</th><th>10h</th><th>12h</th><th>14h</th><th>16h</th><th>18h</th>
+          </tr>
+        </table>
+        <div class="legend">
+          <span><i style="background:var(--green)"></i>Em uso</span>
+          <span><i style="background:var(--gold)"></i>Reservado</span>
+          <span><i style="background:rgba(255,255,255,0.1)"></i>Livre (clique pra reservar)</span>
+        </div>
+      </section>
+
+      <!-- PROFISSIONAIS -->
+      <section class="screen" id="prof">
+        <div class="sec-h"><h2>Profissionais com pacote ativo</h2><span class="meta">14 doutores ativos</span></div>
+        <div class="card" style="padding:4px 4px">
+          <table>
+            <tr><th>Profissional</th><th>Plano</th><th>Horas restantes</th><th>Status</th><th>Próximo horário</th></tr>
+            <tr><td><div class="who"><div class="av">MA</div><div><div class="nm">Dra. Marina Alves</div><div class="sp">Dermatologia</div></div></div></td><td>Plano 20h</td><td><div>14h de 20h</div><div class="progress"><div style="width:70%"></div></div></td><td><span class="pill p-green">Ativo</span></td><td>qua, 10h</td></tr>
+            <tr><td><div class="who"><div class="av">RS</div><div><div class="nm">Dr. Rafael Souza</div><div class="sp">Odontologia</div></div></div></td><td>Plano 30h</td><td><div>22h de 30h</div><div class="progress"><div style="width:73%"></div></div></td><td><span class="pill p-green">Ativo</span></td><td>seg, 16h</td></tr>
+            <tr><td><div class="who"><div class="av">CL</div><div><div class="nm">Dra. Carla Lima</div><div class="sp">Nutrição</div></div></div></td><td>Plano 10h</td><td><div>3h de 10h</div><div class="progress"><div style="width:30%;background:var(--red)"></div></div></td><td><span class="pill p-red">Renovar</span></td><td>hoje, 14h</td></tr>
+            <tr><td><div class="who"><div class="av">PG</div><div><div class="nm">Dr. Pedro Gomes</div><div class="sp">Cirurgia plástica</div></div></div></td><td>Plano 40h</td><td><div>31h de 40h</div><div class="progress"><div style="width:78%"></div></div></td><td><span class="pill p-green">Ativo</span></td><td>hoje, 15h</td></tr>
+            <tr><td><div class="who"><div class="av">AR</div><div><div class="nm">Dra. Ana Reis</div><div class="sp">Psicologia</div></div></div></td><td>Plano 10h</td><td><div>6h de 10h</div><div class="progress"><div style="width:60%"></div></div></td><td><span class="pill p-green">Ativo</span></td><td>ter, 09h</td></tr>
+            <tr><td><div class="who"><div class="av">JM</div><div><div class="nm">Dr. João Martins</div><div class="sp">Ortopedia</div></div></div></td><td>Plano 20h</td><td><div>11h de 20h</div><div class="progress"><div style="width:55%"></div></div></td><td><span class="pill p-green">Ativo</span></td><td>qui, 11h</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- PACOTES -->
+      <section class="screen" id="pacotes">
+        <div class="sec-h"><h2>Planos de horas</h2><span class="meta">Você traz o procedimento. A Opers entrega o padrão.</span></div>
+        <div style="margin-bottom:16px;padding:12px 16px;background:var(--gold-bg);border:1px solid var(--gold-br);border-radius:11px;font-size:13.5px;color:var(--gold-l)">
+          <strong>★ Ação especial · horas em dobro</strong> — pague pelas horas e use o dobro. Prazo de uso indeterminado (fora dos 6 meses padrão).
+        </div>
+        <div class="plans">
+          <div class="plan"><div class="pn">Plano 10h</div><div class="pp">R$ 1.300<small>/pacote</small></div><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Vira 20h na ação</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Hora a R$ 60</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Prazo indeterminado</li></ul></div>
+          <div class="plan"><div class="pn">Plano 20h</div><div class="pp">R$ 2.600<small>/pacote</small></div><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Vira 40h na ação</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Hora a R$ 60</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Prazo indeterminado</li></ul></div>
+          <div class="plan feat"><div class="pn">Plano 30h ★</div><div class="pp">R$ 3.900<small>/pacote</small></div><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Vira 60h na ação</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Hora a R$ 60</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Mais vendido</li></ul></div>
+          <div class="plan"><div class="pn">Plano 40h</div><div class="pp">R$ 5.200<small>/pacote</small></div><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Vira 80h na ação</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Hora a R$ 60</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Prazo indeterminado</li></ul></div>
+        </div>
+        <div class="sec-h"><h2>Pacotes vendidos recentemente</h2></div>
+        <div class="card" style="padding:4px 4px">
+          <table>
+            <tr><th>Profissional</th><th>Plano</th><th>Valor</th><th>Origem</th><th>Data</th></tr>
+            <tr><td>Dra. Marina Alves</td><td>Plano 20h</td><td>R$ 2.600</td><td><span class="tag t-ia">IA</span></td><td>hoje</td></tr>
+            <tr><td>Dr. Rafael Souza</td><td>Plano 30h</td><td>R$ 3.900</td><td><span class="tag t-ind">Indicação</span></td><td>ontem</td></tr>
+            <tr><td>Dra. Bianca Melo</td><td>Plano 20h</td><td>R$ 2.600</td><td><span class="tag t-ia">IA</span></td><td>2 dias</td></tr>
+            <tr><td>Dr. Pedro Gomes</td><td>Plano 40h</td><td>R$ 5.200</td><td><span class="tag t-traf">Tráfego</span></td><td>3 dias</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- ESTOQUE -->
+      <section class="screen" id="estoque">
+        <div class="kpis">
+          <div class="kpi"><div class="l">Valor em estoque</div><div class="v">R$ 24,2k</div><div class="d gd">7 produtos</div></div>
+          <div class="kpi"><div class="l">Vendas de insumos / mês</div><div class="v">R$ 18,4k</div><div class="d up">▲ +R$ 4,1k</div></div>
+          <div class="kpi"><div class="l">Abaixo do mínimo</div><div class="v">3</div><div class="d dn">repor esta semana</div></div>
+          <div class="kpi"><div class="l">Margem média</div><div class="v">34%</div><div class="d gd">por procedimento</div></div>
+        </div>
+        <div class="sec-h"><h2>Insumos em estoque</h2><span class="meta">Galderma · vendidos direto pro doutor</span></div>
+        <div class="card" style="padding:4px 4px">
+          <table>
+            <tr><th>Produto</th><th>Categoria</th><th>Preço unit.</th><th>Estoque</th><th>Status</th></tr>
+            <tr><td><div class="nm" style="font-weight:600">Dysport 300 UI · Galderma</div></td><td>Toxina botulínica</td><td>R$ 880,75</td><td>8 un</td><td><span class="pill p-green">Em estoque</span></td></tr>
+            <tr><td><div class="nm" style="font-weight:600">Dysport 500 UI · Galderma</div></td><td>Toxina botulínica</td><td>R$ 1.467,92</td><td>3 un</td><td><span class="pill p-gold">Estoque baixo</span></td></tr>
+            <tr><td><div class="nm" style="font-weight:600">Nabota 100 U</div></td><td>Toxina botulínica</td><td>R$ 679,00</td><td>12 un</td><td><span class="pill p-green">Em estoque</span></td></tr>
+            <tr><td><div class="nm" style="font-weight:600">Restylane Lyft 1ml · Galderma</div></td><td>Preenchedor</td><td>R$ 315,00</td><td>2 un</td><td><span class="pill p-red">Repor</span></td></tr>
+            <tr><td><div class="nm" style="font-weight:600">Restylane Lidocaine c/1 · Galderma</div></td><td>Preenchedor</td><td>R$ 315,00</td><td>6 un</td><td><span class="pill p-green">Em estoque</span></td></tr>
+            <tr><td><div class="nm" style="font-weight:600">Restylane Lidocaine 1ml · Galderma</div></td><td>Preenchedor</td><td>R$ 337,00</td><td>5 un</td><td><span class="pill p-green">Em estoque</span></td></tr>
+            <tr><td><div class="nm" style="font-weight:600">Restylane Skinboosters Vital Light</div></td><td>Bioestimulador</td><td>R$ 384,00</td><td>1 un</td><td><span class="pill p-red">Repor</span></td></tr>
+          </table>
+        </div>
+        <div style="margin-top:16px;padding:13px 15px;background:var(--gold-bg);border-radius:10px;font-size:13px;color:var(--gold-l)">
+          <strong>Insumo + sala no mesmo sistema:</strong> o doutor reserva o horário e já compra a toxina/preenchedor ali — receita extra e fidelização em cada procedimento.
+        </div>
+      </section>
+
+      <!-- FINANCEIRO -->
+      <section class="screen" id="fin">
+        <div class="kpis">
+          <div class="kpi"><div class="l">Receita do mês</div><div class="v">R$ 78,5k</div><div class="d up">▲ +18,6%</div></div>
+          <div class="kpi"><div class="l">Ticket médio</div><div class="v">R$ 2.180</div><div class="d gd">por pacote</div></div>
+          <div class="kpi"><div class="l">Pacotes vendidos</div><div class="v">18</div><div class="d gd">no mês</div></div>
+          <div class="kpi"><div class="l">Renovações pendentes</div><div class="v">4</div><div class="d dn">R$ 7,9k a recuperar</div></div>
+        </div>
+        <div class="grid2" style="grid-template-columns:1.4fr 1fr">
+          <div class="card">
+            <div class="sec-h"><h2>Receita dos últimos 6 meses</h2></div>
+            <div class="bars" style="height:150px">
+              <div class="bar-c"><div class="bar" style="height:62px"></div><span class="bar-l">jan</span></div>
+              <div class="bar-c"><div class="bar" style="height:74px"></div><span class="bar-l">fev</span></div>
+              <div class="bar-c"><div class="bar" style="height:88px"></div><span class="bar-l">mar</span></div>
+              <div class="bar-c"><div class="bar" style="height:96px"></div><span class="bar-l">abr</span></div>
+              <div class="bar-c"><div class="bar" style="height:112px"></div><span class="bar-l">mai</span></div>
+              <div class="bar-c"><div class="bar" style="height:138px"></div><span class="bar-l">jun</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="sec-h"><h2>Receita por especialidade</h2></div>
+            <div style="display:flex;flex-direction:column;gap:13px;margin-top:6px">
+              <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span style="color:var(--txt2)">Estética / Harmonização</span><span style="font-weight:600">R$ 28,4k</span></div><div style="height:7px;background:var(--navy4);border-radius:4px;overflow:hidden"><div style="width:86%;height:100%;background:var(--gold)"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span style="color:var(--txt2)">Dermatologia</span><span style="font-weight:600">R$ 18,2k</span></div><div style="height:7px;background:var(--navy4);border-radius:4px;overflow:hidden"><div style="width:62%;height:100%;background:var(--gold)"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span style="color:var(--txt2)">Odontologia</span><span style="font-weight:600">R$ 14,1k</span></div><div style="height:7px;background:var(--navy4);border-radius:4px;overflow:hidden"><div style="width:48%;height:100%;background:var(--gold)"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span style="color:var(--txt2)">Produtos / insumos</span><span style="font-weight:600">R$ 18,4k</span></div><div style="height:7px;background:var(--navy4);border-radius:4px;overflow:hidden"><div style="width:62%;height:100%;background:var(--green)"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL RESERVA -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h3>Reservar sala</h3>
+    <p class="s" id="modalSlot">Selecione o profissional e confirme a reserva.</p>
+    <div class="field"><label>Profissional</label><select id="mProf"><option>Dra. Marina Alves — Dermato</option><option>Dr. Rafael Souza — Odonto</option><option>Dra. Bianca Melo — Estética</option><option>Dr. Henrique Dias — Dermato</option><option>Dr. Pedro Gomes — Cirurgia</option></select></div>
+    <div class="field"><label>Duração</label><select><option>1 hora</option><option>2 horas</option><option>3 horas</option></select></div>
+    <div class="modal-foot">
+      <button class="btn ghost" onclick="closeModal()">Cancelar</button>
+      <button class="btn" onclick="confirmRes()">Confirmar reserva</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // ---------- Navegação ----------
+  function go(id){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on', s.id===id));
+    document.querySelectorAll('.nav-i').forEach(n=>n.classList.toggle('on', n.dataset.s===id));
+    var item=document.querySelector('.nav-i[data-s="'+id+'"]');
+    if(item){document.getElementById('pageTitle').textContent=item.dataset.t;document.getElementById('pageCrumb').textContent=item.dataset.c;}
+    var act=document.getElementById('topAction');
+    act.style.display = (id==='agenda'||id==='dash') ? 'inline-flex' : 'none';
+    document.querySelector('.content').scrollTop=0;
+  }
+  document.getElementById('nav').addEventListener('click',function(e){
+    var i=e.target.closest('.nav-i'); if(i) go(i.dataset.s);
+  });
+
+  // ---------- Toast ----------
+  function toast(msg){var t=document.getElementById('toast');t.innerHTML='✓ '+msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2600);}
+
+  // ---------- Agenda ----------
+  var salas=['Consultório 01','Consultório 02','Consultório 03','Consultório 04','Centro cirúrgico 01','Centro cirúrgico 02'];
+  // 0=free,1=busy,2=res
+  var grid=[
+    [1,1,0,1,0,0],
+    [0,1,1,1,1,0],
+    [1,0,0,2,2,0],
+    [0,0,0,0,0,0],
+    [1,1,0,1,1,0],
+    [0,0,0,0,1,2]
+  ];
+  var horas=['08h','10h','12h','14h','16h','18h'];
+  function buildAgenda(){
+    var t=document.getElementById('agtable');
+    // remove old rows except header
+    while(t.rows.length>1)t.deleteRow(1);
+    salas.forEach((s,ri)=>{
+      var tr=t.insertRow();
+      var c0=tr.insertCell();c0.className='room-lbl';c0.textContent=s;
+      grid[ri].forEach((st,ci)=>{
+        var td=tr.insertCell();
+        var d=document.createElement('div');
+        if(st===1){d.className='slot busy';d.textContent='Em uso';}
+        else if(st===2){d.className='slot res';d.textContent='Reservado';}
+        else{d.className='slot free';d.textContent='+ livre';d.onclick=()=>openModal(s+' · '+horas[ci],ri,ci,td);}
+        td.appendChild(d);
+      });
+    });
+  }
+  buildAgenda();
+
+  // ---------- Modal ----------
+  var pending=null;
+  function openModal(label,ri,ci,td){
+    document.getElementById('modalSlot').textContent = label ? ('Horário: '+label) : 'Selecione o profissional e confirme a reserva.';
+    pending = (ri!==undefined) ? {ri,ci} : null;
+    document.getElementById('overlay').classList.add('on');
+  }
+  function closeModal(){document.getElementById('overlay').classList.remove('on');pending=null;}
+  function confirmRes(){
+    var prof=document.getElementById('mProf').value.split(' — ')[0];
+    if(pending){grid[pending.ri][pending.ci]=2;buildAgenda();}
+    closeModal();
+    toast('Sala reservada para '+prof);
+  }
+  document.getElementById('overlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+  // ---------- Kanban drag & drop ----------
+  var dragEl=null;
+  function recount(){
+    document.querySelectorAll('#kanban .kcol').forEach(col=>{
+      var leads=col.querySelectorAll('.lead');
+      var sum=0;leads.forEach(l=>sum+=parseInt(l.dataset.v||0));
+      var m=col.querySelector('[data-count]');
+      if(m)m.textContent=leads.length+' lead'+(leads.length!==1?'s':'')+' · R$ '+(sum/1000).toFixed(1).replace('.',',')+'k';
+    });
+  }
+  function initKanban(){
+    document.querySelectorAll('#kanban .lead').forEach(l=>{
+      l.addEventListener('dragstart',()=>{dragEl=l;setTimeout(()=>l.classList.add('dragging'),0);});
+      l.addEventListener('dragend',()=>{l.classList.remove('dragging');dragEl=null;});
+    });
+    document.querySelectorAll('#kanban .kbody').forEach(b=>{
+      b.addEventListener('dragover',e=>{e.preventDefault();b.classList.add('drag');});
+      b.addEventListener('dragleave',()=>b.classList.remove('drag'));
+      b.addEventListener('drop',e=>{
+        e.preventDefault();b.classList.remove('drag');
+        if(dragEl){b.appendChild(dragEl);recount();
+          var col=b.closest('.kcol').dataset.col;
+          if(col==='Pacote fechado')toast('Negócio ganho! Pacote fechado 🎉');
+        }
+      });
+    });
+  }
+  initKanban();
+
+  // ---------- Chat IA ----------
+  var chatScript=[
+    {s:'ia',t:'Oi, doutor! Que bom seu interesse 🙌 Na Opers você não aluga sala fixa — compra pacote de horas e usa quando quiser, com agenda 100% flexível.'},
+    {s:'them',t:'Entendi. E quanto custa?'},
+    {s:'ia',t:'Temos pacotes de 10h, 20h, 30h e 40h. Pra dermato, o mais escolhido é o de 20h por R$ 2.000 (já com 8% de desconto), válido por 6 meses.'},
+    {s:'them',t:'Gostei. Consigo usar quais dias?'},
+    {s:'ia',t:'Qualquer dia, inclusive fim de semana — temos 12 consultórios e atendimento 24h. Quer que eu já deixe uma visita agendada pra você conhecer?'},
+    {s:'them',t:'Pode ser quinta à tarde.'},
+    {s:'ia',t:'Fechado! ✅ Reservei quinta, 14h, no Consultório 03. Já te mandei a confirmação e o endereço aqui no WhatsApp. Te espero, doutor!'}
+  ];
+  function playChat(){
+    var box=document.getElementById('chatMsgs');
+    box.innerHTML='<div class="msg them">Oi, vi o anúncio de vocês. Sou dermatologista, queria saber como funciona pra usar uma sala.<span class="tm">21:47</span></div>';
+    var i=0;
+    function next(){
+      if(i>=chatScript.length)return;
+      var typing=document.createElement('div');typing.className='typing';typing.innerHTML='<span></span><span></span><span></span>';
+      box.appendChild(typing);box.scrollTop=box.scrollHeight;
+      setTimeout(()=>{
+        typing.remove();
+        var m=chatScript[i];
+        var el=document.createElement('div');el.className='msg '+m.s;el.innerHTML=m.t;
+        box.appendChild(el);box.scrollTop=box.scrollHeight;
+        i++;setTimeout(next,700);
+      },850);
+    }
+    next();
+  }
+</script>
+</body>
+</html>

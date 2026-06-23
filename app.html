@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>OPERS — App do Profissional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy0:#0A1828; --navy1:#0C1C33; --navy2:#0E2240; --navy3:#14294A; --navy4:#1B3358;
+    --gold:#C6A15B; --gold-l:#D8BE86; --gold-bg:rgba(198,161,91,0.16); --gold-br:rgba(198,161,91,0.4);
+    --txt:#ECF1F8; --txt2:#9FB1C9; --txt3:#6F84A1;
+    --green:#7FD3AA; --green-bg:rgba(84,185,138,0.16);
+    --red:#E08A82;
+    --br:rgba(255,255,255,0.08); --br2:rgba(255,255,255,0.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#06101F;color:var(--txt);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:24px 0}
+  .phone{width:402px;max-width:100vw;min-height:840px;background:var(--navy1);border:1px solid var(--br2);border-radius:34px;overflow:hidden;position:relative;display:flex;flex-direction:column}
+  @media(max-width:430px){body{padding:0}.phone{border-radius:0;border:none;min-height:100vh;width:100vw}}
+  .statusbar{display:flex;justify-content:space-between;align-items:center;padding:12px 22px 4px;font-size:12px;color:var(--txt2);font-weight:600}
+  .appbar{display:flex;align-items:center;justify-content:space-between;padding:10px 20px 14px}
+  .logo{font-family:'Playfair Display',Georgia,serif;color:var(--gold);font-size:21px;letter-spacing:1px}
+  .appbar .r{display:flex;align-items:center;gap:14px;color:var(--txt2)}
+  .av{width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--navy0);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+  .body{flex:1;overflow-y:auto;padding:6px 20px 96px}
+  .scr{display:none}.scr.on{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .hi{font-size:22px;font-weight:600;margin:8px 0 2px}
+  .hi small{display:block;font-size:13px;color:var(--txt2);font-weight:400;margin-top:3px}
+  .card{background:var(--navy3);border:1px solid var(--br);border-radius:16px;padding:16px}
+  .saldo{background:linear-gradient(135deg,#13294b,#0e2240);border:1px solid var(--gold-br);border-radius:16px;padding:16px 18px;margin:16px 0}
+  .saldo .t{font-size:12.5px;color:var(--gold-l);letter-spacing:.3px}
+  .saldo .big{font-size:30px;font-weight:600;margin:4px 0 2px}
+  .saldo .big small{font-size:15px;color:var(--txt3);font-weight:400}
+  .bar{height:8px;background:rgba(255,255,255,0.1);border-radius:5px;overflow:hidden;margin:10px 0 6px}
+  .bar>div{height:100%;background:var(--gold)}
+  .saldo .sub{font-size:12px;color:var(--txt2)}
+  .cta{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:var(--gold);color:var(--navy0);border:none;border-radius:14px;padding:16px;font-size:16px;font-weight:700;cursor:pointer;margin-bottom:8px}
+  .cta:active{transform:scale(.985)}
+  .quick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+  .qbtn{background:var(--navy3);border:1px solid var(--br);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;cursor:pointer;color:var(--txt)}
+  .qbtn:active{background:var(--navy4)}
+  .qbtn i{color:var(--gold)}
+  .qbtn .qt{font-size:13.5px;font-weight:600}.qbtn .qs{font-size:11.5px;color:var(--txt2)}
+  .sec{font-size:15px;font-weight:600;margin:22px 0 12px}
+  .appt{display:flex;align-items:center;gap:13px;background:var(--navy3);border:1px solid var(--br);border-radius:14px;padding:13px 14px;margin-bottom:10px}
+  .appt .dt{width:50px;text-align:center;flex-shrink:0}
+  .appt .dt .d{font-size:20px;font-weight:700;line-height:1;color:var(--gold-l)}
+  .appt .dt .m{font-size:11px;color:var(--txt3);text-transform:uppercase}
+  .appt .info{flex:1;min-width:0}
+  .appt .info .s1{font-size:14px;font-weight:600}
+  .appt .info .s2{font-size:12.5px;color:var(--txt2)}
+  .pill{font-size:11px;padding:3px 9px;border-radius:8px;font-weight:600;white-space:nowrap}
+  .p-green{background:var(--green-bg);color:var(--green)}
+  .p-gold{background:var(--gold-bg);color:var(--gold-l)}
+  .p-mut{background:rgba(255,255,255,0.07);color:var(--txt2)}
+  .days{display:flex;gap:9px;overflow-x:auto;padding:4px 0 8px;margin-bottom:6px}
+  .day{flex-shrink:0;width:52px;text-align:center;padding:10px 0;border-radius:13px;background:var(--navy3);border:1px solid var(--br);cursor:pointer}
+  .day.on{background:var(--gold);border-color:var(--gold)}
+  .day.on .dn,.day.on .dd{color:var(--navy0)}
+  .day .dn{font-size:11px;color:var(--txt3);text-transform:uppercase}
+  .day .dd{font-size:18px;font-weight:700;margin-top:2px}
+  .slot{display:flex;align-items:center;justify-content:space-between;background:var(--navy3);border:1px solid var(--br);border-radius:13px;padding:13px 15px;margin-bottom:10px;cursor:pointer}
+  .slot:active{background:var(--navy4)}
+  .slot .st{font-size:15px;font-weight:600}
+  .slot .ss{font-size:12.5px;color:var(--txt2);margin-top:2px}
+  .slot .go{color:var(--gold);font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px}
+  .plan{background:var(--navy3);border:1px solid var(--br);border-radius:14px;padding:15px;margin-bottom:11px;display:flex;align-items:center;justify-content:space-between}
+  .plan.feat{border-color:var(--gold-br)}
+  .plan .pn{font-size:15px;font-weight:600;color:var(--gold-l)}
+  .plan .ps{font-size:12px;color:var(--txt2);margin-top:2px}
+  .plan .pp{font-size:18px;font-weight:700}
+  .tabbar{position:absolute;bottom:0;left:0;right:0;background:var(--navy2);border-top:1px solid var(--br);display:flex;justify-content:space-around;padding:10px 0 16px}
+  .tab{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--txt3);font-size:10.5px;cursor:pointer;flex:1}
+  .tab.on{color:var(--gold)}
+  .tab i{font-size:22px}
+  .back{display:flex;align-items:center;gap:7px;color:var(--txt2);font-size:14px;cursor:pointer;margin:4px 0 10px}
+  .overlay{position:absolute;inset:0;background:rgba(5,12,24,0.7);display:none;align-items:flex-end;z-index:30}
+  .overlay.on{display:flex}
+  .sheet{background:var(--navy2);border-top-left-radius:22px;border-top-right-radius:22px;width:100%;padding:22px 20px 28px;border-top:1px solid var(--br2);animation:up .3s ease}
+  @keyframes up{from{transform:translateY(100%)}to{transform:none}}
+  .sheet h3{font-size:18px;margin-bottom:14px}
+  .row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--br);font-size:14px}
+  .row span:first-child{color:var(--txt2)}
+  .row span:last-child{font-weight:600}
+  .success{text-align:center;padding:30px 10px}
+  .check{width:74px;height:74px;border-radius:50%;background:var(--green-bg);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:40px}
+  .icon{display:inline-flex}
+  svg.ic{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="statusbar"><span>9:41</span><span>OPERS</span><span>5G ▮▮▮</span></div>
+  <div class="appbar">
+    <div class="logo">OPERS</div>
+    <div class="r">
+      <span class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
+      <div class="av">MA</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- INÍCIO -->
+    <section class="scr on" id="home">
+      <div class="hi">Olá, Dra. Marina<small>Dermatologia · plano ativo</small></div>
+
+      <div class="saldo">
+        <div class="t">Seu pacote de horas</div>
+        <div class="big">14h <small>de 20h restantes</small></div>
+        <div class="bar"><div style="width:70%"></div></div>
+        <div class="sub">Validade até 12/dez · hora a R$ 60</div>
+      </div>
+
+      <button class="cta" onclick="goAg()"><span class="icon"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span> Agendar uma sala</button>
+
+      <div class="quick">
+        <div class="qbtn" onclick="go('pacote')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></i><span class="qt">Comprar horas</span><span class="qs">Renove seu pacote</span></div>
+        <div class="qbtn" onclick="openInsumo()"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 8v13H3V8"/><rect x="1" y="3" width="22" height="5" rx="1"/><path d="M10 12h4"/></svg></i><span class="qt">Pedir insumo</span><span class="qs">Toxina, preenchedor</span></div>
+      </div>
+
+      <div class="sec">Próximos agendamentos</div>
+      <div id="apptList">
+        <div class="appt"><div class="dt"><div class="d">23</div><div class="m">jun</div></div><div class="info"><div class="s1">Consultório 01 · 15h</div><div class="s2">Dermatologia · 1h</div></div><span class="pill p-green">Confirmado</span></div>
+        <div class="appt"><div class="dt"><div class="d">25</div><div class="m">jun</div></div><div class="info"><div class="s1">Consultório 03 · 10h</div><div class="s2">Procedimento · 2h</div></div><span class="pill p-green">Confirmado</span></div>
+      </div>
+    </section>
+
+    <!-- AGENDAR -->
+    <section class="scr" id="agendar">
+      <div class="back" onclick="go('home')"><span class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> Voltar</div>
+      <div class="hi" style="font-size:19px">Disponibilidade<small>Escolha o dia e o horário livre</small></div>
+      <div class="days" id="days">
+        <div class="day on"><div class="dn">seg</div><div class="dd">23</div></div>
+        <div class="day"><div class="dn">ter</div><div class="dd">24</div></div>
+        <div class="day"><div class="dn">qua</div><div class="dd">25</div></div>
+        <div class="day"><div class="dn">qui</div><div class="dd">26</div></div>
+        <div class="day"><div class="dn">sex</div><div class="dd">27</div></div>
+        <div class="day"><div class="dn">sáb</div><div class="dd">28</div></div>
+      </div>
+      <div class="sec" style="margin-top:8px" id="slotLabel">Salas livres · seg, 23</div>
+      <div id="slots">
+        <div class="slot" onclick="pick('Consultório 02','11h')"><div><div class="st">11h — 12h</div><div class="ss">Consultório 02 · Odontologia</div></div><span class="go">Reservar <span class="icon"><svg class="ic" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></span></div>
+        <div class="slot" onclick="pick('Consultório 04','14h')"><div><div class="st">14h — 15h</div><div class="ss">Consultório 04 · Livre</div></div><span class="go">Reservar <span class="icon"><svg class="ic" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></span></div>
+        <div class="slot" onclick="pick('Consultório 06','16h')"><div><div class="st">16h — 17h</div><div class="ss">Consultório 06 · Livre</div></div><span class="go">Reservar <span class="icon"><svg class="ic" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></span></div>
+        <div class="slot" onclick="pick('Centro cirúrgico 01','18h')"><div><div class="st">18h — 20h</div><div class="ss">Centro cirúrgico 01 · Procedimento</div></div><span class="go">Reservar <span class="icon"><svg class="ic" viewBox="0 0 24 24" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></span></span></div>
+      </div>
+    </section>
+
+    <!-- PACOTE -->
+    <section class="scr" id="pacote">
+      <div class="back" onclick="go('home')"><span class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span> Voltar</div>
+      <div class="hi" style="font-size:19px">Meu pacote<small>14h de 20h restantes</small></div>
+      <div class="saldo"><div class="t">Saldo atual</div><div class="big">14h <small>restantes</small></div><div class="bar"><div style="width:70%"></div></div><div class="sub">6h usadas este mês</div></div>
+      <div class="sec">Renovar ou ampliar</div>
+      <div class="plan"><div><div class="pn">Plano 20h</div><div class="ps">vira 40h na ação · hora R$ 60</div></div><div style="text-align:right"><div class="pp">R$ 2.600</div></div></div>
+      <div class="plan feat"><div><div class="pn">Plano 30h ★</div><div class="ps">vira 60h na ação · mais vendido</div></div><div style="text-align:right"><div class="pp">R$ 3.900</div></div></div>
+      <div class="plan"><div><div class="pn">Plano 40h</div><div class="ps">vira 80h na ação · melhor preço/h</div></div><div style="text-align:right"><div class="pp">R$ 5.200</div></div></div>
+    </section>
+
+  </div>
+
+  <div class="tabbar">
+    <div class="tab on" data-s="home" onclick="go('home')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></i>Início</div>
+    <div class="tab" data-s="agendar" onclick="goAg()"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></i>Agendar</div>
+    <div class="tab" data-s="pacote" onclick="go('pacote')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></i>Pacote</div>
+    <div class="tab" data-s="perfil" onclick="go('home')"><i class="icon"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/></svg></i>Perfil</div>
+  </div>
+
+  <!-- Sheet confirmar -->
+  <div class="overlay" id="ov">
+    <div class="sheet" id="sheet"></div>
+  </div>
+</div>
+
+<script>
+  function go(id){
+    document.querySelectorAll('.scr').forEach(s=>s.classList.toggle('on',s.id===id));
+    document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.s===id));
+    document.querySelector('.body').scrollTop=0;
+  }
+  function goAg(){go('agendar');}
+  // dias
+  document.getElementById('days').addEventListener('click',function(e){var d=e.target.closest('.day');if(!d)return;document.querySelectorAll('.day').forEach(x=>x.classList.remove('on'));d.classList.add('on');var dn=d.querySelector('.dn').textContent;var dd=d.querySelector('.dd').textContent;document.getElementById('slotLabel').textContent='Salas livres · '+dn+', '+dd;});
+
+  var sel={sala:'',hora:''};
+  function pick(sala,hora){
+    sel={sala,hora};
+    var s=document.getElementById('sheet');
+    s.innerHTML='<h3>Confirmar agendamento</h3>'+
+      '<div class="row"><span>Sala</span><span>'+sala+'</span></div>'+
+      '<div class="row"><span>Data</span><span>Seg, 23 de junho</span></div>'+
+      '<div class="row"><span>Horário</span><span>'+hora+' — '+(parseInt(hora)+1)+'h</span></div>'+
+      '<div class="row"><span>Consome do pacote</span><span style="color:var(--gold-l)">1h (resta 13h)</span></div>'+
+      '<button class="cta" style="margin-top:18px" onclick="confirmAg()">Confirmar agendamento</button>'+
+      '<div style="text-align:center;margin-top:12px;color:var(--txt3);font-size:13px;cursor:pointer" onclick="closeOv()">Cancelar</div>';
+    document.getElementById('ov').classList.add('on');
+  }
+  function closeOv(){document.getElementById('ov').classList.remove('on');}
+  function confirmAg(){
+    var s=document.getElementById('sheet');
+    s.innerHTML='<div class="success"><div class="check">✓</div><div style="font-size:20px;font-weight:600;margin-bottom:6px">Agendado!</div>'+
+      '<div style="color:var(--txt2);font-size:14px">'+sel.sala+' · '+sel.hora+'<br>Seg, 23 de junho</div>'+
+      '<button class="cta" style="margin-top:22px" onclick="finishAg()">Voltar ao início</button></div>';
+    // adiciona na lista
+    var item=document.createElement('div');item.className='appt';
+    item.innerHTML='<div class="dt"><div class="d">23</div><div class="m">jun</div></div><div class="info"><div class="s1">'+sel.sala+' · '+sel.hora+'</div><div class="s2">Novo agendamento · 1h</div></div><span class="pill p-gold">Novo</span>';
+    document.getElementById('apptList').prepend(item);
+  }
+  function finishAg(){closeOv();go('home');}
+  function openInsumo(){
+    var s=document.getElementById('sheet');
+    s.innerHTML='<h3>Pedir insumo</h3>'+
+      '<div class="row"><span>Dysport 300 UI</span><span>R$ 880,75</span></div>'+
+      '<div class="row"><span>Restylane Lyft 1ml</span><span>R$ 315,00</span></div>'+
+      '<div class="row"><span>Restylane Skinboosters</span><span>R$ 384,00</span></div>'+
+      '<button class="cta" style="margin-top:18px" onclick="closeOv()">Adicionar ao próximo procedimento</button>'+
+      '<div style="text-align:center;margin-top:12px;color:var(--txt3);font-size:13px;cursor:pointer" onclick="closeOv()">Fechar</div>';
+    document.getElementById('ov').classList.add('on');
+  }
+  document.getElementById('ov').addEventListener('click',function(e){if(e.target===this)closeOv();});
+</script>
+</body>
+</html>
