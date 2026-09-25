@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<title>Ecossistema NEXUS</title>
+<link href="fonts/fonts.css" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  /* Paleta do design system do CRM NEXUS: claro, Urbanist, preto como ação, verde só em destaque */
+  :root{
+    --chao:#F4F4F6; --painel:#FFFFFF; --linha:#DBDADD;
+    --tinta:#0B0B0C; --apagado:#5F5E63; --fraco:#8C8B90; --sutil:#AAA9AB;
+    --verde:#75FB90; --verde-forte:#1FA64A; --verde-fundo:#E6FCEB; --verde-linha:#8FE3A5;
+    --grade:rgba(11,11,12,.035);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--chao);color:var(--tinta);font-family:'Urbanist',system-ui,sans-serif;font-weight:500;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:210mm;height:297mm;padding:16mm 16mm 16mm;position:relative;overflow:hidden;page-break-after:always;background:var(--chao)}
+  .page:last-child{page-break-after:auto}
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:11mm}
+  .logo{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.18em}
+  .logo svg{width:20px;height:20px}
+  .top .pg{font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--fraco);text-transform:uppercase}
+  .foot{position:absolute;left:16mm;right:16mm;bottom:9mm;display:flex;justify-content:space-between;font-size:9.5px;color:var(--fraco);font-weight:600;border-top:1px solid var(--linha);padding-top:3.5mm}
+
+  .kicker{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta);background:var(--verde);border-radius:999px;padding:4px 11px;margin-bottom:5mm}
+  h1{font-size:46px;line-height:1.02;font-weight:700;letter-spacing:-.03em}
+  h2{font-size:32px;line-height:1.06;font-weight:700;letter-spacing:-.025em;margin-bottom:4mm}
+  h3{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-bottom:2.5mm}
+  p.lead{font-size:14px;line-height:1.55;color:var(--apagado);max-width:158mm}
+  .hl{background:linear-gradient(transparent 58%,var(--verde) 58%)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:4.5mm}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm}
+  .card{background:var(--painel);border:1px solid var(--linha);border-radius:16px;padding:6mm}
+  .card.dark{background:var(--tinta);border-color:var(--tinta);color:#fff}
+  .card.dark p,.card.dark li{color:#C9C8CD}
+  .card .k{font-size:9.5px;font-weight:700;letter-spacing:.14em;color:var(--sutil);text-transform:uppercase;margin-bottom:1.5mm}
+  .card .k.g{color:var(--verde-forte)}
+  .card p{font-size:12.5px;line-height:1.5;color:var(--apagado)}
+
+  .ic{width:36px;height:36px;border-radius:11px;background:var(--verde-fundo);border:1px solid #BFF5CC;display:flex;align-items:center;justify-content:center;margin-bottom:3.5mm}
+  .ic svg{width:19px;height:19px;fill:none;stroke:var(--tinta);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .head{display:flex;gap:3.5mm;align-items:center;margin-bottom:3mm}
+  .head .ic{margin:0;flex:0 0 36px}
+  .head h3{margin:0}
+  .head .k{margin:0 0 .5mm}
+
+  ul.ck{list-style:none;display:flex;flex-direction:column;gap:2.2mm}
+  ul.ck li{position:relative;padding-left:17px;font-size:12.5px;line-height:1.42;color:var(--apagado)}
+  ul.ck li:before{content:"✓";position:absolute;left:0;top:0;color:var(--verde-forte);font-weight:800}
+  ul.ck li b{color:var(--tinta);font-weight:700}
+  .card.dark ul.ck li b{color:#fff}
+  .card.dark ul.ck li:before{color:var(--verde)}
+  ul.x li:before{content:"✕";color:var(--sutil)}
+
+  /* capa */
+  .cover{padding:18mm 16mm;background-color:#FBFBFC;background-image:linear-gradient(var(--grade) 1px,transparent 1px),linear-gradient(90deg,var(--grade) 1px,transparent 1px);background-size:9mm 9mm}
+  .cover .logo{font-size:15px}
+  .cover .logo svg{width:30px;height:30px}
+  .cover h1{margin:16mm 0 6mm;font-size:54px}
+  .phase-pills{display:flex;gap:2.5mm;margin-top:9mm}
+  .pp{flex:1;background:var(--painel);border:1px solid var(--linha);border-radius:14px;padding:4.5mm}
+  .pp .n{font-size:9.5px;font-weight:700;letter-spacing:.14em;color:var(--verde-forte)}
+  .pp .t{font-size:16px;font-weight:700;margin:1mm 0 1mm}
+  .pp .s{font-size:11px;color:var(--fraco);line-height:1.35}
+  .price{display:flex;align-items:center;justify-content:space-between;background:var(--tinta);color:#fff;border-radius:18px;padding:7mm 8mm;margin-top:8mm}
+  .price .v{font-size:42px;font-weight:800;letter-spacing:-.03em;line-height:1}
+  .price .v small{font-size:16px;font-weight:600;color:#AAA9AB;letter-spacing:0}
+  .price .r{text-align:right;font-size:12px;color:#C9C8CD;line-height:1.5}
+  .price .r b{color:var(--verde)}
+  .niches{display:flex;gap:2mm;flex-wrap:wrap;margin-top:8mm}
+  .chip{font-size:11.5px;font-weight:600;color:var(--apagado);background:var(--painel);border:1px solid var(--linha);border-radius:999px;padding:5px 13px}
+  .chip.on{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5mm;margin-top:10mm}
+  .stat{border-top:2px solid var(--tinta);padding-top:3.5mm}
+  .stat .v{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1}
+  .stat .v span{background:linear-gradient(transparent 60%,var(--verde) 60%)}
+  .stat .s{font-size:12px;color:var(--apagado);margin-top:2mm;line-height:1.4}
+  .cover .bottom{position:absolute;left:16mm;right:16mm;bottom:14mm;display:flex;justify-content:space-between;font-size:11px;color:var(--fraco);line-height:1.5}
+  .cover .bottom b{color:var(--tinta)}
+
+  /* mapa do fluxo */
+  .map{display:grid;grid-template-columns:1.55fr .85fr 1fr;gap:3mm;margin-top:7mm}
+  .lane{border:1px dashed var(--linha);background:rgba(255,255,255,.7);border-radius:14px;padding:4mm}
+  .lane.on{border:1px solid var(--verde-linha);background:rgba(117,251,144,.08)}
+  .lane .ln{font-size:9px;font-weight:700;letter-spacing:.16em;color:var(--verde-forte)}
+  .lane .lt{font-size:14.5px;font-weight:700;margin:.6mm 0 3mm;letter-spacing:-.01em}
+  .node{background:var(--painel);border:1px solid var(--linha);border-radius:10px;padding:2.4mm 3mm;margin-bottom:2mm;display:flex;gap:2.5mm;align-items:center}
+  .node svg{width:15px;height:15px;fill:none;stroke:var(--verde-forte);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .node .nk{font-size:7.5px;font-weight:700;letter-spacing:.12em;color:var(--sutil)}
+  .node .nn{font-size:11.5px;font-weight:700;line-height:1.15}
+  .lane .cols{display:grid;grid-template-columns:1fr 1fr;gap:2mm}
+  .core{background:var(--tinta);color:#fff;border-radius:12px;padding:4mm 3mm;text-align:center;margin-top:2mm}
+  .core .dot{width:16px;height:16px;border-radius:50%;background:var(--verde);margin:0 auto 2mm;box-shadow:0 0 0 5px rgba(117,251,144,.25)}
+  .core .nk{font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--verde)}
+  .core .nn{font-size:12.5px;font-weight:700}
+  .arrow{font-size:10px;color:var(--sutil);text-align:center;margin:-1mm 0 1mm}
+
+  /* linha do tempo */
+  .log{list-style:none}
+  .log li{display:grid;grid-template-columns:8mm 22mm 1fr;gap:3mm;align-items:baseline;padding:2.3mm 0;border-bottom:1px solid #EDEDF0;font-size:12px;color:var(--apagado)}
+  .log li:last-child{border:0;color:var(--tinta);font-weight:700}
+  .log b{font-size:9px;font-weight:700;color:var(--sutil)}
+  .log time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--sutil)}
+  .log li:last-child b,.log li:last-child time{color:var(--verde-forte)}
+
+  /* chat */
+  .chat{background:#FAFAFB;border:1px solid var(--linha);border-radius:16px;padding:5mm;display:flex;flex-direction:column;gap:2.4mm}
+  .chat .h{display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sutil);margin-bottom:1mm}
+  .chat .h b{color:var(--verde-forte)}
+  .b{max-width:86%;padding:2.6mm 3.6mm;border-radius:13px;font-size:12px;line-height:1.42}
+  .b small{display:block;margin-top:.8mm;font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--sutil);text-align:right}
+  .b.lead{align-self:flex-start;background:var(--painel);border:1px solid var(--linha);border-bottom-left-radius:4px}
+  .b.ia{align-self:flex-end;background:var(--verde-fundo);border:1px solid #BFF5CC;border-bottom-right-radius:4px}
+  .selo{align-self:center;font-size:10px;font-weight:700;color:var(--verde-forte);background:var(--painel);border:1px solid var(--verde-linha);border-radius:999px;padding:3px 11px}
+
+  /* kanban */
+  .kan{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm}
+  .kc .kh{font-size:8.5px;font-weight:700;letter-spacing:.12em;color:var(--fraco);margin-bottom:2mm;display:flex;justify-content:space-between}
+  .lc{background:var(--painel);border:1px solid var(--linha);border-radius:9px;padding:2.2mm 2.6mm;margin-bottom:2mm}
+  .lc .n{font-size:10.5px;font-weight:700}
+  .lc .p{font-size:9px;color:var(--fraco);margin-top:.3mm}
+  .lc .t{display:inline-block;font-size:7.5px;font-weight:700;padding:1px 6px;border-radius:9px;margin-top:1.3mm;background:#F0F0F2;color:var(--apagado)}
+  .lc.on{border-color:var(--tinta);box-shadow:0 0 0 3px rgba(117,251,144,.45)}
+  .lc.on .t{background:var(--verde);color:var(--tinta)}
+
+  .days{display:grid;grid-template-columns:repeat(5,1fr);gap:2.5mm}
+  .day{background:var(--painel);border:1px solid var(--linha);border-radius:12px;padding:3.5mm}
+  .day .d{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--verde-forte)}
+  .day .t{font-size:12.5px;font-weight:700;margin:1mm 0 1mm;line-height:1.2}
+  .day .s{font-size:10.5px;color:var(--fraco);line-height:1.35}
+  .day.last{background:var(--tinta);border-color:var(--tinta);color:#fff}
+  .day.last .d{color:var(--verde)} .day.last .s{color:#C9C8CD}
+
+  table.t{width:100%;border-collapse:collapse;font-size:12.5px}
+  table.t td{padding:2.9mm 0;border-bottom:1px solid #EDEDF0;color:var(--apagado);vertical-align:top}
+  table.t tr:last-child td{border:0}
+  table.t td:first-child{color:var(--tinta);font-weight:700;width:36%;padding-right:4mm}
+  table.inc td:last-child{text-align:right;white-space:nowrap;color:var(--verde-forte);font-weight:700}
+  table.inc td:first-child{width:auto}
+  .note{font-size:11px;color:var(--fraco);line-height:1.5}
+</style>
+</head>
+<body>
+
+<!-- logo reaproveitado -->
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="gv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#75FB90"/><stop offset="1" stop-color="#2FCF5E"/></linearGradient>
+<symbol id="nx" viewBox="0 0 1024 1024"><g fill="url(#gv)"><rect x="619.3" y="144.8" width="327.8" height="327.8" rx="75.4"/><rect x="83" y="557.1" width="327.8" height="327.8" rx="75.4"/><rect x="391.6" y="34.1" width="270.8" height="959.5" rx="94.8" transform="rotate(-48 527 513.9)"/></g></symbol></defs></svg>
+
+<!-- 1. CAPA -->
+<section class="page cover">
+  <div class="logo"><svg><use href="#nx"/></svg>NEXUS HEALTH</div>
+  <h1>Captação, atendimento<br>e retenção de pacientes<br><span class="hl">num sistema só.</span></h1>
+  <p class="lead" style="font-size:15px">O ecossistema NEXUS pra clínicas: a gente cria a estratégia e o conteúdo, roda os anúncios no Facebook, Instagram e Google, atende no WhatsApp com a Secretária IA em segundos e organiza tudo no CRM, até o paciente sentar na cadeira.</p>
+
+  <div class="phase-pills">
+    <div class="pp"><div class="n">FASE 1</div><div class="t">Captação</div><div class="s">Estratégia, conteúdo, criativos e tráfego pago</div></div>
+    <div class="pp"><div class="n">FASE 2</div><div class="t">Atendimento IA</div><div class="s">WhatsApp 24h, primeiro contato e qualificação</div></div>
+    <div class="pp"><div class="n">FASE 3</div><div class="t">Retenção</div><div class="s">Agenda, funil de vendas, base de leads e follow-up</div></div>
+  </div>
+
+  <div class="price">
+    <div class="v">R$ 1.500<small> /mês</small></div>
+    <div class="r">Ecossistema completo<br><b>as 3 fases inclusas</b></div>
+  </div>
+
+  <div class="niches">
+    <span class="chip on">Pra quem é</span><span class="chip">Odontologia</span><span class="chip">Estética</span><span class="chip">Fisioterapia</span><span class="chip">Médicos</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="v"><span>24h</span></div><div class="s">Secretária IA atendendo no WhatsApp, inclusive fim de semana e feriado</div></div>
+    <div class="stat"><div class="v"><span>13</span></div><div class="s">passos conectados, do anúncio ao follow-up, num sistema só</div></div>
+    <div class="stat"><div class="v"><span>7 dias</span></div><div class="s">pra estratégia, conteúdo e campanhas estarem no ar</div></div>
+  </div>
+
+  <div class="bottom">
+    <div>Apresentação comercial<br><b>Ecossistema NEXUS · R$ 1.500/mês</b></div>
+    <div style="text-align:right">NEXUS Health<br><b>Itajaí · SC</b></div>
+  </div>
+</section>
+
+<!-- 2. O FLUXO -->
+<section class="page">
+  <div class="top"><div class="logo"><svg><use href="#nx"/></svg>NEXUS</div><div class="pg">01 · Como a gente entrega</div></div>
+  <span class="kicker">O fluxo completo</span>
+  <h2>Do anúncio ao paciente<br>confirmado na agenda.</h2>
+  <p class="lead">São 3 fases e 13 passos que rodam juntos. Cada peça alimenta a próxima, e a clínica acompanha tudo num painel só.</p>
+
+  <div class="map">
+    <div class="lane">
+      <div class="ln">FASE 1</div><div class="lt">Captação de pacientes</div>
+      <div class="cols">
+        <div>
+          <div class="node"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.5"/><circle cx="10" cy="10" r="4"/></svg><div><div class="nk">PLANEJAMENTO</div><div class="nn">Estratégia</div></div></div>
+          <div class="node"><svg viewBox="0 0 20 20"><path d="M3 16V11M7 16V7M11 16V9"/><circle cx="14.5" cy="6" r="3"/></svg><div><div class="nk">MERCADO</div><div class="nn">Pesquisa</div></div></div>
+          <div class="node"><svg viewBox="0 0 20 20"><rect x="4" y="2.5" width="12" height="15" rx="2"/><path d="M7 7h6M7 10h6M7 13h3.5"/></svg><div><div class="nk">PRODUÇÃO</div><div class="nn">Roteiro e gravação</div></div></div>
+          <div class="node"><svg viewBox="0 0 20 20"><rect x="2.5" y="4" width="15" height="12" rx="2.5"/><path d="M8.5 7.5v5l4-2.5z"/></svg><div><div class="nk">ANÚNCIO</div><div class="nn">Criativos</div></div></div>
+        </div>
+        <div>
+          <div class="node"><svg viewBox="0 0 20 20"><path d="M2 12c0-4 2-6.5 4-6.5S9 8 10 10s2 4.5 4 4.5S18 12 18 8"/></svg><div><div class="nk">CANAL</div><div class="nn">Facebook</div></div></div>
+          <div class="node"><svg viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="4"/><circle cx="10" cy="10" r="3.3"/></svg><div><div class="nk">CANAL</div><div class="nn">Instagram</div></div></div>
+          <div class="node"><svg viewBox="0 0 20 20"><path d="M16.5 10H10.5M16.5 10A6.5 6.5 0 1 1 14.6 5.4"/></svg><div><div class="nk">CANAL</div><div class="nn">Google</div></div></div>
+          <div class="node"><svg viewBox="0 0 20 20"><rect x="2" y="3" width="16" height="14" rx="2"/><path d="M2 7h16M5.5 11h6"/></svg><div><div class="nk">PÁGINA</div><div class="nn">Landing + form</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="lane on">
+      <div class="ln">FASE 2</div><div class="lt">Atendimento com IA</div>
+      <div class="node"><svg viewBox="0 0 20 20"><path d="M10 2.5a7.5 7.5 0 0 0-6.4 11.4L2.5 17.5l3.7-1A7.5 7.5 0 1 0 10 2.5z"/></svg><div><div class="nk">CANAL</div><div class="nn">WhatsApp</div></div></div>
+      <div class="arrow">↓</div>
+      <div class="core"><div class="dot"></div><div class="nk">SECRETÁRIA IA</div><div class="nn">Atende e qualifica</div></div>
+    </div>
+    <div class="lane">
+      <div class="ln">FASE 3</div><div class="lt">Retenção no sistema</div>
+      <div class="node"><svg viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="13" rx="2"/><path d="M3 8h14M7 2v4M13 2v4"/></svg><div><div class="nk">AGENDA</div><div class="nn">Agenda da clínica</div></div></div>
+      <div class="node"><svg viewBox="0 0 20 20"><rect x="3" y="3" width="4" height="14" rx="1"/><rect x="8" y="3" width="4" height="9" rx="1"/><rect x="13" y="3" width="4" height="11" rx="1"/></svg><div><div class="nk">CRM</div><div class="nn">Funil de vendas</div></div></div>
+      <div class="node"><svg viewBox="0 0 20 20"><circle cx="7.5" cy="7" r="2.8"/><path d="M2.5 16.5c.6-3 2.5-4.5 5-4.5s4.4 1.5 5 4.5"/><circle cx="14" cy="6.5" r="2.2"/></svg><div><div class="nk">BASE</div><div class="nn">Leads</div></div></div>
+      <div class="node"><svg viewBox="0 0 20 20"><path d="M16 7.5A6.5 6.5 0 0 0 4.2 6.2M4 12.5a6.5 6.5 0 0 0 11.8 1.3"/><path d="M4 2.8v3.6h3.6M16 17.2v-3.6h-3.6"/></svg><div><div class="nk">RETORNO</div><div class="nn">Follow-up</div></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:6mm">
+    <div class="k g">Linha do tempo · exemplo do fluxo</div>
+    <h3>A jornada da Juliana, de sábado à noite até a avaliação</h3>
+    <ul class="log">
+      <li><b>F1</b><time>Sáb 23h40</time><span>Vê o anúncio no Instagram e preenche o formulário de Protocolo</span></li>
+      <li><b>F2</b><time>Sáb 23h41</time><span>Mensagem chega no WhatsApp e a IA responde em 4 segundos</span></li>
+      <li><b>F2</b><time>Sáb 23h42</time><span>Lead qualificado pela IA: Protocolo</span></li>
+      <li><b>F3</b><time>Sáb 23h44</time><span>Avaliação marcada na agenda: terça, 15h30</span></li>
+      <li><b>F3</b><time>Sáb 23h44</time><span>Card movido pra "Agendado" no funil, lead salvo com origem Instagram</span></li>
+      <li><b>F3</b><time>Véspera</time><span>Lembrete enviado e presença confirmada</span></li>
+    </ul>
+  </div>
+  <p class="note" style="margin-top:3mm">Simulação ilustrativa: nomes e conversas são exemplos.</p>
+  <div class="foot"><span>NEXUS Health</span><span>Ecossistema NEXUS · R$ 1.500/mês</span></div>
+</section>
+
+<!-- 3. FASE 1 · CONTEÚDO -->
+<section class="page">
+  <div class="top"><div class="logo"><svg><use href="#nx"/></svg>NEXUS</div><div class="pg">02 · Fase 1 · Captação</div></div>
+  <span class="kicker">Fase 1 · Captação</span>
+  <h2>Estratégia e conteúdo:<br>a clínica só grava.</h2>
+  <p class="lead">Antes de gastar R$ 1 em anúncio, a gente monta a estratégia, pesquisa o que já vende no seu nicho, escreve os roteiros e edita os criativos. Ninguém da clínica fica travado pensando no que postar.</p>
+
+  <div class="grid2" style="margin-top:8mm">
+    <div class="card">
+      <div class="head"><div class="ic"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.5"/><circle cx="10" cy="10" r="4"/><circle cx="10" cy="10" r=".8"/></svg></div><div><div class="k">Passo 1 · Planejamento</div><h3>Estratégia</h3></div></div>
+      <ul class="ck">
+        <li><b>Estratégias já validadas</b> em outras clínicas</li>
+        <li>Ajuste conforme o <b>perfil, a cidade e o ticket</b> da clínica</li>
+        <li><b>Oferta de entrada</b> pensada pro seu procedimento (ex.: avaliação sem custo)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="head"><div class="ic"><svg viewBox="0 0 20 20"><path d="M3 16V11M7 16V7M11 16V9"/><circle cx="14.5" cy="6" r="3"/><path d="M16.7 8.2 18.5 10"/></svg></div><div><div class="k">Passo 2 · Mercado</div><h3>Pesquisa de mercado</h3></div></div>
+      <ul class="ck">
+        <li>Criativos que <b>rodam há meses</b> na biblioteca de anúncios</li>
+        <li><b>Ofertas validadas</b> pelos grandes players do nicho</li>
+        <li>Só entra <b>o que tem prova</b> de que funciona</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="head"><div class="ic"><svg viewBox="0 0 20 20"><rect x="4" y="2.5" width="12" height="15" rx="2"/><path d="M7 7h6M7 10h6M7 13h3.5"/></svg></div><div><div class="k">Passo 3 · Produção</div><h3>Roteiro e gravação</h3></div></div>
+      <ul class="ck">
+        <li><b>Roteiros prontos</b>, com gancho e chamada pra ação</li>
+        <li><b>Orientação de gravação</b> pelo próprio celular</li>
+        <li>Ninguém fica travado pensando no que falar</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="head"><div class="ic"><svg viewBox="0 0 20 20"><rect x="2.5" y="4" width="15" height="12" rx="2.5"/><path d="M8.5 7.5v5l4-2.5z"/></svg></div><div><div class="k">Passo 4 · Anúncio</div><h3>Criação e edição dos criativos</h3></div></div>
+      <ul class="ck">
+        <li><b>Edição dos vídeos</b> no padrão de anúncio</li>
+        <li><b>Legendas e palavras-chave</b> na tela</li>
+        <li><b>Variações</b> pra testar o que traz paciente</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card dark" style="margin-top:5mm;display:flex;gap:6mm;align-items:center">
+    <div style="flex:1">
+      <div class="k" style="color:var(--verde)">Por que funciona</div>
+      <p style="font-size:13px;line-height:1.55">A maioria das agências inventa criativo do zero e testa no seu bolso. A NEXUS parte do que <b style="color:#fff">já está vendendo há meses</b> no seu nicho e adapta pra realidade da sua clínica.</p>
+    </div>
+  </div>
+  <div class="foot"><span>NEXUS Health</span><span>Ecossistema NEXUS · R$ 1.500/mês</span></div>
+</section>
+
+<!-- 4. FASE 1 · TRÁFEGO -->
+<section class="page">
+  <div class="top"><div class="logo"><svg><use href="#nx"/></svg>NEXUS</div><div class="pg">03 · Fase 1 · Captação</div></div>
+  <span class="kicker">Fase 1 · Captação</span>
+  <h2>Meta Ads e Google Ads<br>levando paciente até a clínica.</h2>
+  <p class="lead">Os criativos alimentam os canais. No Facebook e no Instagram a gente aparece pra quem tem o perfil do seu paciente. No Google a gente captura quem já está procurando o procedimento. Tudo cai numa página com formulário que qualifica antes da conversa.</p>
+
+  <div class="grid3" style="margin-top:8mm">
+    <div class="card">
+      <div class="ic"><svg viewBox="0 0 20 20"><path d="M2 12c0-4 2-6.5 4-6.5S9 8 10 10s2 4.5 4 4.5S18 12 18 8"/></svg></div>
+      <h3>Facebook e Instagram</h3>
+      <ul class="ck">
+        <li>Campanhas no <b>Meta Ads</b></li>
+        <li>Público na <b>região da clínica</b></li>
+        <li>Remarketing pra quem viu e não chamou</li>
+        <li>Pixel instalado pra saber <b>qual criativo trouxe o paciente</b></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="ic"><svg viewBox="0 0 20 20"><path d="M16.5 10H10.5M16.5 10A6.5 6.5 0 1 1 14.6 5.4"/></svg></div>
+      <h3>Google</h3>
+      <ul class="ck">
+        <li>Campanhas no <b>Google Ads</b></li>
+        <li>Anúncio pra quem <b>já está procurando</b> o procedimento</li>
+        <li>Palavras-chave negativas pra não pagar curioso</li>
+        <li>Foco na busca local</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="ic"><svg viewBox="0 0 20 20"><rect x="2" y="3" width="16" height="14" rx="2"/><path d="M2 7h16M5.5 11h6M5.5 13.5h4"/></svg></div>
+      <h3>Landing + formulário</h3>
+      <ul class="ck">
+        <li><b>Página da oferta</b> criada pela NEXUS</li>
+        <li><b>Formulário curto</b> que qualifica antes da conversa</li>
+        <li>Condição, tempo de sintoma e melhor horário</li>
+        <li>Um toque e o lead já está no WhatsApp</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:5mm">
+    <h3>Gestão contínua</h3>
+    <table class="t">
+      <tr><td>Otimização</td><td>Pelo <b style="color:var(--tinta)">custo por paciente</b>, não por clique. Verba no que agenda, corte no que só traz curioso.</td></tr>
+      <tr><td>Testes</td><td>Novos criativos e variações entrando sempre que os atuais cansam.</td></tr>
+      <tr><td>Rastreamento</td><td>Cada lead chega no CRM com a origem: qual canal e qual anúncio trouxe.</td></tr>
+    </table>
+  </div>
+  <p class="note" style="margin-top:4mm">* A verba de anúncio é paga pela clínica direto ao Meta e ao Google, fora dos R$ 1.500. A NEXUS recomenda o investimento conforme a meta de pacientes.</p>
+  <div class="foot"><span>NEXUS Health</span><span>Ecossistema NEXUS · R$ 1.500/mês</span></div>
+</section>
+
+<!-- 5. FASE 2 · IA -->
+<section class="page">
+  <div class="top"><div class="logo"><svg><use href="#nx"/></svg>NEXUS</div><div class="pg">04 · Fase 2 · Atendimento IA</div></div>
+  <span class="kicker">Fase 2 · Atendimento com IA</span>
+  <h2>A Secretária IA responde<br>em 4 segundos. Sábado, 23h41.</h2>
+  <p class="lead">Paciente que espera resposta esfria e vai pro concorrente. A Secretária IA atende no WhatsApp da clínica 24h, já sabendo o que a pessoa preencheu no formulário, e leva ela até o agendamento.</p>
+
+  <div class="grid2" style="margin-top:7mm;align-items:start">
+    <div class="chat">
+      <div class="h"><span>WhatsApp da clínica</span><b>● Secretária IA online</b></div>
+      <div class="b lead">Oi, boa noite! Vi o anúncio. Vocês fazem protocolo? Quanto fica?<small>23:41</small></div>
+      <div class="b ia">Oi Juliana, boa noite! Fazemos sim 😊 O valor a gente fecha na avaliação, porque muda conforme o caso. Me conta: você usa prótese hoje ou tá sem alguns dentes?<small>23:41</small></div>
+      <div class="b lead">Uso dentadura em cima faz 5 anos<small>23:42</small></div>
+      <span class="selo">Qualificado pela IA</span>
+      <div class="b ia">Entendi, é bem o caso que o doutor avalia. A avaliação é sem custo. Tenho terça às 15h30 ou quinta às 9h. Qual fica melhor?<small>23:42</small></div>
+      <div class="b lead">Terça<small>23:44</small></div>
+      <div class="b ia">Agendado! Terça, 15h30. Te mando o endereço agora 💚<small>23:44</small></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4mm">
+      <div class="card">
+        <div class="head"><div class="ic"><svg viewBox="0 0 20 20"><path d="M10 2.5a7.5 7.5 0 0 0-6.4 11.4L2.5 17.5l3.7-1A7.5 7.5 0 1 0 10 2.5z"/></svg></div><div><div class="k">Passo 7</div><h3>WhatsApp da clínica</h3></div></div>
+        <ul class="ck">
+          <li><b>Número da clínica</b> conectado ao sistema</li>
+          <li>Funciona <b>24h, fim de semana e feriado</b></li>
+          <li>Toda conversa fica salva</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="head"><div class="ic"><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="3"/><circle cx="10" cy="10" r="7.5"/></svg></div><div><div class="k">Passo 8</div><h3>Primeiro atendimento</h3></div></div>
+        <ul class="ck">
+          <li>Recebe o lead <b>já qualificado</b> pelo formulário</li>
+          <li>Abre a conversa <b>citando o que a pessoa relatou</b></li>
+          <li>Nunca passa preço antes da avaliação</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="head"><div class="ic"><svg viewBox="0 0 20 20"><path d="M3 4h14l-5 6.5V16l-4 1.5v-7Z"/></svg></div><div><div class="k">Passo 9</div><h3>Qualificação</h3></div></div>
+        <ul class="ck">
+          <li>Só pergunta <b>o que o formulário não respondeu</b></li>
+          <li>Separa <b>curioso de paciente pronto</b></li>
+          <li><b>Chama a equipe</b> quando o caso pede</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>NEXUS Health</span><span>Ecossistema NEXUS · R$ 1.500/mês</span></div>
+</section>
+
+<!-- 6. FASE 3 · RETENÇÃO -->
+<section class="page">
+  <div class="top"><div class="logo"><svg><use href="#nx"/></svg>NEXUS</div><div class="pg">05 · Fase 3 · Retenção</div></div>
+  <span class="kicker">Fase 3 · Retenção no sistema</span>
+  <h2>Nenhum paciente se perde.<br>Tudo cai no CRM NEXUS.</h2>
+  <p class="lead">A IA marca direto na agenda, o paciente vira card no funil de vendas com a conversa inteira, todo contato vira base e o follow-up traz de volta quem sumiu.</p>
+
+  <div class="card" style="margin-top:6mm;padding:5mm">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4mm">
+      <div class="logo" style="font-size:11px"><svg><use href="#nx"/></svg>CRM NEXUS · Funil de vendas</div>
+      <span class="chip" style="font-size:10px;padding:3px 10px">Ilustrativo</span>
+    </div>
+    <div class="kan">
+      <div class="kc"><div class="kh">CONTATO NOVO <span>12</span></div>
+        <div class="lc"><div class="n">Camila R.</div><div class="p">Harmonização</div><span class="t">Facebook</span></div>
+        <div class="lc"><div class="n">Roberto P.</div><div class="p">Dor no ciático</div><span class="t">Google</span></div></div>
+      <div class="kc"><div class="kh">QUALIFICADO <span>8</span></div>
+        <div class="lc"><div class="n">Ana L.</div><div class="p">Primeira consulta</div><span class="t">Facebook</span></div></div>
+      <div class="kc"><div class="kh">AGENDADO <span>6</span></div>
+        <div class="lc on"><div class="n">Juliana M.</div><div class="p">Protocolo · ter 15h30</div><span class="t">Instagram</span></div>
+        <div class="lc"><div class="n">Marcos V.</div><div class="p">Implante · qui 9h</div><span class="t">Google</span></div></div>
+      <div class="kc"><div class="kh">TRATAMENTO FECHADO <span>4</span></div>
+        <div class="lc"><div class="n">Aline T.</div><div class="p">Lentes de contato</div><span class="t">Instagram</span></div></div>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:4.5mm">
+    <div class="card">
+      <div class="head"><div class="ic"><svg viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="13" rx="2"/><path d="M3 8h14M7 2v4M13 2v4M7 12h2"/></svg></div><div><div class="k">Passo 10</div><h3>Agenda</h3></div></div>
+      <ul class="ck"><li>Integrada à <b>agenda da clínica</b></li><li>Só oferece <b>horário que tá livre</b></li><li>Sem ninguém digitando</li></ul>
+    </div>
+    <div class="card">
+      <div class="head"><div class="ic"><svg viewBox="0 0 20 20"><rect x="3" y="3" width="4" height="14" rx="1"/><rect x="8" y="3" width="4" height="9" rx="1"/><rect x="13" y="3" width="4" height="11" rx="1"/></svg></div><div><div class="k">Passo 11</div><h3>Funil de vendas (CRM)</h3></div></div>
+      <ul class="ck"><li><b>Kanban</b> do contato novo ao tratamento fechado</li><li>Cada card com <b>a conversa inteira</b></li><li>A clínica vê <b>onde cada paciente parou</b></li></ul>
+    </div>
+    <div class="card">
+      <div class="head"><div class="ic"><svg viewBox="0 0 20 20"><circle cx="7.5" cy="7" r="2.8"/><path d="M2.5 16.5c.6-3 2.5-4.5 5-4.5s4.4 1.5 5 4.5"/><circle cx="14" cy="6.5" r="2.2"/><path d="M13.5 11.3c2 .1 3.4 1.5 4 4"/></svg></div><div><div class="k">Passo 12</div><h3>Base de leads</h3></div></div>
+      <ul class="ck"><li><b>Origem de cada lead</b>: qual anúncio trouxe</li><li>Filtro por procedimento e etapa</li><li>Base <b>reaproveitada</b> em campanhas novas</li></ul>
+    </div>
+    <div class="card">
+      <div class="head"><div class="ic"><svg viewBox="0 0 20 20"><path d="M16 7.5A6.5 6.5 0 0 0 4.2 6.2M4 12.5a6.5 6.5 0 0 0 11.8 1.3"/><path d="M4 2.8v3.6h3.6M16 17.2v-3.6h-3.6"/></svg></div><div><div class="k">Passo 13</div><h3>Follow-up</h3></div></div>
+      <ul class="ck"><li><b>Lembrete e confirmação</b> na véspera</li><li>Mensagem pra <b>quem parou de responder</b></li><li><b>Pós-consulta</b> pra fechar o tratamento</li></ul>
+    </div>
+  </div>
+  <div class="foot"><span>NEXUS Health</span><span>Ecossistema NEXUS · R$ 1.500/mês</span></div>
+</section>
+
+<!-- 7. PRIMEIRA SEMANA -->
+<section class="page">
+  <div class="top"><div class="logo"><svg><use href="#nx"/></svg>NEXUS</div><div class="pg">06 · Implementação</div></div>
+  <span class="kicker">Primeira semana</span>
+  <h2>Em 7 dias as campanhas<br>estão no ar.</h2>
+  <p class="lead">A gente não some depois da assinatura. Na primeira semana a estrutura inteira sai do papel, e a partir daí é otimização contínua.</p>
+
+  <div class="days" style="margin-top:7mm">
+    <div class="day"><div class="d">DIA 1</div><div class="t">Estratégia</div><div class="s">Estratégia e oferta de entrada definidas</div></div>
+    <div class="day"><div class="d">DIA 2</div><div class="t">Pesquisa</div><div class="s">Anúncios de referência do nicho mapeados</div></div>
+    <div class="day"><div class="d">DIA 3</div><div class="t">Roteiros</div><div class="s">Roteiros enviados pra gravação</div></div>
+    <div class="day"><div class="d">DIA 5</div><div class="t">Criativos</div><div class="s">Criativos editados e prontos pra subir</div></div>
+    <div class="day last"><div class="d">DIA 7</div><div class="t">No ar</div><div class="s">Campanhas rodando, IA e CRM recebendo leads</div></div>
+  </div>
+
+  <div class="card" style="margin-top:5mm">
+    <h3>Depois disso, todo mês</h3>
+    <table class="t">
+      <tr><td>Anúncios</td><td>Otimização pelo custo por paciente, testes e verba no que funciona.</td></tr>
+      <tr><td>Conteúdo</td><td>Novos roteiros, edição e criativos renovados quando os atuais cansam.</td></tr>
+      <tr><td>Secretária IA</td><td>Leitura das conversas e ajuste do roteiro pra agendar mais.</td></tr>
+      <tr><td>CRM</td><td>Suporte, ajustes e acompanhamento do funil com a equipe.</td></tr>
+    </table>
+  </div>
+
+  <div class="grid2" style="margin-top:5mm">
+    <div class="card">
+      <div class="k">Contratando separado</div>
+      <ul class="ck x" style="margin-top:2mm">
+        <li>Uma agência pro anúncio, um social media, uma secretária sobrecarregada e um sistema à parte</li>
+        <li>Ninguém responde pelo paciente na cadeira</li>
+        <li>Lead de sábado à noite respondido na segunda</li>
+        <li>Resultado espalhado em planilha e print</li>
+      </ul>
+    </div>
+    <div class="card dark">
+      <div class="k" style="color:var(--verde)">Com a NEXUS</div>
+      <ul class="ck" style="margin-top:2mm">
+        <li><b>Um time só</b>: captação, atendimento e retenção</li>
+        <li><b>Um objetivo só</b>: agenda cheia e tratamento fechado</li>
+        <li><b>Resposta em segundos</b>, 24h por dia</li>
+        <li><b>Tudo medido</b> no CRM, do anúncio ao fechamento</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>NEXUS Health</span><span>Ecossistema NEXUS · R$ 1.500/mês</span></div>
+</section>
+
+<!-- 8. INVESTIMENTO -->
+<section class="page">
+  <div class="top"><div class="logo"><svg><use href="#nx"/></svg>NEXUS</div><div class="pg">07 · Investimento</div></div>
+  <span class="kicker">Investimento</span>
+  <h2>As 3 fases.<br>Um valor fixo.</h2>
+  <p class="lead">Contratando cada peça separada, a conta é bem outra. No ecossistema NEXUS tudo vem integrado, com um time só respondendo pelo resultado.</p>
+
+  <div class="card" style="margin:6mm 0 5mm">
+    <table class="t inc">
+      <tr><td>Estratégia e pesquisa de mercado</td><td>✓ incluso</td></tr>
+      <tr><td>Roteiros e orientação de gravação</td><td>✓ incluso</td></tr>
+      <tr><td>Criação e edição dos criativos</td><td>✓ incluso</td></tr>
+      <tr><td>Gestão de Meta Ads (Facebook e Instagram)</td><td>✓ incluso</td></tr>
+      <tr><td>Gestão de Google Ads</td><td>✓ incluso</td></tr>
+      <tr><td>Landing page + formulário de qualificação</td><td>✓ incluso</td></tr>
+      <tr><td>Secretária IA no WhatsApp 24h</td><td>✓ incluso</td></tr>
+      <tr><td>CRM NEXUS: agenda, funil de vendas, base de leads e follow-up</td><td>✓ incluso</td></tr>
+    </table>
+  </div>
+
+  <div class="price" style="margin-top:0;padding:8mm 9mm">
+    <div class="v" style="font-size:52px">R$ 1.500<small> /mês</small></div>
+    <div class="r">Ecossistema completo<br><b>captação · atendimento · retenção</b></div>
+  </div>
+
+  <p class="note" style="margin-top:4mm">Não incluso: verba de anúncio (paga direto ao Meta e ao Google) e custos de terceiros, quando aplicável.</p>
+
+  <div class="card" style="margin-top:5mm;display:flex;justify-content:space-between;align-items:center;border-color:var(--verde-linha);background:var(--verde-fundo)">
+    <div><h3 style="margin-bottom:1mm">Próximo passo</h3><p style="color:var(--apagado)">Fechou? A gente marca o Dia 1 e em uma semana as campanhas estão no ar.</p></div>
+    <div style="text-align:right;font-size:12px;font-weight:700">NEXUS Health<br><span style="color:var(--apagado);font-weight:600">Kaian Motta · CEO</span></div>
+  </div>
+  <div class="foot"><span>NEXUS Health</span><span>Ecossistema NEXUS · R$ 1.500/mês</span></div>
+</section>
+
+</body>
+</html>
