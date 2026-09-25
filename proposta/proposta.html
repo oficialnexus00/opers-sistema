@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<title>Ecossistema NEXUS · Opers</title>
+<link href="fonts/fonts.css" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root{
+    --bg:#08121F; --bg2:#0D1B2E; --card:#12233A; --card2:#172B47;
+    --gold:#C6A15B; --gold-l:#DCC08A; --gold-bg:rgba(198,161,91,.13); --gold-br:rgba(198,161,91,.38);
+    --txt:#EEF2F8; --txt2:#A7B6CB; --txt3:#71839D; --br:rgba(255,255,255,.08);
+    --green:#7FD3AA;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--txt);font-family:'Inter',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:210mm;height:297mm;padding:18mm 17mm 16mm;position:relative;overflow:hidden;page-break-after:always;background:var(--bg)}
+  .page:last-child{page-break-after:auto}
+  .serif{font-family:'Playfair Display',Georgia,'Times New Roman',serif}
+
+  /* topo e rodapé */
+  .top{display:flex;justify-content:space-between;align-items:center;font-size:9.5px;letter-spacing:2.5px;color:var(--txt3);text-transform:uppercase;margin-bottom:14mm}
+  .top b{color:var(--gold);font-weight:700}
+  .foot{position:absolute;left:17mm;right:17mm;bottom:10mm;display:flex;justify-content:space-between;font-size:9px;color:var(--txt3);letter-spacing:1px;border-top:1px solid var(--br);padding-top:4mm}
+
+  .kicker{font-size:10.5px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700;margin-bottom:4mm}
+  h1{font-size:34px;line-height:1.12;font-weight:600;letter-spacing:-.3px}
+  h2{font-size:27px;line-height:1.15;font-weight:600;letter-spacing:-.2px;margin-bottom:4mm}
+  h3{font-size:14px;font-weight:700;margin-bottom:2.5mm}
+  p.lead{font-size:13px;line-height:1.6;color:var(--txt2);max-width:150mm}
+  .gold{color:var(--gold-l)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm}
+  .card{background:var(--card);border:1px solid var(--br);border-radius:12px;padding:6mm}
+  .card.g{border-color:var(--gold-br);background:linear-gradient(180deg,rgba(198,161,91,.08),var(--card) 60%)}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-l);background:var(--gold-bg);border:1px solid var(--gold-br);padding:4px 10px;border-radius:20px;margin-bottom:4mm}
+  .ico{width:34px;height:34px;border-radius:9px;background:var(--gold-bg);color:var(--gold-l);display:flex;align-items:center;justify-content:center;margin-bottom:3.5mm}
+  .ico svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  ul.check{list-style:none}
+  ul.check li{position:relative;padding-left:20px;font-size:11.5px;line-height:1.5;color:var(--txt2);margin-bottom:2.2mm}
+  ul.check li b{color:var(--txt);font-weight:600}
+  ul.check li:before{content:"";position:absolute;left:0;top:3px;width:12px;height:12px;border-radius:50%;background:var(--gold-bg);border:1px solid var(--gold-br)}
+  ul.check li:after{content:"";position:absolute;left:4px;top:5.5px;width:3px;height:6px;border:solid var(--gold-l);border-width:0 1.6px 1.6px 0;transform:rotate(45deg)}
+
+  ul.check.x li:before{background:rgba(255,255,255,.04);border-color:var(--br)}
+  ul.check.x li:after{border:0;width:7px;height:1.6px;background:var(--txt3);transform:none;left:3.5px;top:8.5px}
+  .shot{border-radius:12px;border:1px solid var(--br);overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+  .shot img{display:block;width:100%}
+  .shot.ph{border-radius:22px;height:128mm}
+  .shot.ph img{height:100%;object-fit:cover;object-position:top}
+  .cap{font-size:9.5px;color:var(--txt3);margin-top:2.5mm;letter-spacing:.3px}
+
+  /* capa */
+  .cover{padding:0;display:flex;flex-direction:column;justify-content:space-between;background:
+      radial-gradient(120mm 120mm at 85% 12%,rgba(198,161,91,.20),transparent 70%),
+      radial-gradient(140mm 140mm at 0% 100%,rgba(38,76,130,.35),transparent 70%),var(--bg)}
+  .cover .in{padding:22mm 20mm}
+  .brand{font-size:13px;letter-spacing:6px;font-weight:800;color:var(--txt)}
+  .brand span{color:var(--gold)}
+  .cover h1{font-size:50px;line-height:1.05;margin:10mm 0 7mm}
+  .cover .price{display:inline-flex;align-items:baseline;gap:10px;background:var(--gold);color:#0A1626;border-radius:14px;padding:5mm 7mm;margin-top:10mm}
+  .cover .price b{font-size:30px;font-weight:800}
+  .cover .price span{font-size:12px;font-weight:700;letter-spacing:.5px}
+  .pillars{display:flex;gap:3mm;margin-top:12mm;flex-wrap:wrap}
+  .pill{font-size:11px;font-weight:600;color:var(--txt);border:1px solid var(--br);background:rgba(255,255,255,.04);padding:6px 12px;border-radius:30px}
+  .hero{position:absolute;left:20mm;right:-40mm;top:178mm;border-radius:14px;overflow:hidden;border:1px solid var(--gold-br);box-shadow:0 30px 60px rgba(0,0,0,.6);transform:rotate(-3deg);transform-origin:left top;opacity:.95}
+  .hero img{display:block;width:100%}
+  .cover .bottom{position:relative;z-index:2;background:linear-gradient(transparent,var(--bg) 35%);padding-top:14mm !important;padding:0 20mm 18mm;display:flex;justify-content:space-between;align-items:flex-end;font-size:10.5px;color:var(--txt3);line-height:1.6}
+  .cover .bottom b{color:var(--txt2)}
+
+  /* ciclo */
+  .cycle{margin:8mm 0 7mm}
+  .num{font-size:10px;font-weight:800;color:var(--gold);letter-spacing:1.5px;margin-bottom:1.5mm}
+  .card p{font-size:11.5px;line-height:1.55;color:var(--txt2)}
+
+  /* etapas */
+  .steps{display:flex;gap:2.5mm;margin:6mm 0}
+  .step{flex:1;background:var(--card);border:1px solid var(--br);border-radius:11px;padding:4.5mm 3.5mm;text-align:center}
+  .step .n{font-size:9px;letter-spacing:1.5px;color:var(--txt3);font-weight:700}
+  .step .t{font-size:12px;font-weight:700;margin:1.5mm 0 1mm}
+  .step .s{font-size:10px;color:var(--txt2);line-height:1.35}
+  .step.last{border-color:var(--gold-br);background:linear-gradient(180deg,rgba(198,161,91,.12),var(--card))}
+
+  .chat{background:var(--card);border:1px solid var(--br);border-radius:12px;padding:5mm;display:flex;flex-direction:column;gap:2.5mm}
+  .msg{font-size:11px;line-height:1.45;padding:3mm 4mm;border-radius:10px;max-width:82%}
+  .msg.in{background:var(--card2);color:var(--txt);align-self:flex-start;border-bottom-left-radius:3px}
+  .msg.out{background:var(--gold);color:#0A1626;align-self:flex-end;border-bottom-right-radius:3px;font-weight:500}
+  .chat .h{font-size:10px;color:var(--txt3);display:flex;justify-content:space-between;margin-bottom:1mm}
+  .chat .h b{color:var(--green);font-weight:600}
+
+  table.t{width:100%;border-collapse:collapse;font-size:11.5px}
+  table.t th{text-align:left;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--txt3);font-weight:700;padding:0 0 3mm;border-bottom:1px solid var(--br)}
+  table.t td{padding:3.2mm 0;border-bottom:1px solid var(--br);color:var(--txt2);vertical-align:top}
+  table.t td:first-child{color:var(--txt);font-weight:600;width:34%;padding-right:4mm}
+
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin-top:5mm}
+  .tl{border-top:2px solid var(--gold);padding-top:3.5mm}
+  .tl .w{font-size:9.5px;letter-spacing:1.5px;color:var(--gold);font-weight:800}
+  .tl .t{font-size:12.5px;font-weight:700;margin:1.5mm 0 2mm}
+  .tl p{font-size:10.5px;color:var(--txt2);line-height:1.5}
+
+  .invest{text-align:center;padding:7mm 8mm;border-radius:16px;border:1px solid var(--gold-br);background:radial-gradient(90mm 60mm at 50% 0%,rgba(198,161,91,.2),transparent 70%),var(--card)}
+  .invest .v{font-size:56px;font-weight:800;letter-spacing:-1px;line-height:1;margin:3mm 0 2mm}
+  .invest .v small{font-size:18px;font-weight:600;color:var(--txt2);letter-spacing:0}
+  .invest .s{font-size:12px;color:var(--txt2)}
+  .stack td{padding:2.4mm 0}
+  table.t.stack td:first-child{width:auto}
+  .stack td:last-child{text-align:right;color:var(--txt);font-weight:600;white-space:nowrap}
+  .note{font-size:10.5px;color:var(--txt3);line-height:1.55}
+  .cta{margin-top:5mm;background:var(--gold);color:#0A1626;border-radius:14px;padding:6mm 7mm;display:flex;justify-content:space-between;align-items:center}
+  .cta b{font-size:16px}
+  .cta span{font-size:11px;font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- 1. CAPA -->
+<section class="page cover">
+  <div class="in">
+    <div class="brand">NEXUS<span>·</span>HEALTH</div>
+    <h1 class="serif">O ecossistema<br>que enche as salas<br><span class="gold">da Opers.</span></h1>
+    <p class="lead" style="font-size:14px">Tráfego pago, inteligência artificial no WhatsApp, sistema de gestão próprio e produção de conteúdo — tudo conectado, operado por um time só, com um objetivo: transformar doutores em pacotes de horas vendidos.</p>
+    <div class="pillars">
+      <div class="pill">Meta Ads</div><div class="pill">Google Ads</div><div class="pill">IA no WhatsApp 24h</div>
+      <div class="pill">Sistema de gestão</div><div class="pill">App do profissional</div><div class="pill">Criação e edição de conteúdo</div>
+    </div>
+    <div class="price"><b>R$ 1.500</b><span>POR MÊS · TUDO INCLUSO</span></div>
+  </div>
+  <div class="hero"><img src="img/painel.png" alt=""></div>
+  <div class="bottom">
+    <div>Proposta preparada para<br><b>Opers Centro de Saúde · Balneário Camboriú</b></div>
+    <div style="text-align:right">NEXUS Health<br><b>Itajaí · SC</b></div>
+  </div>
+</section>
+
+<!-- 2. VISÃO GERAL -->
+<section class="page">
+  <div class="top"><span><b>NEXUS</b> · Ecossistema Opers</span><span>01 · Visão geral</span></div>
+  <div class="kicker">Como funciona</div>
+  <h2>Quatro frentes. Uma máquina só.</h2>
+  <p class="lead">A maioria das clínicas contrata uma agência pra anúncio, outra pra social media, um sistema pra agenda e alguém pra responder o WhatsApp. Ninguém conversa com ninguém e o lead se perde no meio do caminho. Aqui é o contrário: cada frente alimenta a próxima.</p>
+
+  <div class="grid2 cycle">
+    <div class="card g">
+      <div class="num">01 · ATRAIR</div>
+      <h3>Tráfego pago</h3>
+      <p>Campanhas no Meta (Instagram/Facebook) e no Google colocam a Opers na frente de médicos, dentistas e profissionais da estética que procuram sala pra atender.</p>
+    </div>
+    <div class="card g">
+      <div class="num">02 · ATENDER</div>
+      <h3>IA no WhatsApp</h3>
+      <p>Todo contato é respondido em segundos, 24 horas por dia. A IA tira dúvida, apresenta os pacotes, qualifica e agenda a visita — sem depender de ninguém online.</p>
+    </div>
+    <div class="card g">
+      <div class="num">03 · CONVERTER E GERIR</div>
+      <h3>Sistema de gestão + app</h3>
+      <p>O lead cai no painel da Opers já qualificado. Dali pra frente, salas, agenda, pacotes de horas, insumos e financeiro ficam num lugar só — e o doutor reserva pelo próprio app.</p>
+    </div>
+    <div class="card g">
+      <div class="num">04 · SUSTENTAR</div>
+      <h3>Conteúdo</h3>
+      <p>Criação e edição de posts, Reels e criativos que dão autoridade pro perfil, esquentam o público e viram munição pros anúncios. Quem chega pelo anúncio encontra um Instagram que convence.</p>
+    </div>
+  </div>
+
+  <div class="card" style="display:flex;gap:6mm;align-items:center">
+    <div class="ico" style="margin:0;flex:0 0 34px"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>
+    <p style="font-size:12px;line-height:1.55;color:var(--txt2)"><b style="color:var(--txt)">O ciclo fecha sozinho:</b> o sistema mostra quais anúncios trazem doutor que fecha pacote, a gente dobra a verba no que funciona e corta o que não traz resultado. Decisão em cima de dado, não de achismo.</p>
+  </div>
+  <div class="foot"><span>NEXUS Health</span><span>Proposta comercial · Opers</span></div>
+</section>
+
+<!-- 3. TRÁFEGO -->
+<section class="page">
+  <div class="top"><span><b>NEXUS</b> · Ecossistema Opers</span><span>02 · Tráfego pago</span></div>
+  <div class="kicker">Frente 01 · Atrair</div>
+  <h2>Meta Ads e Google Ads<br>gerenciados pela NEXUS.</h2>
+  <p class="lead">Dois canais que se completam: no Meta a gente <b style="color:var(--txt)">gera demanda</b> — aparece pro profissional que ainda não pensou em alugar sala. No Google a gente <b style="color:var(--txt)">captura demanda</b> — aparece pra quem já está procurando.</p>
+
+  <div class="grid2" style="margin-top:8mm">
+    <div class="card">
+      <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg></div>
+      <h3>Meta Ads · Instagram e Facebook</h3>
+      <ul class="check">
+        <li><b>Estratégia e estrutura</b> de campanhas focadas em profissionais da saúde da região</li>
+        <li><b>Segmentação</b> por especialidade, localização e interesses (dermato, odonto, estética, nutri, psico…)</li>
+        <li><b>Campanhas de mensagem</b> direto pro WhatsApp da IA</li>
+        <li><b>Remarketing</b> pra quem visitou o perfil ou interagiu e não chamou</li>
+        <li><b>Testes contínuos</b> de criativos, copies e públicos</li>
+        <li><b>Configuração do Pixel</b> e eventos de conversão</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+      <h3>Google Ads · Pesquisa e Maps</h3>
+      <ul class="check">
+        <li><b>Campanhas de pesquisa</b> em termos como "aluguel de consultório", "sala por hora", "centro cirúrgico para alugar"</li>
+        <li><b>Palavras-chave negativas</b> pra não pagar clique de curioso</li>
+        <li><b>Otimização do Perfil da Empresa</b> no Google (Maps) pra aparecer na busca local</li>
+        <li><b>Anúncios com extensões</b>: WhatsApp, localização e chamadas</li>
+        <li><b>Rastreamento de conversões</b> até a conversa no WhatsApp</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:5mm">
+    <h3>O que você recebe todo mês</h3>
+    <table class="t">
+      <tr><td>Gestão diária</td><td>Acompanhamento e otimização das campanhas — lances, orçamento, públicos e criativos.</td></tr>
+      <tr><td>Relatório mensal</td><td>Investimento, custo por lead, leads que viraram visita e visitas que viraram pacote.</td></tr>
+      <tr><td>Reunião de resultado</td><td>Uma vez por mês, pra alinhar o que está funcionando e o foco do mês seguinte.</td></tr>
+    </table>
+  </div>
+  <p class="note" style="margin-top:4mm">* A verba de anúncio é paga pela Opers direto ao Meta e ao Google, fora do valor mensal. A gente recomenda o investimento ideal conforme a meta de ocupação.</p>
+  <div class="foot"><span>NEXUS Health</span><span>Proposta comercial · Opers</span></div>
+</section>
+
+<!-- 4. IA -->
+<section class="page">
+  <div class="top"><span><b>NEXUS</b> · Ecossistema Opers</span><span>03 · IA de atendimento</span></div>
+  <div class="kicker">Frente 02 · Atender</div>
+  <h2>Uma recepcionista de IA<br>que não dorme e não esquece lead.</h2>
+  <p class="lead">Lead que espera resposta esfria. A IA da NEXUS atende no WhatsApp da Opers em segundos, com linguagem humana, e leva o doutor do "oi" até a visita agendada.</p>
+
+  <div class="steps">
+    <div class="step"><div class="n">ETAPA 1</div><div class="t">Chega o lead</div><div class="s">Anúncio, Instagram, Google ou indicação</div></div>
+    <div class="step"><div class="n">ETAPA 2</div><div class="t">IA responde</div><div class="s">Em segundos, 24h, 7 dias</div></div>
+    <div class="step"><div class="n">ETAPA 3</div><div class="t">Qualifica</div><div class="s">Especialidade, dias, horas por mês</div></div>
+    <div class="step"><div class="n">ETAPA 4</div><div class="t">Agenda visita</div><div class="s">Já cai no painel da Opers</div></div>
+    <div class="step last"><div class="n">ETAPA 5</div><div class="t">Pacote fechado</div><div class="s">Vira cliente no sistema</div></div>
+  </div>
+
+  <div class="grid2" style="align-items:start">
+    <div class="chat">
+      <div class="h"><span>Recepção IA · Opers</span><b>● online 24h</b></div>
+      <div class="msg in">Oi! Vi o anúncio de vocês. Vocês alugam sala por hora? Sou dermatologista.</div>
+      <div class="msg out">Oi, doutora! Alugamos sim 😊 Temos consultórios e centros cirúrgicos equipados. Quantas horas por mês você pensa em atender aqui?</div>
+      <div class="msg in">Umas 20h, mais nas terças e quintas.</div>
+      <div class="msg out">Perfeito! Pro seu caso o Plano 20h é o ideal. Quer conhecer a sala pessoalmente? Tenho quinta às 14h ou às 16h.</div>
+      <div class="msg in">Quinta 14h fica ótimo.</div>
+      <div class="msg out">Agendado! ✅ Te mando a localização e um lembrete no dia.</div>
+    </div>
+    <div class="card">
+      <h3>O que está incluso</h3>
+      <ul class="check">
+        <li><b>Implementação completa</b> do agente de IA no WhatsApp da Opers</li>
+        <li><b>Treinamento com as informações da Opers</b>: salas, estrutura, planos de horas, valores, regras e localização</li>
+        <li><b>Qualificação automática</b> por especialidade, dias e volume de horas</li>
+        <li><b>Agendamento de visitas</b> com lembrete automático</li>
+        <li><b>Integração com o sistema</b>: o lead aparece no funil de vendas na hora</li>
+        <li><b>Transferência pra humano</b> quando o assunto pede</li>
+        <li><b>Follow-up</b> com quem parou de responder</li>
+        <li><b>Ajustes contínuos</b> no roteiro conforme as conversas reais</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>NEXUS Health</span><span>Proposta comercial · Opers</span></div>
+</section>
+
+<!-- 5. SISTEMA -->
+<section class="page">
+  <div class="top"><span><b>NEXUS</b> · Ecossistema Opers</span><span>04 · Sistema de gestão</span></div>
+  <div class="kicker">Frente 03 · Converter e gerir</div>
+  <h2>O painel da Opers.<br>Toda a operação numa tela.</h2>
+  <p class="lead">Um sistema feito sob medida pra quem aluga sala: ocupação, agenda, vendas e financeiro juntos. Nada de planilha solta nem caderno na recepção.</p>
+
+  <div class="shot" style="margin-top:7mm"><img src="img/painel.png" alt="Painel de gestão da Opers"></div>
+  <div class="cap">Tela real do sistema · Visão geral da operação</div>
+
+  <div class="grid3" style="margin-top:6mm">
+    <div>
+      <h3>Comercial</h3>
+      <ul class="check">
+        <li><b>Funil de vendas</b> (CRM) com arrastar e soltar</li>
+        <li><b>Captação IA</b>: conversas e leads em tempo real</li>
+        <li>Origem de cada lead: tráfego, Instagram, indicação</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Operação</h3>
+      <ul class="check">
+        <li><b>Salas em tempo real</b>: em uso, reservada, livre</li>
+        <li><b>Agenda das salas</b> com reserva em um clique</li>
+        <li><b>Profissionais</b> e horas restantes de cada pacote</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Gestão</h3>
+      <ul class="check">
+        <li><b>Pacotes de horas</b> e renovações</li>
+        <li><b>Estoque de insumos</b></li>
+        <li><b>Financeiro</b>: receita, ocupação e horas vendidas</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>NEXUS Health</span><span>Proposta comercial · Opers</span></div>
+</section>
+
+<!-- 6. APP -->
+<section class="page">
+  <div class="top"><span><b>NEXUS</b> · Ecossistema Opers</span><span>05 · App do profissional</span></div>
+  <div class="kicker">Frente 03 · Converter e gerir</div>
+  <h2>E o doutor ganha<br>um app com a marca da Opers.</h2>
+  <p class="lead">O profissional cria a conta em menos de 1 minuto, vê as salas livres e reserva sozinho — sem ficar trocando mensagem com a recepção. Menos trabalho manual pra equipe, mais horas usadas.</p>
+
+  <div style="display:grid;grid-template-columns:62mm 62mm 1fr;gap:6mm;margin-top:8mm;align-items:start">
+    <div><div class="shot ph"><img src="img/app-home.png" alt="Tela inicial do app"></div><div class="cap">Início · pacote de horas</div></div>
+    <div><div class="shot ph"><img src="img/app-salas.png" alt="Salas no app"></div><div class="cap">Salas · reserva na hora</div></div>
+    <div>
+      <h3>Funções do app</h3>
+      <ul class="check">
+        <li><b>Cadastro e login</b> do profissional</li>
+        <li><b>Reserva de sala</b> por dia e horário livre</li>
+        <li><b>Saldo do pacote</b> de horas e validade</li>
+        <li><b>Compra e renovação</b> de pacotes</li>
+        <li><b>Pedido de insumos</b> (toxina, preenchedor…)</li>
+        <li><b>Faturas</b> e histórico de reservas</li>
+        <li><b>Feed da Opers</b>: avisos, ações e novidades</li>
+        <li><b>Falar com a recepção</b> direto pelo app</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>NEXUS Health</span><span>Proposta comercial · Opers</span></div>
+</section>
+
+<!-- 7. CONTEÚDO -->
+<section class="page">
+  <div class="top"><span><b>NEXUS</b> · Ecossistema Opers</span><span>06 · Conteúdo</span></div>
+  <div class="kicker">Frente 04 · Sustentar</div>
+  <h2>Criação e edição de conteúdo<br>que vende sala, não só curtida.</h2>
+  <p class="lead">O doutor que clica no anúncio vai olhar o Instagram antes de chamar. O conteúdo é o que faz ele confiar. Por isso cada peça tem um objetivo: mostrar estrutura, gerar autoridade ou alimentar os anúncios.</p>
+
+  <div class="grid3" style="margin-top:8mm">
+    <div class="card">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+      <h3>Criação</h3>
+      <ul class="check">
+        <li>Planejamento editorial mensal</li>
+        <li>Roteiros de Reels e vídeos</li>
+        <li>Posts e carrosséis</li>
+        <li>Copies e legendas</li>
+        <li>Ideias de Stories pra rotina da clínica</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4Z"/></svg></div>
+      <h3>Edição</h3>
+      <ul class="check">
+        <li>Edição de Reels com legenda e cortes dinâmicos</li>
+        <li>Tratamento de fotos das salas</li>
+        <li>Vídeos de tour pela estrutura</li>
+        <li>Identidade visual padronizada com a marca Opers</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l18-8-8 18-2-8Z"/></svg></div>
+      <h3>Criativos pra anúncio</h3>
+      <ul class="check">
+        <li>Artes e vídeos pro Meta Ads</li>
+        <li>Variações pra teste A/B</li>
+        <li>Ganchos pensados pra parar a rolagem</li>
+        <li>Renovação dos criativos que cansaram</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:6mm">
+    <h3>Linhas de conteúdo pra Opers</h3>
+    <table class="t">
+      <tr><td>Estrutura</td><td>Tour pelas salas e centros cirúrgicos, equipamentos, conforto, localização em Balneário Camboriú.</td></tr>
+      <tr><td>Prova</td><td>Profissionais que atendem na Opers, bastidores, rotina real da clínica.</td></tr>
+      <tr><td>Oferta</td><td>Planos de horas, ações de horas em dobro, condições pra quem está começando o consultório.</td></tr>
+      <tr><td>Autoridade</td><td>Dicas pra profissionais da saúde: começar a atender, custo de consultório próprio x sala por hora.</td></tr>
+    </table>
+  </div>
+  <p class="note" style="margin-top:4mm">* A captação de imagem (gravações na clínica) é combinada com a equipe da Opers. A NEXUS roteiriza, orienta a gravação e edita.</p>
+  <div class="foot"><span>NEXUS Health</span><span>Proposta comercial · Opers</span></div>
+</section>
+
+<!-- 8. IMPLEMENTAÇÃO -->
+<section class="page">
+  <div class="top"><span><b>NEXUS</b> · Ecossistema Opers</span><span>07 · Implementação</span></div>
+  <div class="kicker">Primeiros 30 dias</div>
+  <h2>Do contrato assinado<br>à máquina rodando.</h2>
+  <p class="lead">A gente não some depois da assinatura. Em quatro semanas o ecossistema inteiro está no ar — e a partir daí é otimização todo mês.</p>
+
+  <div class="timeline">
+    <div class="tl"><div class="w">SEMANA 1</div><div class="t">Diagnóstico e setup</div><p>Reunião de alinhamento, levantamento de salas, planos e valores. Acesso às contas de anúncio, Instagram e WhatsApp.</p></div>
+    <div class="tl"><div class="w">SEMANA 2</div><div class="t">Sistema e IA</div><p>Sistema configurado com as salas e pacotes da Opers. IA treinada e testada antes de ir pro ar.</p></div>
+    <div class="tl"><div class="w">SEMANA 3</div><div class="t">Conteúdo e criativos</div><p>Planejamento editorial, primeiros roteiros, gravação e edição. Criativos dos anúncios prontos.</p></div>
+    <div class="tl"><div class="w">SEMANA 4</div><div class="t">Campanhas no ar</div><p>Meta Ads e Google Ads rodando, leads chegando na IA e caindo no painel. Primeira leitura de dados.</p></div>
+  </div>
+
+  <div class="card" style="margin-top:9mm">
+    <h3>Depois disso, todo mês</h3>
+    <table class="t">
+      <tr><td>Anúncios</td><td>Otimização contínua, testes de público e criativo, remanejamento de verba pro que dá resultado.</td></tr>
+      <tr><td>IA</td><td>Leitura das conversas e ajuste de roteiro pra aumentar visitas agendadas.</td></tr>
+      <tr><td>Sistema</td><td>Suporte, ajustes e melhorias conforme a rotina da Opers.</td></tr>
+      <tr><td>Conteúdo</td><td>Calendário do mês, produção, edição e novos criativos.</td></tr>
+      <tr><td>Acompanhamento</td><td>Relatório mensal + reunião de resultado + suporte pelo WhatsApp em horário comercial.</td></tr>
+    </table>
+  </div>
+
+  <div class="grid2" style="margin-top:6mm">
+    <div class="card">
+      <div class="num" style="color:var(--txt3)">CONTRATANDO SEPARADO</div>
+      <ul class="check x">
+        <li>Uma agência pro anúncio, um social media, um sistema de agenda, alguém no WhatsApp</li>
+        <li>Cada um olha só a sua parte — ninguém responde pelo pacote vendido</li>
+        <li>Lead chega de noite e só é respondido no dia seguinte</li>
+        <li>Resultado espalhado em planilha, print e conversa</li>
+      </ul>
+    </div>
+    <div class="card g">
+      <div class="num">COM A NEXUS</div>
+      <ul class="check">
+        <li><b>Um time só</b> cuidando de anúncio, IA, sistema e conteúdo</li>
+        <li><b>Um objetivo só</b>: sala ocupada e pacote vendido</li>
+        <li><b>Resposta em segundos</b>, a qualquer hora</li>
+        <li><b>Tudo medido</b> no painel da Opers, do clique ao pacote</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>NEXUS Health</span><span>Proposta comercial · Opers</span></div>
+</section>
+
+<!-- 9. INVESTIMENTO -->
+<section class="page">
+  <div class="top"><span><b>NEXUS</b> · Ecossistema Opers</span><span>08 · Investimento</span></div>
+  <div class="kicker">Investimento</div>
+  <h2>Tudo isso por um valor fixo.</h2>
+  <p class="lead">Contratando cada peça separada, a conta é bem outra. No ecossistema NEXUS, tudo vem integrado e com um time só respondendo pelo resultado.</p>
+
+  <div class="card" style="margin:6mm 0 5mm;padding:5mm 6mm">
+    <table class="t stack">
+      <tr><th>O que está incluso</th><th></th></tr>
+      <tr><td>Gestão de Meta Ads</td><td>✓ incluso</td></tr>
+      <tr><td>Gestão de Google Ads + Perfil no Google Maps</td><td>✓ incluso</td></tr>
+      <tr><td>Agente de IA no WhatsApp 24h</td><td>✓ incluso</td></tr>
+      <tr><td>Sistema de gestão (CRM, salas, agenda, pacotes, insumos, financeiro)</td><td>✓ incluso</td></tr>
+      <tr><td>App do profissional com a marca Opers</td><td>✓ incluso</td></tr>
+      <tr><td>Criação e edição de conteúdo + criativos de anúncio</td><td>✓ incluso</td></tr>
+      <tr><td>Relatório mensal, reunião de resultado e suporte</td><td>✓ incluso</td></tr>
+    </table>
+  </div>
+
+  <div class="invest">
+    <div class="badge" style="margin:0">Ecossistema completo</div>
+    <div class="v">R$ 1.500<small> /mês</small></div>
+    <div class="s">Todas as frentes acima, operadas pela NEXUS.</div>
+  </div>
+
+  <p class="note" style="margin-top:5mm">Não incluso: verba de anúncio (paga direto ao Meta e ao Google) e custos de terceiros, como a conta oficial da API do WhatsApp, quando aplicável.</p>
+
+  <div class="cta">
+    <div><b>Próximo passo</b><br><span>Aprovou? A gente agenda a reunião de diagnóstico e começa a semana 1.</span></div>
+    <div style="text-align:right;font-size:11px;font-weight:700">NEXUS Health<br>Kaian Motta · CEO</div>
+  </div>
+  <div class="foot"><span>NEXUS Health</span><span>Proposta comercial · Opers</span></div>
+</section>
+
+</body>
+</html>
