@@ -228,3 +228,83 @@ A Black Friday Brasil 2026 é em **27/11** e a Cyber Monday em **30/11**. Não f
 ### Gaps
 - Nenhum preço de Black Friday 2026 publicado para almofadas lombares foi encontrado (a pesquisa é de 06/11, três semanas antes).
 - Não há histórico de preço (tipo Zoom ou Buscapé) para os modelos específicos, porque o WebFetch estava bloqueado para esses comparadores.
+
+---
+
+## 7. Ajustabilidade de espessura/firmeza, profundidade de protrusão e perfil (neutro vs. saliência agressiva): contexto de espondilolistese grau 2
+
+### Takeaway
+- **Quase nenhuma almofada lombar vendida no Brasil tem espessura ajustável de verdade.** As exceções encontradas são:
+  - **infláveis com bomba** (genéricos, cerca de R$ 34 a 164);
+  - um modelo da Amazon.com.br com **molas em 5 níveis** (estrutura de PP);
+  - a **RESTCLOUD**, com **inserto removível para ajustar a altura** (pensada mais para cama).
+- **As ortopédicas nacionais em cunha "6/12 cm" ou "6/10 cm"** (Copespuma/Theva, Perfetto, Supermedy) têm perfil afunilado, mais fino numa ponta e mais grosso na outra. Nenhuma fonte as descreve como reversíveis com um lado fino e um grosso.
+- **Profundidade máxima declarada:**
+  - **Agressivas (10 a 13 cm):** Theva Big (13 cm na lombar), ComfiLife (cerca de 12 a 13 cm), Copespuma e Perfetto (até 12 cm), Longevitech Anti-Stress (11 cm), Sensii e Supermedy (10 cm).
+  - **Mais rasas e largas:** Perfetto anatômica (7,6 cm, numa listagem), um anúncio Amazon de 46 x 40 x 7 cm, uma almofada semicircular de encosto alto com cerca de 8 cm, e a Fellowes Breyta (6 cm), esta sem confirmação de venda no Brasil.
+- **Por que isso importa na espondilolistese:** as fontes clínicas (StatPearls/NIH, AAOS, revisão de 2025 no PMC) indicam que a **extensão lombar tende a agravar** os sintomas e a **flexão costuma aliviá-los**. Uma saliência lombar grossa aumenta a lordose (extensão) ao sentar. Para esse usuário, um **perfil raso, largo e ajustável** é mais prudente que uma "lombada" alta de 12 a 13 cm. A decisão final deve ser do médico ou fisioterapeuta.
+
+### Cited Findings
+**Contexto clínico (espondilolistese)**
+- StatPearls (NIH): a dor da espondilolistese costuma ser intermitente e pode piorar com flexão **e** extensão do segmento afetado, por instabilidade mecânica. O exame clínico inclui testar dor em extensão. — [StatPearls – Spondylolisthesis](https://www.ncbi.nlm.nih.gov/books/NBK430767/)
+- AAOS OrthoInfo: inclinar-se para a frente ou sentar frequentemente **alivia** os sintomas, porque abre espaço no canal vertebral. — [AAOS OrthoInfo](https://orthoinfo.aaos.org/en/diseases--conditions/adult-spondylolisthesis-in-the-low-back/)
+- Revisão abrangente de 2025: a amplitude de movimento costuma ser restrita em extensão lombar, e a flexão pode aliviar os sintomas, sobretudo na forma degenerativa. A revisão cita um estudo em que o grupo de exercícios de **flexão** teve 58% de recuperação em 3 meses contra **6% no grupo de extensão** (tamanho e desenho do estudo original não verificados). A mesma revisão diz que, em graus I e II, houve alívio da dor em 69% dos casos. — [PMC12022737](https://pmc.ncbi.nlm.nih.gov/articles/PMC12022737)
+- Blog de cirurgião de coluna: sentar com leve retroversão pélvica e com apoio lombar que **evite arqueamento exagerado**. Sites de educação ao paciente sugerem toalha enrolada ou rolo lombar em cadeiras sem apoio. São recomendações práticas, não estudos de desfecho. — [Premia Spine](https://premiaspine.com/how-to-sit-and-sleep-with-spondylolisthesis/); [Flexispot Spine Care](https://www.flexispot.com/spine-care-center/how-to-sit-with-spondylolisthesis); [Dr. Mark Frenkel](https://frenkelmd.com/what-your-spondylolisthesis-posture-telling-you/)
+- Blog brasileiro de Pilates: evitar movimentos de extensão e hiperextensão lombar na espondilolistese. — [Blog Pilates](https://blogpilates.com.br/tratamento-da-espondilolise-e-espondilolistese/)
+- Guia de ergonomia (Spalt, fabricante de cadeiras): para lordose "dentro da média", a almofada lombar deve ter **3 a 6 cm** de espessura, e espessura grande pode ficar desconfortável. Espuma ou plástico dão apoio mais firme que tela. — [Spalt blog](https://www.spalt.com.br/blog/cadeiras-ergonomicas/apoio-lombar-ergonomico-quando-utilizar-este-acessorio-na-sua-cadeira.html)
+- Texto de ergonomia da PUC-Rio: assento alto demais obriga a uma postura em **hiperlordose** e pode agravar problemas lombares; apoiar os pés num estrado ajuda. — [PUC-Rio (Maxwell)](https://www.maxwell.vrac.puc-rio.br/5100/5100_4.PDF)
+
+**Ajustabilidade por produto**
+- **Infláveis com bomba (ajusta profundidade e firmeza):**
+  - Amazon.com.br: "Encosto Lombar Inflável com Bomba Integrada, Azul" por **R$ 33,90**.
+  - Mercado Livre: infláveis com ajuste manual de cerca de **R$ 36,44 a R$ 163,85**.
+  - Buscapé/Zoom: almofada inflável portátil com bomba por **R$ 157,68**.
+  - Fisiostore: almofada d'água com encosto inflável por **R$ 119,97**.
+  - Os anúncios não detalham material, válvula nem limite de peso.
+  - Fontes: [Amazon busca suporte lombar](https://www.amazon.com.br/suporte-lombar/s?k=suporte+lombar); [ML almofada lombar inflável](https://lista.mercadolivre.com.br/almofada-lombar-inflavel); [ML suporte lombar inflável](https://lista.mercadolivre.com.br/suporte-lombar-inflavel); [Zoom busca almofada apoio lombar](https://www.zoom.com.br/busca/almofada+apoio+lombar); [Fisiostore encosto lombar](https://www.fisiostore.com.br/ortopedicos/coluna/encosto-lombar)
+- **Molas em 5 níveis:** a "Almofada Lombar Ergonômica Ajustável com Molas para Escritório e Home Office" (Amazon.com.br) declara 5 níveis de regulagem do suporte lombar, com molas ajustáveis em estrutura de PP. O anúncio não diz se o ajuste muda a profundidade em cm. Preço não encontrado. — [Amazon B0GBYPCGLN](https://www.amazon.com.br/Almofada-Lombar-Ergon%C3%B4mica-Ajust%C3%A1vel-Escrit%C3%B3rio/dp/B0GBYPCGLN)
+- **Inserto removível:** a RESTCLOUD (viscoelástica) tem uma almofada removível para ajustar a altura. É anunciada para dormir, para cama e cadeira, e foi o único modelo com inserto encontrado. Preço não capturado. — [Amazon RESTCLOUD B08MT5N52D](https://www.amazon.com.br/Travesseiro-RESTCLOUD-viscoel%C3%A1stica-dorminhocos-ajust%C3%A1vel/dp/B08MT5N52D); [ML equivalente](https://www.mercadolivre.com.br/almofada-lombar-para-suporte-para-dormir-espuma-viscoelasti/p/MLB2003678493)
+- **Espessura "variável" (cunha), não reversível:** Perfetto "6 cm/12 cm (espessura variável)", Supermedy "6 cm/10 cm", Theva com espessura aproximada de 6 a 12 cm. Nenhuma fonte descreve lado fino e lado grosso intercambiáveis; o perfil é afunilado. — [Unemedical Perfetto](https://loja.unemedical.com.br/reabilitacao/antirrefluxo/almofada-anatomica-lombar-viscoelastico-perfetto); [Supermedy](https://www.supermedy.com.br/product-page/almofada-lombar); [Posturama Supermedy](https://www.posturama.com/almofada-lombar-ortopedica-supermedy/p); [Saúde Store Copespuma](https://www.saudestore.com.br/almofada-lombar-viscoelastica-0612-x-33-x-35-cm-copespuma-azul)
+- **Sem ajuste de espessura** (só a cinta ou alça ajusta a altura de fixação): ComfiLife, Utopia Bedding, modelo de 46 x 40 x 7 cm, Relaxmedic Dr. Coluna, Theva Big. — [Amazon busca (vários)](https://www.amazon.com.br/encosto-lombar-cadeira/s?k=encosto+lombar+cadeira); [Amazon B0CVTMH2FB](https://www.amazon.com.br/Almofada-escrit%C3%B3rio-viscoel%C3%A1stica-ajust%C3%A1veis-ergon%C3%B4mica/dp/B0CVTMH2FB); [Relaxmedic](https://relaxmedic.com.br/products/almofada-ortopedica-lombar-relaxmedic-linha-dr-coluna-unica)
+
+**Profundidade e perfil por produto** (espessura máxima declarada pelo vendedor; a protrusão real depois de comprimir a espuma é menor e não foi medida por nenhuma fonte)
+
+| Produto | Espessura / protrusão máx. declarada | Largura x altura | Perfil | Ajuste de espessura/firmeza | Fonte |
+|---|---|---|---|---|---|
+| Theva **Big** | **13 cm** na lombar, **4,5 cm** no meio das costas | 40 x 46–48 cm | Largo, mas com **saliência lombar agressiva** na base | Não | [Mercado Shops](https://confortocorporal.mercadoshops.com.br/MLB-1186395426-almofada-encosto-lombar-espuma-viscoelastica-big-da-theva-_JM); [Casas Bahia Theva Big](https://www.casasbahia.com.br/almofada-lombar-big-viscoelastica-preta-theva/p/1562813537) |
+| ComfiLife | cerca de 12–12,9 cm (altura total da peça) | 38 x 32 cm | Contornada, saliência alta | Não (só alça) | [Amazon](https://amazon.com.br/ComfiLife-Almofada-traseira-escrit%C3%B3rio-almofada/dp/B09B55LXVJ) |
+| Copespuma / Theva 33 x 35 | 6 → 12 cm (cunha) | 33 x 35 cm | Compacta, saliência alta na ponta grossa | Não (cunha fixa) | [Saúde Store](https://www.saudestore.com.br/almofada-lombar-viscoelastica-0612-x-33-x-35-cm-copespuma-azul) |
+| Perfetto anatômica | 6 → 12 cm segundo Drogaraia/Unemedical; **7,6 cm** segundo Casa do Médico (conflito) | 33–35 x 33 cm | Compacta; moderada ou alta conforme a fonte | Não | [Drogaraia](https://www.drogaraia.com.br/almofada-anatomica-lombar-cor-preta-perfetto-729389.html); [Unemedical](https://loja.unemedical.com.br/reabilitacao/antirrefluxo/almofada-anatomica-lombar-viscoelastico-perfetto); [Casa do Médico](https://www.casadomedico.com.br/produto/almofada-lombar-azul-copespuma/) |
+| Longevitech Anti-Stress | **11 cm** | 34 x 33 cm | Compacta, alta; bolinhas salientes para ventilação | Não | [Pague Menos](https://www.paguemenos.com.br/almofada-lombar-anti-stress-longevitech-unidade-g1ba717023355026/p) |
+| Sensii "Nasa" | **10 cm** | 38 x 43 cm | Média, relativamente larga | Não informado | [BmB](https://bmbterapeuticos.com.br/produto/almofada-lombar-nasa-apoio-cadeira-coluna-alivia-dor-sensii/) |
+| Supermedy | **10 cm** (ou "6/10 cm"); medidas divergem: 30 x 32 cm vs 33 x 35 cm | 30–33 x 32–35 cm | Compacta, média ou alta | Não (cunha) | [Extrafarma](https://www.extrafarma.com.br/almofada-lombar-supermedy-unidade-169w8n4u33732401/p); [Supermedy](https://www.supermedy.com.br/product-page/almofada-lombar) |
+| Goodyear GY1003 | 5" (cerca de 12,7 cm) na Amazon; 4" (cerca de 10 cm) no Walmart (conflito) | cerca de 35 x 34 cm (14 x 13,5 in) | Contornada, média ou alta | Não | [Amazon](https://www.amazon.com.br/Almofada-Goodyear-Support-respir%C3%A1velGoodyear-GY1003/dp/B07MQXXX1G); [Walmart](https://www.walmart.com/ip/250622894) |
+| Relaxmedic Dr. Coluna lombar | **não informada** (nenhuma fonte deu a espessura) | n/d | n/d | Não | [Relaxmedic](https://relaxmedic.com.br/products/almofada-ortopedica-lombar-relaxmedic-linha-dr-coluna-unica) |
+| Anúncio Amazon "46 × 40 × 7 cm" (viscoelástica, alças ajustáveis) | **7 cm** | 46 x 40 cm | **Largo e raso: mais neutro** | Não | [Amazon B0CVTMH2FB](https://www.amazon.com.br/Almofada-escrit%C3%B3rio-viscoel%C3%A1stica-ajust%C3%A1veis-ergon%C3%B4mica/dp/B0CVTMH2FB) (a associação das medidas a este anúncio vem do snippet; conferir) |
+| Almofada ergonômica semicircular de encosto alto (Amazon) | cerca de **8 cm** (fixa) | n/d | Encosto alto, moderada | Não; capa lavável na máquina | [Amazon B0C27TMK7S](https://www.amazon.com.br/escrit%C3%B3rio-computador-respir%C3%A1vel-semicircular-patenteada/dp/B0C27TMK7S) |
+| Fellowes Breyta (strap com fivela) | **6 cm** | 17 x 35 cm | Faixa estreita e rasa | Não | [Ficha Lyreco (PT)](https://cdn-s1.lyreco.com/staticswebshop/sds/PTPT/22905606.pdf) (venda no Brasil não confirmada) |
+| Infláveis com bomba | variável (de quase plano até cheio) | n/d | Ajustável | **Sim** (ar) | ver acima |
+| Molas em 5 níveis (Amazon) | variável em 5 níveis (cm não informados) | n/d | Ajustável | **Sim** (molas) | [Amazon B0GBYPCGLN](https://www.amazon.com.br/Almofada-Lombar-Ergon%C3%B4mica-Ajust%C3%A1vel-Escrit%C3%B3rio/dp/B0GBYPCGLN) |
+| RESTCLOUD | variável (inserto removível; cm não informados) | n/d | Ajustável | **Sim** (inserto) | [Amazon](https://www.amazon.com.br/Travesseiro-RESTCLOUD-viscoel%C3%A1stica-dorminhocos-ajust%C3%A1vel/dp/B08MT5N52D) |
+| Ortho Pauher Pró Coluna / Bio Coluna | rígido (compensado ou PP); espessura n/d | encosto 47 x 31,5 cm | Encosto anatômico rígido | Não | [Leroy](https://www.leroymerlin.com.br/almofada-assento-ortopedico-com-encosto-anatomico-pro-coluna-ortho-pauher-preto_1566802619); [Tecnomedi](https://loja.tecnomedi.com.br/encosto-bio-coluna-orthopauher) |
+| Fibrasca Encosto Anatômico (D23) | espessura n/d (43 x 33 x 51 cm, eixo não especificado) | n/d | Triangular | Não | [Escolhendo Bem](https://escolhendobem.com.br/almofadas-encosto-lombar-anatomicas) |
+
+- **Encostos de malha/tela** (cerca de R$ 25,79 na Amazon) são finos e largos, mas o tema é de outro pesquisador. Segundo a Spalt, dão apoio menos firme que espuma. — [Amazon busca suporte lombar](https://www.amazon.com.br/suporte-lombar/s?k=suporte+lombar); [Spalt](https://www.spalt.com.br/blog/cadeiras-ergonomicas/apoio-lombar-ergonomico-quando-utilizar-este-acessorio-na-sua-cadeira.html)
+
+### Inferences
+- **Classificação para espondilolistese grau 2**, combinando a espessura declarada com a referência de 3 a 6 cm da Spalt para lordose média e a evidência de que extensão piora os sintomas:
+  - **Mais neutras ou rasas:** anúncio 46 x 40 x 7 cm, Fellowes Breyta (6 cm, se disponível), semicircular de cerca de 8 cm, Perfetto se a medida de 7,6 cm estiver certa, e o inflável com pouco ar.
+  - **Moderadas:** Sensii (10 cm), Supermedy (10 cm), Goodyear (cerca de 10 a 12,7 cm).
+  - **Agressivas:** Theva Big na parte lombar (13 cm), ComfiLife (cerca de 12 a 13 cm), Copespuma e Perfetto no lado de 12 cm, Longevitech Anti-Stress (11 cm).
+- A viscoelástica comprime sob carga, então a protrusão efetiva fica abaixo do número declarado. Mesmo assim, numa cadeira gamer cujo encosto já tem curvatura, uma almofada de 12 a 13 cm pode somar e produzir hiperlordose.
+- O problema da **barra metálica** pede material entre as costas e a barra, não necessariamente uma saliência alta. Uma almofada **larga e rasa (6 a 8 cm) e mais firme**, ou um inflável regulado em pouco ar, tende a resolver o contato com a barra sem forçar extensão. Também vale verificar se a barra é a estrutura do encosto sob a espuma desgastada; nesse caso a solução pode ser de cobertura, como uma capa ou espuma de encosto inteiro, assunto do outro pesquisador.
+- Como as almofadas em cunha "6/12" ficam mais finas em cima e mais grossas embaixo (ou o inverso), girá-las 180° muda **onde** fica o ponto mais grosso, mas não reduz a profundidade máxima. Isso é inferência sobre o formato, não confirmada pelos fabricantes.
+- Um inflável barato (cerca de R$ 34) ou uma toalha enrolada servem como **teste de profundidade** antes de comprar uma almofada de R$ 150 a 200.
+
+### Gaps
+- **Nenhuma fonte mediu a protrusão comprimida** (cm sob carga) de nenhum produto. Todos os números são de espessura nominal declarada pelo vendedor.
+- Falta a espessura da Relaxmedic Dr. Coluna lombar e da Fibrasca, e os dados da Perfetto conflitam (7,6 cm vs 6/12 cm).
+- Não foi confirmado se a Fellowes Breyta (6 cm) é vendida no Brasil nem qual o seu preço.
+- Faltam preço e medidas em cm por nível do modelo de molas em 5 níveis e da RESTCLOUD.
+- Não foi encontrada nenhuma almofada lombar ortopédica nacional com **inserto removível** ou com **lado fino e lado grosso reversíveis**.
+- As fontes clínicas são gerais sobre espondilolistese, não específicas para almofada lombar. Nenhum estudo compara espessuras de almofada nesses pacientes. A recomendação de perfil deve ser validada pelo médico ou fisioterapeuta, considerando o tipo (ístmica ou degenerativa), o nível e os sintomas.
