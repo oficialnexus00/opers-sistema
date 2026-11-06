@@ -71,6 +71,23 @@ Tabela-síntese para o caso de uma barra rígida. É uma **inferência** constru
 
 - Para a barra nas escápulas (caso Dowinx), uma almofada só lombar não alcança o ponto. Seria preciso um encosto inteiro ou espuma extra na região dorsal.
 
+#### Classificação por tipo de suporte: neutro, ajustável e de área ampla vs. "calombo" lombar fixo
+
+Contexto adicional: o usuário tem **espondilolistese grau 2**. O lado médico está com outro pesquisador; aqui só classifico as categorias pelo critério ergonômico pedido. A classificação é inferência, com base nos achados das seções 2 a 4.
+
+| Categoria | Área ampla? | Ajustável (altura/espessura/firmeza)? | Perfil neutro ou risco de lordose extra |
+|---|---|---|---|
+| Troca ou reforço da espuma dentro do encosto | Sim, o encosto todo | Não, mas é fixa e uniforme | **Mais neutro**: restaura a superfície sem acrescentar volume que arqueie a lombar |
+| Encosto de costas inteiro, espessura uniforme (cerca de 4–6 cm) e contorno lombar suave | Sim | Altura pelas alças; espessura raramente | **Neutro**, desde que o contorno lombar seja discreto. Modelos com "barriga" lombar alta perdem essa vantagem |
+| Almofada lombar modular, com camadas ou insertos removíveis | Média | **Sim**: espessura ajustável (ex.: Rolyan de cerca de 3" para 4" com/sem camada extra; ComfortMakers com camadas internas removíveis) e altura pela alça | Bom: permite começar fino e aumentar só se necessário |
+| Inflável (ar) | Média a pequena | **Sim**: firmeza e volume pela pressão | Pode ser usado quase vazio (perfil baixo). Contra: isola mal a barra e há risco de vazamento |
+| Almofada lombar viscoelástica pequena em "D"/meia-lua com pico de 10–12 cm | Pequena | Só altura (alça) | **Maior risco de lordose forçada**: o pico fixo empurra a lombar para extensão e o tronco para frente |
+| Rolo lombar (tipo McKenzie) | Pequena | Altura pela alça | Concentrado. Por definição é um "calombo"; não cobre barra fora da lombar |
+| Suporte de tela com armação | Média | Alguns com altura/tensão | Muitos têm bojo lombar fixo, e a armação rígida é um problema extra |
+| Gel (placa) | Média | Não | Fino e plano: neutro, mas isola pouco a barra |
+| Massageadora | Média | Não | Nódulos e motor criam relevos rígidos; pouco neutra |
+| Almofada lombar original da cadeira gamer | Pequena | Altura pelas tiras | Costuma ser grossa. Abaixar, afinar ou remover pode ser mais neutro que usá-la como vem |
+
 ### Gaps
 - Não encontrei teste independente que compare essas categorias especificamente contra uma "barra rígida" no encosto.
 - Não encontrei fonte sobre almofadas massageadoras ou suportes de tela com armação aplicados a cadeira gamer.
@@ -79,7 +96,7 @@ Tabela-síntese para o caso de uma barra rígida. É uma **inferência** constru
 ## 3. Qual categoria se adapta melhor à pressão de uma barra rígida, e quais podem piorar o problema?
 
 ### Takeaway
-Pelas evidências indiretas, o que resolve é **espessura e densidade adequadas sobre uma área grande**: um encosto de costas inteiro de espuma ou viscoelástica de densidade média a alta, ou então restaurar a espuma do próprio encosto. Uma almofada lombar pequena só funciona se a barra estiver exatamente na lombar. Suportes de tela com armação rígida, almofadas finas e almofadas grossas demais (que empurram o corpo para frente) podem piorar o problema. Todas essas conclusões são inferência, com respaldo parcial.
+Pelas evidências indiretas, o que resolve é **espessura e densidade adequadas sobre uma área grande**: um encosto de costas inteiro de espuma ou viscoelástica de densidade média a alta, ou então restaurar a espuma do próprio encosto. Uma almofada lombar pequena só funciona se a barra estiver exatamente na lombar. Suportes de tela com armação rígida, almofadas finas e almofadas grossas demais (que empurram o corpo para frente) podem piorar o problema. Todas essas conclusões são inferência, com respaldo parcial. Com a espondilolistese grau 2 do usuário, o critério passa a ser cobrir a barra **sem acrescentar extensão lombar**. Isso favorece camadas amplas e de espessura uniforme, ou apoios de espessura ajustável (modulares ou infláveis), em vez de almofadas "D" de pico alto.
 
 ### Cited Findings
 - A causa documentada é espuma fina e de baixa densidade (laminada, 30 kg/m³), e a solução apontada pelo revisor é espuma de maior qualidade (injetada) no encosto. Isso sugere que a correção passa por adicionar espuma de boa densidade. — [Analisa Melhor](https://analisamelhor.com.br/revisao-cadeira-gamer-mancer-tyr-preta-mcr-tyr-bk01)
@@ -89,6 +106,11 @@ Pelas evidências indiretas, o que resolve é **espessura e densidade adequadas 
 - Uma almofada lombar mal posicionada pode inclinar o quadril para frente (baixa demais) ou induzir curvatura do tronco (alta demais). Se empurra a coluna para frente demais, "pode fazer mais mal que bem". Um guia cita profundidade-alvo de aproximadamente **4 cm (1,5")**, logo acima da linha do cinto. A atribuição exata desse número à página específica não foi verificada. — [chairsfx: lumbar support biomechanics](https://chairsfx.com/computing-chair-advice/lumbar-support-biomechanics)
 - A almofada lombar da Secretlab, depois de comprimida, reduz a profundidade útil do assento em cerca de **5 cm (2")**. Isso mostra que qualquer acessório no encosto "come" profundidade de assento. — [chairsfx: Secretlab lumbar pillows](https://chairsfx.com/accessories/secretlab-lumbar-pillows/)
 - Densidades mais altas de viscoelástica tendem a reter mais calor porque contêm menos ar na estrutura. — [Colchón Exprés: densidad viscoelástica recomendada](https://www.colchonexpres.com/blog/densidad-viscoelastica-recomendada)
+- **Espessura ajustável existe no mercado** (exemplos de tipo de produto, não recomendação de compra):
+  - Modular Lumbar Support (Rolyan/Performance Health): espessura ajustável com espuma removível, de cerca de 3" (7,5 cm) sem a camada extra para cerca de 4" (10 cm) com ela. — [Performance Health: Modular Lumbar Support](https://www.performancehealth.ca/modular-lumbar-support); [JAN: Rolyan Lumbar Cushion](https://askjan.org/products/Rolyan-Lumbar-Cushion.cfm)
+  - ComfortMakers Deluxe: forma e espessura ajustáveis e alça ajustável; um comprador relata várias camadas internas de espuma removíveis. Dimensões: 12,5 × 2,5 × 7,5" (aproximadamente 32 × 6 × 19 cm). — [TigerChef: Deluxe Lumbar Support Cushion](https://www.tigerchef.com/deluxe-lumbar-support-cushion-with-memory-foam-125w-x-25d-x-75h-black.html)
+  - Rolo McKenzie: alça elástica ajustável de 1,5" e capa removível. — [OPTP: Original McKenzie Lumbar Roll](https://www.optp.com/The-Original-McKenzie-Lumbar-Roll?kw=Lo%20Rox)
+  - Infláveis: a firmeza se ajusta adicionando ou retirando ar. — [Ergotech](https://www.ergotech.fr/en/smartblog/109_choose-best-lumbar-support.html)
 
 ### Inferences
 - **Melhor encaixe para "barra rígida":**
@@ -101,9 +123,15 @@ Pelas evidências indiretas, o que resolve é **espessura e densidade adequadas 
   - Almofadas lombares muito grossas (10–12 cm de pico) em assento racing: empurram o usuário para frente, reduzem a profundidade do assento e tiram as escápulas do encosto.
   - Infláveis com pouca pressão, que deixam a barra "furar" a câmara.
 - Também é importante a firmeza: uma viscoelástica muito macia pode ceder até a barra, enquanto uma espuma de alta resiliência ou viscoelástica de densidade maior resiste melhor. O custo da densidade maior é mais calor, relevante no clima brasileiro.
+- **Com espondilolistese grau 2** (inferência ergonômica; o lado clínico é de outro pesquisador):
+  - O critério muda de "mais suporte lombar" para "**cobrir a barra sem acrescentar extensão**".
+  - A combinação que melhor atende os dois objetivos é uma camada **ampla e de espessura uniforme** (encosto inteiro ou espuma nova no encosto), com no máximo um contorno lombar discreto ou ajustável (modular com camadas removíveis, ou inflável com pouca pressão).
+  - A almofada lombar "D" de pico alto (10–12 cm) é a opção com maior risco de forçar lordose e de empurrar o tronco para frente no assento racing.
+  - Começar com o perfil mais fino e aumentar só se o fisioterapeuta indicar.
 
 ### Gaps
 - Não encontrei um valor validado de espessura mínima de espuma para "isolar" uma barra metálica; o número de 4–5 cm é inferência.
+- Não encontrei fonte que avalie almofadas lombares ou encostos especificamente em pessoas com espondilolistese.
 - Não encontrei avaliação de suportes de tela com armação sobre cadeiras gamer.
 
 ## 4. O que dizem as orientações de ergonomia e fisioterapia sobre o apoio lombar (altura, espessura, postura, assento racing)?
@@ -125,12 +153,46 @@ Há consenso razoável de que o apoio lombar deve preencher a curva natural da l
 - **Encosto que não acompanha a curva:** um post de fórum brasileiro diz que cadeira gamer que não cobre toda a curvatura das costas pode causar problemas posturais e dor crônica (opinião de usuário). — [Promobit fórum: análise sobre cadeiras gamer](https://www.promobit.com.br/forum/analise-sobre-cadeiras-gamer-e-porque-voce-nao-deveria-comprar-uma-8021/)
 - **Cautela clínica:** páginas de farmácia e varejo recomendam consultar médico ou fisioterapeuta antes de usar almofada lombar, principalmente quem tem hérnia de disco ou escoliose, e lembram que a almofada não substitui tratamento. — [Drogaraia: Almofada Lombar Big Viscoelástica Theva](https://www.drogaraia.com.br/almofada-lombar-big-viscoelastica-theva-935170.html) (via resumo de busca; atribuição genérica a "várias fontes")
 
+#### Reclinação e ajuste do assento relevantes para condições de coluna (contexto: espondilolistese grau 2)
+
+Sem duplicar a parte médica; foco em ergonomia de cadeira.
+
+- **Andersson (1979, estudo radiográfico, via resumo wiki):** o apoio lombar restaura a lordose de forma mais eficaz do que mudar a inclinação do encosto. Um encosto alto que pressiona as escápulas pode anular esse benefício ao induzir o usuário a escorregar ("slouch"). Isso é relevante para cadeiras gamer de encosto alto, com travessa na altura dos ombros. — [WikiMSK: Chairs for Low Back Pain](https://wikimsk.org/wiki/Chairs_for_Low_Back_Pain) (resumo secundário de estudos biomecânicos antigos)
+- **Inclinação do encosto e pressão discal:** uma revisão de ergonomia (via resumo de busca) relata que inclinar o encosto para trás reduziu a atividade EMG dos músculos das costas e a pressão intradiscal, **mas aumentou a lordose**. O apoio lombar teve benefícios biomecânicos semelhantes. A fonte exata do trecho não foi confirmada; os candidatos são [CDC Stacks 217208](https://stacks.cdc.gov/view/cdc/217208) e [Univ. Dundee: disc pressure (PDF)](https://www.lifesci.dundee.ac.uk/services/healthandsafety/other-topics/dse/disc_pressure.pdf).
+- **Valores de reclinação inconsistentes:** fontes comerciais citam cerca de 110° como ponto favorável. Um fabricante atribui a Andersson (1981) uma redução de cerca de 25% na pressão a 110°, número não confirmado em fonte primária. Outra página diz que inclinar-se para frente (80°) aumenta a pressão discal em +190%. — [OfficeFurniture2Go: best back angle](https://www.officefurniture2go.com/answers/ergonomic-chairs/what-is-the-best-back-angle-for-ergonomic-chair.html); [FindOfficeFurniture: backrest angle](https://www.findofficefurniture.com/answers/ergonomic-chairs/ergonomic-chair-backrest-angle-recline.html) (fontes comerciais, percentuais não verificados)
+- **Estudo com 224 taxistas (Scand J Work Environ Health 2005):**
+  - Ângulo tronco-coxa de 91° ou menos vs. mais de 91°: razão de chances ajustada de 5,11 para lombalgia.
+  - Uso regular de apoio lombar: prevalência de dor de 18% vs. 34%.
+  - A inclinação isolada do assento ou do encosto não teve associação significativa. Os autores pedem estudos prospectivos.
+  - Fonte: [SJWEH 2005;31(4):258-265](https://www.sjweh.fi/article/881) (dados via resumo de busca)
+- **Revisão sistemática sobre encostos:** evidência moderada de que encostos reduzem a ativação paraespinhal; evidência limitada de que reduzem o desconforto lombar; nenhuma evidência de que cadeiras com menos flexão de quadril reduzam dor lombar. Pede ensaios maiores. — [Human Factors, doi 10.1177/0018720815591905](https://https-sage-cnpereading-com-443.webvpn1.xju.edu.cn/doi/10.1177/0018720815591905) (link de proxy acadêmico; atribuição via resumo de busca)
+- **Assento inclinado para frente em dor relacionada à extensão:** em pessoas com dor lombar ligada à extensão, o desconforto foi significativamente maior com o assento inclinado para frente, e o encosto não alterou a ativação muscular nem o desconforto. — [Curtin University espace](https://espace.curtin.edu.au/handle/20.500.11937/5614) (atribuição via resumo de busca, não verificada)
+- **Fontes comerciais sobre espondilolistese e cadeira** (orientação prática, não diretriz clínica):
+  - Reclinação leve de cerca de 105–110° para reduzir a carga em disco e facetas; pés apoiados, quadril encostado no fundo do assento, tela na altura dos olhos, pequenos movimentos ao longo do dia. — [Premia Spine](https://premiaspine.com/how-to-sit-and-sleep-with-spondylolisthesis/)
+  - Inclinação do encosto independente do ajuste lombar evita forçar a pelve numa curva hiperestendida. — [TechYorker](https://techyorker.com/?p=375926)
+  - Uma reclinação em que o apoio lombar "se afasta" das costas favorece o escorregamento; preferir reclinar mantendo contato lombar. — [AndroidExperto](https://androidexperto.com/?p=186329)
+  - Ficar largado ou sem apoio lombar inclina a pelve para trás e carrega o segmento instável (fabricante de cadeiras). — [Anthros: spondylolisthesis](https://anthros.com/low-back/origin-spondylolisthesis)
+  - Evitar cruzar as pernas. — [Anthros blog](https://www.anthros.com/blog-pain/your-comfort-your-chair-finding-relief-for-your-spondylolisthesis)
+- **Fontes em português:**
+  - Atividades com hiperextensão ou hiperflexão repetidas da coluna lombar aumentam o risco da condição; a fisioterapia privilegia exercícios em flexão, fortalecimento abdominal e estabilização lombar. — [CUF (Portugal): Espondilolistese](https://www.cuf.pt/saude-a-z/espondilolistese)
+  - A postura ao sentar influencia a mecânica da pelve e da lombar, e o manejo depende de ajustes repetidos na rotina. — [Tua Saúde: espondilolistese lombar (jul/2026)](https://www.tuasaude.com/news/2026/07/22/o-que-e-espondilolistese-lombar-causas-sintomas-tratamento-e-cuidados-diarios/)
+
 ### Inferences
 - Para o usuário, o apoio deve ficar na curva lombar (linha do cinto, cerca de 15–25 cm acima do assento) e ser modesto em profundidade (cerca de 4 cm de "pico" segundo um guia). Ele não deve afastar as escápulas do encosto.
 - Num assento racing (tipo "balde"), uma almofada lombar grossa somada às abas laterais tende a empurrar o usuário para a borda do assento. Isso contraria a orientação de "não empurrar o tronco para frente".
 - Reclinar um pouco o encosto (100–110°) pode reduzir a carga sobre a travessa (caso DXRacer) e é compatível com as recomendações citadas, apesar do conflito de números.
+- **Para o usuário com espondilolistese**, o ajuste de cadeira que as fontes sugerem (a confirmar com o fisioterapeuta e a cruzar com o pesquisador médico):
+  1. Reclinação leve, de cerca de 100–110°, com a lombar mantendo contato com o apoio.
+  2. Quadril encostado no fundo do assento. Não "empoleirar" na borda, o que acontece quando uma almofada grossa empurra o corpo para frente no assento balde.
+  3. Pés apoiados e ângulo tronco-coxa um pouco acima de 90°.
+  4. Evitar inclinar o assento para frente.
+  5. Usar apoio lombar de perfil moderado e ajustável, não um calombo alto.
+- Há uma tensão a explicitar no relatório: reclinar reduz a pressão discal mas, segundo a revisão citada, aumenta a lordose. Por isso o volume do apoio lombar deve ser modesto quando se reclina.
+- A travessa na altura das escápulas pode empurrar o tronco superior para frente e favorecer o escorregamento, o mecanismo descrito no resumo de Andersson. Isso reforça a escolha de um encosto inteiro, que nivela a superfície, em vez de só uma almofada lombar.
 
 ### Gaps
+- Não encontrei diretriz clínica (sociedade médica ou fisioterapia) com ângulo de reclinação ou espessura de apoio lombar específicos para espondilolistese; as fontes que dão números são comerciais.
+- As fontes primárias de Andersson (1974/1979/1981) não foram acessadas; os números vieram de resumos secundários ou comerciais.
 - Não consegui acessar diretamente OSHA (bloqueio de rede), Cornell Ergonomics Web nem Mayo Clinic. As orientações atribuídas a elas vieram de blogs comerciais.
 - Não encontrei posicionamento da SBOT nem artigo científico brasileiro específico sobre almofadas lombares em cadeiras gamer.
 - Não encontrei o texto oficial atualizado da NR-17 nesta sessão para confirmar a numeração do item.

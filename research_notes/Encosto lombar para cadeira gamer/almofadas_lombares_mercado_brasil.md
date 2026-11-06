@@ -140,7 +140,7 @@ Tier por tier:
 - Guia: a densidade da espuma importa mais que a marca, porque espuma de baixa densidade perde o formato em poucos meses. Medir a cadeira antes de comprar; preferir fixação antideslizante. (Guias de afiliado, 2026.) — [Guia O Melhor](https://guiaomelhor.com.br/melhor-almofada-lombar); [Qual é a Melhor](https://qualeamelhor.com.br/melhor-almofada-lombar); [Movimento e Conforto](https://movimentoeconforto.com.br/melhor-apoio-lombar-cadeira-escritorio/)
 
 ### Inferences
-- **Para quem sente a barra metálica na lombar:** o que importa é a **espessura útil** (a espuma precisa ficar entre as costas e a barra) e a **altura de cobertura**. A **Theva Big** (13 cm na lombar, 40 x 46/48 cm cobrindo lombar e meio das costas, com elástico descrito como compatível com cadeiras gamer) é a candidata mais óbvia se a barra estiver acima da lombar ou se o incômodo for amplo. Para barra só na altura lombar, Copespuma 33 x 35 (até 12 cm), Sensii 38 x 43 x 10 cm, ComfiLife (cerca de 12 a 13 cm) e Relaxmedic são as opções no formato clássico. A Perfetto anatômica (7,6 cm) é mais fina e talvez não isole bem a barra.
+- **Para quem sente a barra metálica na lombar:** o que importa é a **espessura útil** (a espuma precisa ficar entre as costas e a barra) e a **altura de cobertura**. **Mas com espondilolistese grau 2 a lógica muda** (ver seção 7): uma saliência lombar grossa empurra a coluna para extensão (mais lordose), que é o movimento que costuma piorar os sintomas. Por isso a escolha deve priorizar **perfil largo, raso e/ou ajustável**, e não só "cobrir a barra". Formatos com saliência lombar de 12 a 13 cm (Theva Big na parte lombar, ComfiLife, Copespuma no lado de 12 cm) passam a ser os de **maior risco** de desconforto para esse usuário, apesar de isolarem melhor a barra. Para barra só na altura lombar, as opções de formato clássico são Copespuma 33 x 35 (6 a 12 cm), Sensii 38 x 43 x 10 cm, ComfiLife (cerca de 12 a 13 cm) e Relaxmedic. A Perfetto anatômica (7,6 cm) é mais fina e talvez não isole a barra tão bem, mas é mais neutra.
 - Os encostos rígidos da Ortho Pauher (compensado ou polipropileno) provavelmente encaixam mal no encosto em concha de uma cadeira gamer e não "amortecem" a barra. Não são recomendados para esse caso.
 - Como quase nenhum anúncio informa densidade, espessura declarada e marca com histórico (Copespuma, Relaxmedic, Perfetto) servem de sinal de qualidade melhor que o rótulo "Nasa/memory foam" de genéricos.
 
@@ -218,7 +218,12 @@ A Black Friday Brasil 2026 é em **27/11** e a Cyber Monday em **30/11**. Não f
 ### Inferences
 - Como a Copespuma e a Relaxmedic já aparecem com 16% a 36% de desconto fora de data, um preço de Black Friday próximo de **R$ 110 a 130 para Relaxmedic ou Copespuma** e de **R$ 140 a 160 para a Theva Big** seria plausível. Isso é inferência a partir da faixa observada, não dado de 2026. Acima de cerca de R$ 200 pela Copespuma 33 x 35 é preço cheio.
 - A ComfiLife, a R$ 376 a 480 na Amazon.com.br, está muito acima do preço americano (cerca de US$ 37 a 43). Só vale em promoção forte. Com a mesma espuma e espessura, as nacionais saem pela metade do preço.
-- Para o usuário com a barra metálica, uma ordem de compra razoável: (1) **Theva Big** se a barra pega a lombar e o meio das costas; (2) **Copespuma 33 x 35** ou **Relaxmedic Dr. Coluna** se a barra é só lombar; (3) **genérico de R$ 50 a 80** só como teste barato, ciente do risco de espuma de baixa densidade.
+- Para o usuário com a barra metálica **e espondilolistese grau 2**, a ordem de compra revisada (ver seção 7) é:
+  1. **Testar antes uma opção barata e ajustável** (inflável com bomba, cerca de R$ 34 a 160, ou toalha enrolada) para descobrir a profundidade tolerada.
+  2. Depois, comprar uma **almofada larga e rasa** (cerca de 6 a 8 cm; por exemplo, o anúncio de 46 x 40 x 7 cm da Amazon ou a Perfetto anatômica de 7,6 cm), que isola a barra sem criar uma saliência agressiva.
+  3. Só considerar Theva Big, Copespuma (lado de 12 cm) ou ComfiLife se o médico ou fisioterapeuta liberar mais lordose.
+
+  Validar com o médico ou fisioterapeuta. Esta ordem é inferência, não orientação clínica.
 
 ### Gaps
 - Nenhum preço de Black Friday 2026 publicado para almofadas lombares foi encontrado (a pesquisa é de 06/11, três semanas antes).
